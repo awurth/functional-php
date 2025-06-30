@@ -14,6 +14,7 @@ use ArrayIterator;
 use PHPUnit\Framework\MockObject\MockObject;
 
 use function Functional\poll;
+use function usleep;
 
 interface Poller
 {
@@ -59,9 +60,9 @@ class PollTest extends AbstractTestCase
             ->withConsecutive([0, 0])
             ->willReturnCallback(
                 function () {
-                    \usleep(100);
+                    usleep(100);
                     return false;
-                }
+                },
             );
 
         self::assertFalse(poll([$this->poller, 'poll'], 100));
@@ -80,7 +81,7 @@ class PollTest extends AbstractTestCase
     public function testThrowsExceptionIfTimeoutCountNotAtLeast0(): void
     {
         $this->expectArgumentError(
-            'Functional\poll() expects parameter 2 to be an integer greater than or equal to 0'
+            'Functional\poll() expects parameter 2 to be an integer greater than or equal to 0',
         );
         poll([$this->poller, 'poll'], -1);
     }

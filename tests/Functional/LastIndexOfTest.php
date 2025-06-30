@@ -46,7 +46,7 @@ class LastIndexOfTest extends AbstractTestCase
             3,
             last_index_of($this->list, function ($element) {
                 return $element;
-            })
+            }),
         );
     }
 

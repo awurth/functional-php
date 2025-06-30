@@ -13,21 +13,26 @@ namespace Functional\Tests;
 use ReflectionFunction;
 
 use function Functional\group;
+use function array_filter;
+use function array_values;
+use function get_defined_functions;
+use function sprintf;
+use function stripos;
 
 class AnnotationsTest extends AbstractTestCase
 {
     public static function getFunctions(): array
     {
         return group(
-            \array_values(
-                \array_filter(
-                    \get_defined_functions()['user'],
+            array_values(
+                array_filter(
+                    get_defined_functions()['user'],
                     static function (string $function): bool {
-                        return \stripos($function, 'Functional\\') === 0;
-                    }
-                )
+                        return stripos($function, 'Functional\\') === 0;
+                    },
+                ),
             ),
-            'Functional\id'
+            'Functional\id',
         );
     }
 
@@ -38,10 +43,10 @@ class AnnotationsTest extends AbstractTestCase
         self::assertStringContainsString(
             '@no-named-arguments',
             $refl->getDocComment(),
-            \sprintf(
+            sprintf(
                 'Expected function "%s()" to have annotation @no-named-arguments',
-                $function
-            )
+                $function,
+            ),
         );
     }
 }

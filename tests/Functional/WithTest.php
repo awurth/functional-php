@@ -10,6 +10,8 @@
 
 namespace Functional\Tests;
 
+use Exception;
+
 use function Functional\with;
 
 class WithTest extends AbstractTestCase
@@ -17,9 +19,9 @@ class WithTest extends AbstractTestCase
     public function testWithNull(): void
     {
         self::assertNull(
-            with(null, function () {
-                throw new \Exception('Should not be called');
-            })
+            with(null, function (): void {
+                throw new Exception('Should not be called');
+            }),
         );
     }
 
@@ -31,8 +33,8 @@ class WithTest extends AbstractTestCase
                 1,
                 function ($value) {
                     return $value + 1;
-                }
-            )
+                },
+            ),
         );
     }
 
@@ -48,11 +50,11 @@ class WithTest extends AbstractTestCase
             'foo',
             with(
                 null,
-                static function () {
+                static function (): void {
                 },
                 false,
-                'foo'
-            )
+                'foo',
+            ),
         );
     }
 }

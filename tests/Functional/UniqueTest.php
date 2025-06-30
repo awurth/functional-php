@@ -52,7 +52,7 @@ class UniqueTest extends AbstractTestCase
     public function testUnifyingByClosure(): void
     {
         $fn = static function ($value, $key, $collection) {
-            return $key === 0 ? 'zero' : 'else';
+            return 0 === $key ? 'zero' : 'else';
         };
         self::assertSame([0 => 'value1', 1 => 'value2'], unique($this->list, $fn));
         self::assertSame([0 => 'value1', 1 => 'value2'], unique($this->listIterator, $fn));

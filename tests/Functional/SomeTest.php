@@ -84,6 +84,6 @@ class SomeTest extends AbstractTestCase
     public function functionalCallback($value, $key, $collection): bool
     {
         InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-        return $value == 'value' && $key === 0;
+        return 'value' == $value && 0 === $key;
     }
 }

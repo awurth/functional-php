@@ -46,7 +46,7 @@ class RepeatTest extends AbstractTestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            'Functional\{closure}() expects parameter 1 to be positive integer, negative integer given'
+            'Functional\{closure}() expects parameter 1 to be positive integer, negative integer given',
         );
 
         repeat([$this->repeated, 'foo'])(-1);

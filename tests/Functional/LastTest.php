@@ -37,7 +37,7 @@ class LastTest extends AbstractTestCase
     {
         $fn = function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-            return ($v == 'first' && $k == 0) || ($v == 'third' && $k == 2);
+            return ('first' == $v && 0 == $k) || ('third' == $v && 2 == $k);
         };
 
         self::assertSame('third', last($this->list, $fn));

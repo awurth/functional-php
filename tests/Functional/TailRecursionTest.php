@@ -19,7 +19,7 @@ class TailRecursionTest extends TestCase
     public function testTailRecursion1(): void
     {
         $fact = tail_recursion(function ($n, $acc = 1) use (&$fact) {
-            if ($n == 0) {
+            if (0 == $n) {
                 return $acc;
             }
             return $fact($n - 1, $acc * $n);

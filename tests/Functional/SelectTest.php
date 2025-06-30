@@ -14,6 +14,8 @@ use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\select;
+use function sprintf;
+use function strlen;
 
 class SelectTest extends AbstractTestCase
 {
@@ -42,7 +44,7 @@ class SelectTest extends AbstractTestCase
         $callback = function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
 
-            return $v == 'value' && \strlen($k) > 0;
+            return 'value' == $v && strlen($k) > 0;
         };
         self::assertSame(['value', 2 => 'value'], $functionName($this->list, $callback));
         self::assertSame(['value', 2 => 'value'], $functionName($this->listIterator, $callback));
@@ -74,10 +76,10 @@ class SelectTest extends AbstractTestCase
     public function testPassNoCollection($functionName): void
     {
         $this->expectArgumentError(
-            \sprintf(
+            sprintf(
                 '%s() expects parameter 1 to be array or instance of Traversable',
-                $functionName
-            )
+                $functionName,
+            ),
         );
         $functionName('invalidCollection', 'strlen');
     }

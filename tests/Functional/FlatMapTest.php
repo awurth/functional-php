@@ -33,7 +33,7 @@ class FlatMapTest extends AbstractTestCase
             function ($v, $k, $collection) {
                 InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
                 return $v;
-            }
+            },
         );
 
         self::assertSame(['a', 'b', 'c', ['d']], $flat);
@@ -46,7 +46,7 @@ class FlatMapTest extends AbstractTestCase
             function ($v, $k, $collection) {
                 InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
                 return $v;
-            }
+            },
         );
 
         self::assertSame(['a', 'b', 'c', ['d']], $flat);
@@ -59,7 +59,7 @@ class FlatMapTest extends AbstractTestCase
             function ($v, $k, $collection) {
                 InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
                 return $v;
-            }
+            },
         );
 
         self::assertSame(['a', 'b', 'c', ['d']], $flat);
@@ -72,7 +72,7 @@ class FlatMapTest extends AbstractTestCase
             function ($v, $k, $collection) {
                 InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
                 return $v;
-            }
+            },
         );
 
         self::assertSame(['a', 'b', 'c', ['d']], $flat);

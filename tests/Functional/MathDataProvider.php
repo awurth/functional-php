@@ -13,12 +13,14 @@ namespace Functional\Tests;
 use stdClass;
 use ArrayIterator;
 
+use function stream_context_create;
+
 class MathDataProvider
 {
     public static function injectErrorCollection(): array
     {
         $args = [];
-        foreach ([new stdClass(), \stream_context_create(), [], "str"] as $v) {
+        foreach ([new stdClass(), stream_context_create(), [], "str"] as $v) {
             $arg = [2, $v, "1.5", true, null];
             $args[] = [$arg];
             $args[] = [new ArrayIterator($arg)];
@@ -29,7 +31,7 @@ class MathDataProvider
     public static function injectBooleanValues(): array
     {
         return [
-            [false, true, 1]
+            [false, true, 1],
         ];
     }
 }

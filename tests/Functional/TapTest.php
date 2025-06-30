@@ -10,6 +10,8 @@
 
 namespace Functional\Tests;
 
+use stdClass;
+
 use function Functional\tap;
 
 class TapTest extends AbstractTestCase
@@ -27,10 +29,10 @@ class TapTest extends AbstractTestCase
 
     public function testTap(): void
     {
-        $input = new \stdClass();
+        $input = new stdClass();
         $input->property = 'foo';
 
-        $output = tap($input, function ($o) {
+        $output = tap($input, function ($o): void {
             $o->property = 'bar';
         });
 

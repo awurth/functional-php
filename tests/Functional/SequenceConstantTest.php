@@ -26,7 +26,7 @@ class SequenceConstantTest extends AbstractTestCase
     public function testArgumentMustBePositiveInteger(): void
     {
         $this->expectArgumentError(
-            'Functional\sequence_constant() expects parameter 1 to be an integer greater than or equal to 0'
+            'Functional\sequence_constant() expects parameter 1 to be an integer greater than or equal to 0',
         );
         sequence_constant(-1);
     }

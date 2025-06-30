@@ -20,7 +20,7 @@ class CaptureTest extends AbstractTestCase
             function (...$args) {
                 return $args;
             },
-            $result
+            $result,
         );
 
         self::assertSame([1, 2], $fn(1, 2));

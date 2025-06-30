@@ -14,6 +14,8 @@ use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
+use function sprintf;
+
 class FirstTest extends AbstractTestCase
 {
     /** @var string[] */
@@ -46,7 +48,7 @@ class FirstTest extends AbstractTestCase
     {
         $callback = function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-            return $v == 'second' && $k == 1;
+            return 'second' == $v && 1 == $k;
         };
 
         self::assertSame('second', $functionName($this->list, $callback));
@@ -104,7 +106,7 @@ class FirstTest extends AbstractTestCase
      */
     public function testPassNoCollection($functionName): void
     {
-        $this->expectArgumentError(\sprintf('%s() expects parameter 1 to be array or instance of Traversable', $functionName));
+        $this->expectArgumentError(sprintf('%s() expects parameter 1 to be array or instance of Traversable', $functionName));
         $functionName('invalidCollection', 'strlen');
     }
 }

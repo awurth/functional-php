@@ -29,7 +29,7 @@ class PickTest extends AbstractTestCase
             'null-index' => null,
             'zero-index' => 0,
             'zero-string-index' => '0',
-            'false-index' => false
+            'false-index' => false,
         ];
     }
 
@@ -38,7 +38,7 @@ class PickTest extends AbstractTestCase
         self::assertSame('2', pick($this->array_1, 'two'));
         self::assertNull(
             pick($this->array_1, 'non-existing-index'),
-            'Non-existing index, should return null'
+            'Non-existing index, should return null',
         );
         self::assertSame('3', pick($this->array_1, 3));
         self::assertSame(0, pick($this->array_1, 'zero-index', ':)'));
@@ -63,13 +63,13 @@ class PickTest extends AbstractTestCase
         self::assertSame(
             5,
             pick($this->array_1, 'dummy', 5),
-            'Index does not exist, should return default value'
+            'Index does not exist, should return default value',
         );
 
         self::assertSame(
             '1',
             pick($this->array_1, 'one', 5),
-            'Index does exists, should return the corresponding value'
+            'Index does exists, should return the corresponding value',
         );
 
         self::assertNull(pick($this->array_1, 'null-index', 'default'), 'Will handle null correctly');

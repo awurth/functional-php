@@ -15,6 +15,7 @@ use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
 use function Functional\every;
+use function is_numeric;
 
 class EveryTest extends AbstractTestCase
 {
@@ -85,6 +86,6 @@ class EveryTest extends AbstractTestCase
     {
         InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
 
-        return $value == 'value' && \is_numeric($key);
+        return 'value' == $value && is_numeric($key);
     }
 }

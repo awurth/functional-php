@@ -31,12 +31,12 @@ class ConvergeTest extends AbstractTestCase
             [
                 'strtoupper',
                 'strtolower',
-            ]
+            ],
         );
 
         self::assertSame(
             'FUNCTIONAL PROGRAMMINGfunctional programming',
-            $strangeFunction('Functional Programming')
+            $strangeFunction('Functional Programming'),
         );
     }
 }

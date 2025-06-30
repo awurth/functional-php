@@ -60,7 +60,7 @@ class RetryTest extends AbstractTestCase
             ->withConsecutive([0, 0], [1, 0])
             ->willReturnOnConsecutiveCalls(
                 self::throwException(new Exception('first')),
-                self::throwException(new Exception('second'))
+                self::throwException(new Exception('second')),
             );
 
         $this->expectException('Exception');
@@ -76,7 +76,7 @@ class RetryTest extends AbstractTestCase
             ->withConsecutive([0, 0], [1, 0])
             ->willReturnOnConsecutiveCalls(
                 self::throwException(new Exception('first')),
-                self::throwException(new Exception('second'))
+                self::throwException(new Exception('second')),
             );
 
         $this->expectException('Exception');
@@ -88,7 +88,7 @@ class RetryTest extends AbstractTestCase
     public function testThrowsExceptionIfRetryCountNotAtLeast1(): void
     {
         $this->expectArgumentError(
-            'Functional\retry() expects parameter 2 to be an integer greater than or equal to 1'
+            'Functional\retry() expects parameter 2 to be an integer greater than or equal to 1',
         );
         retry([$this->retryer, 'retry'], 0);
     }
@@ -100,7 +100,7 @@ class RetryTest extends AbstractTestCase
             ->withConsecutive([0, 0], [1, 0])
             ->willReturnOnConsecutiveCalls(
                 self::throwException(new Exception('first')),
-                self::throwException(new Exception('second'))
+                self::throwException(new Exception('second')),
             );
 
         $this->expectException('Exception');
@@ -118,7 +118,7 @@ class RetryTest extends AbstractTestCase
                 self::throwException(new Exception('first')),
                 self::throwException(new Exception('second')),
                 self::throwException(new Exception('third')),
-                self::throwException(new Exception('fourth'))
+                self::throwException(new Exception('fourth')),
             );
 
         $this->expectException('Exception');

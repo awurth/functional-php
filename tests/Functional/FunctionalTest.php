@@ -12,19 +12,26 @@ namespace Functional\Tests;
 
 use Functional\Functional;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionException;
+
+use function array_map;
+use function get_defined_functions;
+use function preg_grep;
+use function str_replace;
 
 class FunctionalTest extends TestCase
 {
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function testAllDefinedConstantsAreValidCallables(): void
     {
-        $functionalClass = new \ReflectionClass(Functional::class);
+        $functionalClass = new ReflectionClass(Functional::class);
         $functions = $functionalClass->getConstants();
 
         foreach ($functions as $function) {
-            if ($function === '\\Functional\\match') {
+            if ('\\Functional\\match' === $function) {
                 continue;
             }
 
@@ -34,16 +41,16 @@ class FunctionalTest extends TestCase
 
     public function testShouldHaveDefinedConstantsForAllFunctions(): void
     {
-        $functions = \get_defined_functions(true);
-        $functionalFunctions = \preg_grep('/functional\\\(?!tests)/', $functions['user']);
-        $expectedFunctions = \array_map(
+        $functions = get_defined_functions(true);
+        $functionalFunctions = preg_grep('/functional\\\(?!tests)/', $functions['user']);
+        $expectedFunctions = array_map(
             static function ($function) {
-                return \str_replace('functional\\', '\\Functional\\', $function);
+                return str_replace('functional\\', '\\Functional\\', $function);
             },
-            $functionalFunctions
+            $functionalFunctions,
         );
 
-        $functionalClass = new \ReflectionClass(Functional::class);
+        $functionalClass = new ReflectionClass(Functional::class);
         $constants = $functionalClass->getConstants();
 
         foreach ($expectedFunctions as $function) {

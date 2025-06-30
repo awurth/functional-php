@@ -15,6 +15,7 @@ use BadFunctionCallException;
 use stdClass;
 
 use function Functional\zip;
+use function stream_context_create;
 
 class ZipTest extends AbstractTestCase
 {
@@ -36,8 +37,8 @@ class ZipTest extends AbstractTestCase
             zip(
                 new ArrayIterator(['one', 'two', 'three']),
                 new ArrayIterator([1, 2, 3]),
-                new ArrayIterator([-1, -2, -3])
-            )
+                new ArrayIterator([-1, -2, -3]),
+            ),
         );
     }
 
@@ -46,7 +47,7 @@ class ZipTest extends AbstractTestCase
         $result = [['one', 1, -1, true], ['two', 2, -2, false], ['three', 3, -3, null]];
         self::assertSame(
             $result,
-            zip(['one', 'two', 'three'], [1, 2, 3], [-1, -2, -3], [true, false])
+            zip(['one', 'two', 'three'], [1, 2, 3], [-1, -2, -3], [true, false]),
         );
     }
 
@@ -57,15 +58,15 @@ class ZipTest extends AbstractTestCase
             $result,
             zip(
                 ['foo' => 1, 'bar' => 2, true],
-                ['foo' => -1, 'bar' => -2, false, "ignore"]
-            )
+                ['foo' => -1, 'bar' => -2, false, "ignore"],
+            ),
         );
         self::assertSame(
             $result,
             zip(
                 new ArrayIterator(['foo' => 1, 'bar' => 2, true]),
-                new ArrayIterator(['foo' => -1, 'bar' => -2, false, "ignore"])
-            )
+                new ArrayIterator(['foo' => -1, 'bar' => -2, false, "ignore"]),
+            ),
         );
     }
 
@@ -81,8 +82,8 @@ class ZipTest extends AbstractTestCase
                 [true, false],
                 function ($one, $two, $three, $four) {
                     return $one . $two . $three . $four;
-                }
-            )
+                },
+            ),
         );
         self::assertSame(
             $result,
@@ -93,19 +94,19 @@ class ZipTest extends AbstractTestCase
                 new ArrayIterator([true, false]),
                 function ($one, $two, $three, $four) {
                     return $one . $two . $three . $four;
-                }
-            )
+                },
+            ),
         );
     }
 
     public function testZippingArraysWithVariousElements(): void
     {
         $object = new stdClass();
-        $resource = \stream_context_create();
+        $resource = stream_context_create();
         $result = [
             [[1], $object, [2]],
             [null, 'foo', null],
-            [$resource, null, 2]
+            [$resource, null, 2],
         ];
 
         self::assertSame(
@@ -113,8 +114,8 @@ class ZipTest extends AbstractTestCase
             zip(
                 [[1], null, $resource],
                 [$object, 'foo', null],
-                [[2], null, 2]
-            )
+                [[2], null, 2],
+            ),
         );
     }
 
@@ -122,7 +123,7 @@ class ZipTest extends AbstractTestCase
     {
         self::assertSame([], zip([]));
         self::assertSame([], zip([], []));
-        self::assertSame([], zip([], [], function () {
+        self::assertSame([], zip([], [], function (): void {
             throw new BadFunctionCallException('Should not be called');
         }));
     }

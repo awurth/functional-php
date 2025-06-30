@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use BadFunctionCallException;
+use ArrayIterator;
 
 use function Functional\zip_all;
 
@@ -21,7 +22,7 @@ class ZipAllTest extends AbstractTestCase
         self::assertSame([], zip_all());
         self::assertSame([], zip_all([]));
         self::assertSame([], zip_all([], [], []));
-        self::assertSame([], zip_all([], [], function () {
+        self::assertSame([], zip_all([], [], function (): void {
             throw new BadFunctionCallException('Should not be called');
         }));
     }
@@ -31,7 +32,7 @@ class ZipAllTest extends AbstractTestCase
         $result = ['b' => [3, null], 'a' => [null, 2]];
         self::assertSame(
             $result,
-            zip_all(['b' => 3], ['a' => 2])
+            zip_all(['b' => 3], ['a' => 2]),
         );
     }
 
@@ -39,7 +40,7 @@ class ZipAllTest extends AbstractTestCase
     {
         self::assertSame(
             [[1, 3], [null, 4]],
-            zip_all([1], [3, 4])
+            zip_all([1], [3, 4]),
         );
     }
 
@@ -47,7 +48,7 @@ class ZipAllTest extends AbstractTestCase
     {
         self::assertSame(
             [1, 8],
-            zip_all([2, 8], [1, 9], 'min')
+            zip_all([2, 8], [1, 9], 'min'),
         );
     }
 
@@ -56,9 +57,9 @@ class ZipAllTest extends AbstractTestCase
         self::assertSame(
             ['a' => [2, 4], 'b' => [3, 5]],
             zip_all(
-                new \ArrayIterator(['a' => 2, 'b' => 3]),
-                new \ArrayIterator(['a' => 4, 'b' => 5])
-            )
+                new ArrayIterator(['a' => 2, 'b' => 3]),
+                new ArrayIterator(['a' => 4, 'b' => 5]),
+            ),
         );
     }
 }

@@ -46,7 +46,7 @@ class FirstIndexOfTest extends AbstractTestCase
             0,
             first_index_of($this->list, function ($element) {
                 return $element;
-            })
+            }),
         );
     }
 

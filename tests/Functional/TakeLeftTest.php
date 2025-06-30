@@ -27,14 +27,14 @@ class TakeLeftTest extends AbstractTestCase
 
     public function test(): void
     {
-        each([$this->list, $this->listIterator], function ($list) {
+        each([$this->list, $this->listIterator], function ($list): void {
             $this->assertSame(['foo'], take_left($list, 1));
             $this->assertSame(['foo', 'bar'], take_left($list, 2));
             $this->assertSame(['foo', 'bar', 'baz', 'qux'], take_left($list, 10));
             $this->assertSame([], take_left($list, 0));
 
             $this->expectExceptionMessage(
-                'Functional\take_left() expects parameter 2 to be positive integer, negative integer given'
+                'Functional\take_left() expects parameter 2 to be positive integer, negative integer given',
             );
             take_left($list, -1);
         });

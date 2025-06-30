@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use function Functional\invoker;
+use function class_exists;
 
 class InvokerTest extends AbstractTestCase
 {
@@ -35,7 +36,7 @@ class InvokerTest extends AbstractTestCase
 
     public function testInvalidMethod(): void
     {
-        if (!\class_exists('Error')) {
+        if (!class_exists('Error')) {
             self::markTestSkipped('Requires PHP 7');
         }
 

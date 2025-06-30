@@ -14,6 +14,8 @@ use ArrayIterator;
 use Functional as F;
 use Functional\Exceptions\InvalidArgumentException;
 
+use function strcmp;
+
 class SortTest extends AbstractTestCase
 {
     /** @var callable */
@@ -28,7 +30,7 @@ class SortTest extends AbstractTestCase
         $this->hashIterator = new ArrayIterator($this->hash);
         $this->sortCallback = static function ($left, $right, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-            return \strcmp($left, $right);
+            return strcmp($left, $right);
         };
     }
 

@@ -13,6 +13,9 @@ namespace Functional\Tests;
 use RuntimeException;
 
 use function Functional\suppress_error;
+use function restore_error_handler;
+use function set_error_handler;
+use function trigger_error;
 
 use const E_USER_ERROR;
 
@@ -20,8 +23,8 @@ class SuppressErrorTest extends AbstractTestCase
 {
     public function testErrorIsSuppressed(): void
     {
-        $origFn = function () {
-            \trigger_error('Some error', E_USER_ERROR);
+        $origFn = function (): void {
+            trigger_error('Some error', E_USER_ERROR);
         };
 
         $fn = suppress_error($origFn);
@@ -40,9 +43,9 @@ class SuppressErrorTest extends AbstractTestCase
     {
         $expectedException = new RuntimeException();
         $fn = suppress_error(
-            function () use ($expectedException) {
+            function () use ($expectedException): void {
                 throw $expectedException;
-            }
+            },
         );
 
         $this->expectException(RuntimeException::class);
@@ -53,14 +56,14 @@ class SuppressErrorTest extends AbstractTestCase
     public function testErrorHandlerNestingWorks(): void
     {
         $errorMessage = null;
-        \set_error_handler(
-            static function ($level, $message) use (&$errorMessage) {
+        set_error_handler(
+            static function ($level, $message) use (&$errorMessage): void {
                 $errorMessage = $message;
-            }
+            },
         );
 
-        $origFn = static function () {
-            \trigger_error('Some error', E_USER_ERROR);
+        $origFn = static function (): void {
+            trigger_error('Some error', E_USER_ERROR);
         };
 
         $fn = suppress_error($origFn);
@@ -69,6 +72,6 @@ class SuppressErrorTest extends AbstractTestCase
         self::assertNull($errorMessage);
         $origFn();
         self::assertSame('Some error', $errorMessage);
-        \restore_error_handler();
+        restore_error_handler();
     }
 }

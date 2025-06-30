@@ -13,6 +13,7 @@ namespace Functional\Tests;
 use function Functional\flip;
 use function Functional\filter;
 use function Functional\id;
+use function implode;
 
 class FlipTest extends AbstractTestCase
 {
@@ -49,7 +50,7 @@ class FlipTest extends AbstractTestCase
 
 function merge_strings(string $head, string $tail, ...$other): string
 {
-    return $head . $tail . \implode('', $other);
+    return $head . $tail . implode('', $other);
 }
 
 function subtract(int $first, int $second, int $third): int

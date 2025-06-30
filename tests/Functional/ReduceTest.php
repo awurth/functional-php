@@ -45,97 +45,97 @@ class ReduceTest extends AbstractTestCase
             'initial',
             reduce_left(
                 [],
-                static function () {
+                static function (): void {
                 },
-                'initial'
-            )
+                'initial',
+            ),
         );
         self::assertNull(
             reduce_left(
                 [],
-                static function () {
-                }
-            )
+                static function (): void {
+                },
+            ),
         );
         self::assertNull(
             reduce_left(
                 [],
-                static function () {
+                static function (): void {
                 },
-                null
-            )
+                null,
+            ),
         );
         self::assertSame(
             'initial',
             reduce_left(
                 new ArrayIterator([]),
-                static function () {
+                static function (): void {
                 },
-                'initial'
-            )
+                'initial',
+            ),
         );
         self::assertNull(
             reduce_left(
                 new ArrayIterator([]),
-                static function () {
-                }
-            )
+                static function (): void {
+                },
+            ),
         );
         self::assertNull(
             reduce_left(
                 new ArrayIterator([]),
-                static function () {
+                static function (): void {
                 },
-                null
-            )
+                null,
+            ),
         );
         self::assertSame(
             'initial',
             reduce_right(
                 [],
-                static function () {
+                static function (): void {
                 },
-                'initial'
-            )
+                'initial',
+            ),
         );
         self::assertNull(
             reduce_right(
                 [],
-                static function () {
-                }
-            )
+                static function (): void {
+                },
+            ),
         );
         self::assertNull(
             reduce_right(
                 [],
-                static function () {
+                static function (): void {
                 },
-                null
-            )
+                null,
+            ),
         );
         self::assertSame(
             'initial',
             reduce_right(
                 new ArrayIterator([]),
-                static function () {
+                static function (): void {
                 },
-                'initial'
-            )
+                'initial',
+            ),
         );
         self::assertNull(
             reduce_right(
                 new ArrayIterator([]),
-                static function () {
-                }
-            )
+                static function (): void {
+                },
+            ),
         );
         self::assertNull(
             reduce_right(
                 new ArrayIterator([]),
-                static function () {
+                static function (): void {
                 },
-                null
-            )
+                null,
+            ),
         );
     }
 
