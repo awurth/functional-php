@@ -50,7 +50,7 @@ function zip_all(...$args)
         $zipped = [];
 
         foreach ($args as $arg) {
-            $zipped[] = isset($arg[$key]) ? $arg[$key] : null;
+            $zipped[] = $arg[$key] ?? null;
         }
 
         $result[$key] = $zipped;

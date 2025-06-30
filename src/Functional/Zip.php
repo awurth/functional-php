@@ -36,7 +36,7 @@ function zip(...$args)
         $zipped = [];
 
         foreach ($args as $arg) {
-            $zipped[] = isset($arg[$index]) ? $arg[$index] : null;
+            $zipped[] = $arg[$index] ?? null;
         }
 
         if ($callback !== null) {
