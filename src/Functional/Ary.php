@@ -25,7 +25,8 @@ function ary(callable $func, int $count): callable
     return function (...$args) use ($func, $count) {
         if ($count > 0) {
             return $func(...take_left($args, $count));
-        } elseif ($count < 0) {
+        }
+        if ($count < 0) {
             return $func(...take_right($args, -$count));
         }
     };
