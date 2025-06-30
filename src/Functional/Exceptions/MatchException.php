@@ -30,8 +30,8 @@ class MatchException extends InvalidArgumentException
                     '%s() expects condition at key %d to be array, %s given',
                     $callee,
                     $key,
-                    \gettype($condition)
-                )
+                    \gettype($condition),
+                ),
             );
         }
     }
@@ -44,8 +44,8 @@ class MatchException extends InvalidArgumentException
                     '%s() expects size of condition at key %d to be greater than or equals to 2, %d given',
                     $callee,
                     $key,
-                    \count($condition)
-                )
+                    \count($condition),
+                ),
             );
         }
     }
@@ -57,8 +57,8 @@ class MatchException extends InvalidArgumentException
                 \sprintf(
                     '%s() expects first two items of condition at key %d to be callables',
                     $callee,
-                    $key
-                )
+                    $key,
+                ),
             );
         }
     }

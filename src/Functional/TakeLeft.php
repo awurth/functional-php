@@ -31,6 +31,6 @@ function take_left($collection, $count)
     return \array_slice(
         \is_array($collection) ? $collection : \iterator_to_array($collection),
         0,
-        $count
+        $count,
     );
 }

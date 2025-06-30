@@ -28,6 +28,6 @@ function compose(...$functions)
                 return $item($carry($x));
             };
         },
-        'Functional\id'
+        'Functional\id',
     );
 }

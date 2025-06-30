@@ -27,8 +27,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     \sprintf(
                         '%s() expected parameter %d to be a valid callback, no array, string, closure or functor given',
                         $callee,
-                        $parameterPosition
-                    )
+                        $parameterPosition,
+                    ),
                 );
             }
 
@@ -59,8 +59,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     $parameterPosition,
                     $type,
                     $callback,
-                    $type
-                )
+                    $type,
+                ),
             );
         }
     }
@@ -83,8 +83,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     '%s() expects parameter %d to be string, %s given',
                     $callee,
                     $parameterPosition,
-                    self::getType($methodName)
-                )
+                    self::getType($methodName),
+                ),
             );
         }
     }
@@ -108,8 +108,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     '%s() expects parameter %d to be a valid property name or array index, %s given',
                     $callee,
                     $parameterPosition,
-                    self::getType($propertyName)
-                )
+                    self::getType($propertyName),
+                ),
             );
         }
     }
@@ -125,8 +125,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     '%s() expects parameter %d to be positive integer, %s given',
                     $callee,
                     $parameterPosition,
-                    $type
-                )
+                    $type,
+                ),
             );
         }
     }
@@ -149,8 +149,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     $callee,
                     $keyType,
                     \array_pop($keyTypes),
-                    \implode(', ', $keyTypes)
-                )
+                    \implode(', ', $keyTypes),
+                ),
             );
         }
     }
@@ -162,8 +162,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                 \sprintf(
                     '%s(): unknown key "%s"',
                     $callee,
-                    $key
-                )
+                    $key,
+                ),
             );
         }
     }
@@ -182,8 +182,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     '%s() expects parameter %d to be boolean, %s given',
                     $callee,
                     $parameterPosition,
-                    self::getType($value)
-                )
+                    self::getType($value),
+                ),
             );
         }
     }
@@ -202,8 +202,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     '%s() expects parameter %d to be integer, %s given',
                     $callee,
                     $parameterPosition,
-                    self::getType($value)
-                )
+                    self::getType($value),
+                ),
             );
         }
     }
@@ -223,8 +223,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     '%s() expects parameter %d to be an integer greater than or equal to %d',
                     $callee,
                     $parameterPosition,
-                    $limit
-                )
+                    $limit,
+                ),
             );
         }
     }
@@ -244,8 +244,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     '%s() expects parameter %d to be an integer less than or equal to %d',
                     $callee,
                     $parameterPosition,
-                    $limit
-                )
+                    $limit,
+                ),
             );
         }
     }
@@ -254,7 +254,7 @@ class InvalidArgumentException extends \InvalidArgumentException
     {
         if (\count($args) === 0) {
             throw new static(
-                \sprintf('Cannot resolve parameter placeholder at position %d. Parameter stack is empty.', $position)
+                \sprintf('Cannot resolve parameter placeholder at position %d. Parameter stack is empty.', $position),
             );
         }
     }
@@ -275,8 +275,8 @@ class InvalidArgumentException extends \InvalidArgumentException
                     $callee,
                     $parameterPosition,
                     $className,
-                    self::getType($collection)
-                )
+                    self::getType($collection),
+                ),
             );
         }
     }

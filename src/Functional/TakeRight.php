@@ -35,6 +35,6 @@ function take_right($collection, $count, $preserveKeys = false)
         \is_array($collection) ? $collection : \iterator_to_array($collection),
         0 - $count,
         $count,
-        $preserveKeys
+        $preserveKeys,
     );
 }
