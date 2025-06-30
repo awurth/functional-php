@@ -118,7 +118,7 @@ class InvalidArgumentException extends \InvalidArgumentException
     {
         if ((string)(int)$value !== (string)$value || $value < 0) {
             $type = self::getType($value);
-            $type = $type === 'integer' ? 'negative integer' : $type;
+            $type = 'integer' === $type ? 'negative integer' : $type;
 
             throw new static(
                 \sprintf(
@@ -283,7 +283,7 @@ class InvalidArgumentException extends \InvalidArgumentException
 
     public static function assertNonZeroInteger($value, $callee)
     {
-        if (!\is_int($value) || $value == 0) {
+        if (!\is_int($value) || 0 == $value) {
             throw new static(\sprintf('%s expected parameter %d to be non-zero', $callee, $value));
         }
     }

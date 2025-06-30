@@ -69,13 +69,13 @@ function value_to_key(...$any)
     if (!$valueToRef) {
         $valueToRef = static function ($value, $key = null) use (&$valueToRef, $objectToRef) {
             $type = \gettype($value);
-            if ($type === 'array') {
+            if ('array' === $type) {
                 $ref = '[' . \implode(':', map($value, $valueToRef)) . ']';
             } elseif ($value instanceof Traversable) {
                 $ref = $objectToRef($value) . '[' . \implode(':', map($value, $valueToRef)) . ']';
-            } elseif ($type === 'object') {
+            } elseif ('object' === $type) {
                 $ref = $objectToRef($value);
-            } elseif ($type === 'resource') {
+            } elseif ('resource' === $type) {
                 throw new InvalidArgumentException(
                     'Resource type cannot be used as part of a memoization key. Please pass a custom key instead'
                 );
@@ -83,7 +83,7 @@ function value_to_key(...$any)
                 $ref = \serialize($value);
             }
 
-            return ($key !== null ? ($valueToRef($key) . '~') : '') . $ref;
+            return (null !== $key ? ($valueToRef($key) . '~') : '') . $ref;
         };
     }
 

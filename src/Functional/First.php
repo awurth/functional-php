@@ -28,7 +28,7 @@ function first($collection, ?callable $callback = null)
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 
     foreach ($collection as $index => $element) {
-        if ($callback === null) {
+        if (null === $callback) {
             return $element;
         }
 

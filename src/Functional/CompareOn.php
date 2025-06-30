@@ -20,7 +20,7 @@ namespace Functional;
  */
 function compare_on(callable $comparison, ?callable $reducer = null)
 {
-    if ($reducer === null) {
+    if (null === $reducer) {
         return static function ($left, $right) use ($comparison) {
             return $comparison($left, $right);
         };

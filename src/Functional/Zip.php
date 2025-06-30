@@ -39,7 +39,7 @@ function zip(...$args)
             $zipped[] = $arg[$index] ?? null;
         }
 
-        if ($callback !== null) {
+        if (null !== $callback) {
             /** @var callable $callback */
             $zipped = $callback(...$zipped);
         }

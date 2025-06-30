@@ -34,7 +34,7 @@ function average($collection)
         }
     }
 
-    if ($sum === null) {
+    if (null === $sum) {
         return null;
     }
 

@@ -31,7 +31,7 @@ function maximum($collection)
             continue;
         }
 
-        if ($element > $max || $max === null) {
+        if ($element > $max || null === $max) {
             $max = $element;
         }
     }

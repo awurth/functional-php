@@ -31,7 +31,7 @@ function minimum($collection)
             continue;
         }
 
-        if ($element < $min || $min === null) {
+        if ($element < $min || null === $min) {
             $min = $element;
         }
     }

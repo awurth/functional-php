@@ -28,7 +28,7 @@ function reject($collection, ?callable $callback = null)
 
     $aggregation = [];
 
-    if ($callback === null) {
+    if (null === $callback) {
         $callback = '\Functional\id';
     }
 

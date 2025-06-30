@@ -26,7 +26,7 @@ function none($collection, ?callable $callback = null)
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 
-    if ($callback === null) {
+    if (null === $callback) {
         $callback = '\Functional\id';
     }
 

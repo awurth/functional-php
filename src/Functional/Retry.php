@@ -47,7 +47,7 @@ function retry(callable $callback, $retries, ?Traversable $delaySequence = null)
         try {
             return $callback($retry, $delay);
         } catch (Exception $e) {
-            if ($retry === $retries - 1) {
+            if ($retries - 1 === $retry) {
                 throw $e;
             }
         }

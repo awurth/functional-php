@@ -42,7 +42,7 @@ function flat_map($collection, callable $callback)
             foreach ($result as $item) {
                 $flattened[] = $item;
             }
-        } elseif ($result !== null) {
+        } elseif (null !== $result) {
             $flattened[] = $result;
         }
     }

@@ -29,7 +29,7 @@ function last_index_of($collection, $value)
 
     if (\is_callable($value)) {
         foreach ($collection as $index => $element) {
-            if ($element === $value($element, $index, $collection)) {
+            if ($value($element, $index, $collection) === $element) {
                 $matchingIndex = $index;
             }
         }

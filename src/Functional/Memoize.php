@@ -24,7 +24,7 @@ use const E_USER_DEPRECATED;
 function memoize(?callable $callback = null, $arguments = [], $key = null)
 {
     static $storage = [];
-    if ($callback === null) {
+    if (null === $callback) {
         $storage = [];
 
         return null;
@@ -38,7 +38,7 @@ function memoize(?callable $callback = null, $arguments = [], $key = null)
         $key = $arguments();
     }
 
-    if ($key === null) {
+    if (null === $key) {
         $key = value_to_key(\array_merge([$callback], $arguments));
     } else {
         $key = value_to_key($key);

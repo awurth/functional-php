@@ -26,7 +26,7 @@ function with($value, callable $callback, $invokeValue = true, $default = null)
 {
     InvalidArgumentException::assertCallback($callback, __FUNCTION__, 2);
 
-    if ($value === null) {
+    if (null === $value) {
         return $default;
     }
 

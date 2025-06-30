@@ -28,7 +28,7 @@ function last($collection, ?callable $callback = null)
 
     $match = null;
     foreach ($collection as $index => $element) {
-        if ($callback === null || $callback($element, $index, $collection)) {
+        if (null === $callback || $callback($element, $index, $collection)) {
             $match = $element;
         }
     }

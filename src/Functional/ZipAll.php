@@ -56,7 +56,7 @@ function zip_all(...$args)
         $result[$key] = $zipped;
     }
 
-    if ($callback !== null) {
+    if (null !== $callback) {
         foreach ($result as $key => $column) {
             $result[$key] = $callback(...$column);
         }
