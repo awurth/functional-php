@@ -18,6 +18,10 @@ use InfiniteIterator;
 use LimitIterator;
 use Traversable;
 
+use function array_fill_keys;
+use function range;
+use function usleep;
+
 /**
  * Retry a callback until the number of retries are reached or the callback does no longer throw an exception
  *
@@ -39,7 +43,7 @@ function retry(callable $callback, $retries, ?Traversable $delaySequence = null)
         $delays->append(new InfiniteIterator(new ArrayIterator([0])));
         $delays = new LimitIterator($delays, 0, $retries);
     } else {
-        $delays = \array_fill_keys(\range(0, $retries), 0);
+        $delays = array_fill_keys(range(0, $retries), 0);
     }
 
     $retry = 0;
@@ -53,7 +57,7 @@ function retry(callable $callback, $retries, ?Traversable $delaySequence = null)
         }
 
         if ($delay > 0) {
-            \usleep($delay);
+            usleep($delay);
         }
 
         ++$retry;

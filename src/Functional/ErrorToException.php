@@ -12,6 +12,9 @@ namespace Functional;
 
 use ErrorException;
 
+use function restore_error_handler;
+use function set_error_handler;
+
 /**
  * Takes a function and returns a new function that wraps the callback and rethrows PHP errors as exception
  *
@@ -24,7 +27,7 @@ function error_to_exception(callable $callback)
 {
     return function (...$arguments) use ($callback) {
         try {
-            \set_error_handler(
+            set_error_handler(
                 static function ($level, $message, $file, $line): void {
                     throw new ErrorException($message, 0, $level, $file, $line);
                 },
@@ -32,7 +35,7 @@ function error_to_exception(callable $callback)
 
             return $callback(...$arguments);
         } finally {
-            \restore_error_handler();
+            restore_error_handler();
         }
     };
 }

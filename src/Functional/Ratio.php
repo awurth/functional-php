@@ -13,6 +13,8 @@ namespace Functional;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
+use function is_numeric;
+
 /**
  * Takes a collection and returns the quotient of all elements
  *
@@ -27,7 +29,7 @@ function ratio($collection, $initial = 1)
 
     $result = $initial;
     foreach ($collection as $value) {
-        if (\is_numeric($value)) {
+        if (is_numeric($value)) {
             $result /= $value;
         }
     }

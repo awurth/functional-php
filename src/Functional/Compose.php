@@ -10,6 +10,8 @@
 
 namespace Functional;
 
+use function array_reduce;
+
 /**
  * Return a new function that composes all functions in $functions into a single callable
  *
@@ -21,7 +23,7 @@ namespace Functional;
  */
 function compose(...$functions)
 {
-    return \array_reduce(
+    return array_reduce(
         $functions,
         function ($carry, $item) {
             return function ($x) use ($carry, $item) {

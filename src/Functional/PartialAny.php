@@ -12,6 +12,10 @@ namespace Functional;
 
 use Functional\Exceptions\InvalidArgumentException;
 
+use function array_shift;
+use function define;
+use function random_bytes;
+
 /**
  * Return a new function with the arguments partially applied
  *
@@ -30,7 +34,7 @@ function partial_any(callable $callback, ...$arguments)
         foreach ($arguments as $position => &$argument) {
             if ($argument === $placeholder) {
                 InvalidArgumentException::assertResolvablePlaceholder($innerArguments, $position);
-                $argument = \array_shift($innerArguments);
+                $argument = array_shift($innerArguments);
             }
         }
 
@@ -47,7 +51,7 @@ function …()
     static $placeholder;
 
     if (!$placeholder) {
-        $placeholder = \random_bytes(32);
+        $placeholder = random_bytes(32);
     }
 
     return $placeholder;
@@ -65,5 +69,5 @@ function placeholder()
 
 // phpcs:disable
 /** Define unicode ellipsis constant */
-\define('Functional\\…', …());
+define('Functional\\…', …());
 // phpcs:enable

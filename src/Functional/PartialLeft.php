@@ -10,6 +10,8 @@
 
 namespace Functional;
 
+use function array_merge;
+
 /**
  * Return a new function with the arguments partially applied starting from the left side
  *
@@ -23,6 +25,6 @@ namespace Functional;
 function partial_left(callable $callback, ...$arguments)
 {
     return function (...$innerArguments) use ($callback, $arguments) {
-        return $callback(...\array_merge($arguments, $innerArguments));
+        return $callback(...array_merge($arguments, $innerArguments));
     };
 }

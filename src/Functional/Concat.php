@@ -10,6 +10,8 @@
 
 namespace Functional;
 
+use function implode;
+
 /**
  * Concatenates zero or more strings
  *
@@ -19,5 +21,5 @@ namespace Functional;
  */
 function concat(string ...$strings)
 {
-    return \implode('', $strings);
+    return implode('', $strings);
 }

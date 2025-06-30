@@ -13,6 +13,8 @@ namespace Functional;
 use ErrorException;
 
 use function Functional\const_function;
+use function restore_error_handler;
+use function set_error_handler;
 
 /**
  * Takes a function and returns a new function that wraps the callback and suppresses the PHP error
@@ -26,11 +28,11 @@ function suppress_error(callable $callback)
 {
     return function (...$arguments) use ($callback) {
         try {
-            \set_error_handler(const_function(null));
+            set_error_handler(const_function(null));
 
             return $callback(...$arguments);
         } finally {
-            \restore_error_handler();
+            restore_error_handler();
         }
     };
 }

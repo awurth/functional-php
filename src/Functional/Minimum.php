@@ -13,6 +13,8 @@ namespace Functional;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
+use function is_numeric;
+
 /**
  * Returns the minimum value of a collection
  *
@@ -27,7 +29,7 @@ function minimum($collection)
     $min = null;
 
     foreach ($collection as $index => $element) {
-        if (!\is_numeric($element)) {
+        if (!is_numeric($element)) {
             continue;
         }
 

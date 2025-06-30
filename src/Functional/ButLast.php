@@ -13,6 +13,10 @@ namespace Functional;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
+use function array_pop;
+use function is_array;
+use function iterator_to_array;
+
 /**
  * Returns an array containing the elements of the list without its last element.
  *
@@ -24,8 +28,8 @@ function but_last($collection)
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 
-    $butLast = \is_array($collection) ? $collection : \iterator_to_array($collection);
-    \array_pop($butLast);
+    $butLast = is_array($collection) ? $collection : iterator_to_array($collection);
+    array_pop($butLast);
 
     return $butLast;
 }

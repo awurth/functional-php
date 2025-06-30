@@ -13,6 +13,8 @@ namespace Functional;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
+use function array_pop;
+
 /**
  * @param Traversable|array $collection
  * @param callable $callback
@@ -29,7 +31,7 @@ function reduce_right($collection, callable $callback, $initial = null)
         $data[] = [$index, $value];
     }
 
-    while (([$index, $value] = \array_pop($data))) {
+    while (([$index, $value] = array_pop($data))) {
         $initial = $callback($value, $index, $collection, $initial);
     }
 

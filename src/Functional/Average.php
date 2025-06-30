@@ -13,6 +13,8 @@ namespace Functional;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
+use function is_numeric;
+
 /**
  * Returns the average of all numeric values in the array or null if no numeric value was found
  *
@@ -28,7 +30,7 @@ function average($collection)
     $divisor = 0;
 
     foreach ($collection as $element) {
-        if (\is_numeric($element)) {
+        if (is_numeric($element)) {
             $sum += $element;
             ++$divisor;
         }

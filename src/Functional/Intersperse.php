@@ -13,6 +13,8 @@ namespace Functional;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
+use function array_pop;
+
 /**
  * Insert a given value between each element of a collection.
  * Indices are not preserved.
@@ -33,7 +35,7 @@ function intersperse($collection, $glue)
         $aggregation[] = $glue;
     }
 
-    \array_pop($aggregation);
+    array_pop($aggregation);
 
     return $aggregation;
 }

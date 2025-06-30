@@ -13,6 +13,10 @@ namespace Functional;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
+use function array_flip;
+use function array_intersect_key;
+use function iterator_to_array;
+
 /**
  * Select the specified keys from the array
  *
@@ -26,10 +30,10 @@ function select_keys($collection, array $keys)
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 
     if ($collection instanceof Traversable) {
-        $array = \iterator_to_array($collection);
+        $array = iterator_to_array($collection);
     } else {
         $array = $collection;
     }
 
-    return \array_intersect_key($array, \array_flip($keys));
+    return array_intersect_key($array, array_flip($keys));
 }

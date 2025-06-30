@@ -13,6 +13,9 @@ namespace Functional\Sequences;
 use Functional\Exceptions\InvalidArgumentException;
 use Iterator;
 
+use function pow;
+use function round;
+
 /** @internal */
 class ExponentialSequence implements Iterator
 {
@@ -45,7 +48,7 @@ class ExponentialSequence implements Iterator
 
     public function next(): void
     {
-        $this->value = (int) \round(\pow($this->start * (1 + $this->percentage / 100), $this->times));
+        $this->value = (int) round(pow($this->start * (1 + $this->percentage / 100), $this->times));
         $this->times++;
     }
 
