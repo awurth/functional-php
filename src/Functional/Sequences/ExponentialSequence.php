@@ -43,7 +43,7 @@ class ExponentialSequence implements Iterator
         return $this->value;
     }
 
-    public function next()
+    public function next(): void
     {
         $this->value = (int) \round(\pow($this->start * (1 + $this->percentage / 100), $this->times));
         $this->times++;
@@ -59,7 +59,7 @@ class ExponentialSequence implements Iterator
         return true;
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->times = 1;
         $this->value = $this->start;

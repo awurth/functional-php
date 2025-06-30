@@ -13,7 +13,7 @@ namespace Functional\Exceptions;
 /** @internal */
 class MatchException extends InvalidArgumentException
 {
-    public static function assert(array $conditions, $callee)
+    public static function assert(array $conditions, $callee): void
     {
         foreach ($conditions as $key => $condition) {
             static::assertArray($key, $condition, $callee);
@@ -22,7 +22,7 @@ class MatchException extends InvalidArgumentException
         }
     }
 
-    private static function assertArray($key, $condition, $callee)
+    private static function assertArray($key, $condition, $callee): void
     {
         if (!\is_array($condition)) {
             throw new static(
@@ -36,7 +36,7 @@ class MatchException extends InvalidArgumentException
         }
     }
 
-    private static function assertLength($key, $condition, $callee)
+    private static function assertLength($key, $condition, $callee): void
     {
         if (\count($condition) < 2) {
             throw new static(
@@ -50,7 +50,7 @@ class MatchException extends InvalidArgumentException
         }
     }
 
-    private static function assertCallables($key, $condition, $callee)
+    private static function assertCallables($key, $condition, $callee): void
     {
         if (!\is_callable($condition[0]) || !\is_callable($condition[1])) {
             throw new static(

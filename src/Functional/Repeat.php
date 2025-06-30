@@ -23,7 +23,7 @@ use Functional\Exceptions\InvalidArgumentException;
  */
 function repeat(callable $callback)
 {
-    return function ($times) use ($callback) {
+    return function ($times) use ($callback): void {
         InvalidArgumentException::assertPositiveInteger($times, __FUNCTION__, 1);
 
         for ($i = 0; $i < $times; $i++) {

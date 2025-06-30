@@ -39,7 +39,7 @@ class LinearSequence implements Iterator
         return $this->value;
     }
 
-    public function next()
+    public function next(): void
     {
         $this->value += $this->amount;
     }
@@ -54,7 +54,7 @@ class LinearSequence implements Iterator
         return true;
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->value = $this->start;
     }

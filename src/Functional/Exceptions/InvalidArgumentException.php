@@ -19,7 +19,7 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @param integer $parameterPosition
      * @throws InvalidArgumentException
      */
-    public static function assertCallback($callback, $callee, $parameterPosition)
+    public static function assertCallback($callback, $callee, $parameterPosition): void
     {
         if (!\is_callable($callback)) {
             if (!\is_array($callback) && !\is_string($callback)) {
@@ -65,17 +65,17 @@ class InvalidArgumentException extends \InvalidArgumentException
         }
     }
 
-    public static function assertCollection($collection, $callee, $parameterPosition)
+    public static function assertCollection($collection, $callee, $parameterPosition): void
     {
         self::assertCollectionAlike($collection, 'Traversable', $callee, $parameterPosition);
     }
 
-    public static function assertArrayAccess($collection, $callee, $parameterPosition)
+    public static function assertArrayAccess($collection, $callee, $parameterPosition): void
     {
         self::assertCollectionAlike($collection, 'ArrayAccess', $callee, $parameterPosition);
     }
 
-    public static function assertMethodName($methodName, $callee, $parameterPosition)
+    public static function assertMethodName($methodName, $callee, $parameterPosition): void
     {
         if (!\is_string($methodName)) {
             throw new static(
@@ -95,7 +95,7 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @param integer $parameterPosition
      * @throws InvalidArgumentException
      */
-    public static function assertPropertyName($propertyName, $callee, $parameterPosition)
+    public static function assertPropertyName($propertyName, $callee, $parameterPosition): void
     {
         if (
             !\is_string($propertyName) &&
@@ -114,7 +114,7 @@ class InvalidArgumentException extends \InvalidArgumentException
         }
     }
 
-    public static function assertPositiveInteger($value, $callee, $parameterPosition)
+    public static function assertPositiveInteger($value, $callee, $parameterPosition): void
     {
         if ((string)(int)$value !== (string)$value || $value < 0) {
             $type = self::getType($value);
@@ -136,7 +136,7 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @param string $callee
      * @throws static
      */
-    public static function assertValidArrayKey($key, $callee)
+    public static function assertValidArrayKey($key, $callee): void
     {
         $keyTypes = ['NULL', 'string', 'integer', 'double', 'boolean'];
 
@@ -155,7 +155,7 @@ class InvalidArgumentException extends \InvalidArgumentException
         }
     }
 
-    public static function assertArrayKeyExists($collection, $key, $callee)
+    public static function assertArrayKeyExists($collection, $key, $callee): void
     {
         if (!isset($collection[$key])) {
             throw new static(
@@ -174,7 +174,7 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @param integer $parameterPosition
      * @throws InvalidArgumentException
      */
-    public static function assertBoolean($value, $callee, $parameterPosition)
+    public static function assertBoolean($value, $callee, $parameterPosition): void
     {
         if (!\is_bool($value)) {
             throw new static(
@@ -194,7 +194,7 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @param integer $parameterPosition
      * @throws InvalidArgumentException
      */
-    public static function assertInteger($value, $callee, $parameterPosition)
+    public static function assertInteger($value, $callee, $parameterPosition): void
     {
         if (!\is_int($value)) {
             throw new static(
@@ -215,7 +215,7 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @param integer $parameterPosition
      * @throws InvalidArgumentException
      */
-    public static function assertIntegerGreaterThanOrEqual($value, $limit, $callee, $parameterPosition)
+    public static function assertIntegerGreaterThanOrEqual($value, $limit, $callee, $parameterPosition): void
     {
         if (!\is_int($value) || $value < $limit) {
             throw new static(
@@ -236,7 +236,7 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @param integer $parameterPosition
      * @throws InvalidArgumentException
      */
-    public static function assertIntegerLessThanOrEqual($value, $limit, $callee, $parameterPosition)
+    public static function assertIntegerLessThanOrEqual($value, $limit, $callee, $parameterPosition): void
     {
         if (!\is_int($value) || $value > $limit) {
             throw new static(
@@ -250,7 +250,7 @@ class InvalidArgumentException extends \InvalidArgumentException
         }
     }
 
-    public static function assertResolvablePlaceholder(array $args, $position)
+    public static function assertResolvablePlaceholder(array $args, $position): void
     {
         if (\count($args) === 0) {
             throw new static(
@@ -266,7 +266,7 @@ class InvalidArgumentException extends \InvalidArgumentException
      * @param integer $parameterPosition
      * @throws InvalidArgumentException
      */
-    private static function assertCollectionAlike($collection, $className, $callee, $parameterPosition)
+    private static function assertCollectionAlike($collection, $className, $callee, $parameterPosition): void
     {
         if (!\is_array($collection) && !$collection instanceof $className) {
             throw new static(
@@ -281,7 +281,7 @@ class InvalidArgumentException extends \InvalidArgumentException
         }
     }
 
-    public static function assertNonZeroInteger($value, $callee)
+    public static function assertNonZeroInteger($value, $callee): void
     {
         if (!\is_int($value) || 0 == $value) {
             throw new static(\sprintf('%s expected parameter %d to be non-zero', $callee, $value));
