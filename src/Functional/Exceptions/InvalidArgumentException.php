@@ -231,6 +231,6 @@ class InvalidArgumentException extends \InvalidArgumentException
 
     private static function getType($value)
     {
-        return is_object($value) ? get_class($value) : gettype($value);
+        return is_object($value) ? $value::class : gettype($value);
     }
 }

@@ -15,6 +15,8 @@ use Functional\Exceptions\InvalidArgumentException;
 use function is_callable;
 use function trigger_error;
 
+use const E_USER_DEPRECATED;
+
 /**
  * Invoke a callback on a value if the value is not null.
  *

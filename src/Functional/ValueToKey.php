@@ -14,7 +14,6 @@ use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 use WeakReference;
 
-use function get_class;
 use function gettype;
 use function implode;
 use function serialize;
@@ -56,14 +55,14 @@ function value_to_key(...$any)
                     $objectReferences[$hash] = WeakReference::create($value);
                 }
 
-                $key = get_class($value).':'.$hash.':'.($collisions[$hash] ?? 0);
+                $key = $value::class.':'.$hash.':'.($collisions[$hash] ?? 0);
             } else {
                 /*
                  * For PHP < 7.4 we keep a static reference to the object so that cannot accidentally go out of
                  * scope and mess with the object hashes
                  */
                 $objectReferences[$hash] = $value;
-                $key = get_class($value).':'.$hash;
+                $key = $value::class.':'.$hash;
             }
 
             return $key;

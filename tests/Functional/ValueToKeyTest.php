@@ -25,6 +25,7 @@ use function random_bytes;
 use function sprintf;
 use function stream_context_create;
 
+use const INF;
 use const NAN;
 use const PHP_VERSION_ID;
 
