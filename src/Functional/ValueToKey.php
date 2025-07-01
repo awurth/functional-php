@@ -52,9 +52,7 @@ function value_to_key(...$any)
                 $objectReferences[$hash] = WeakReference::create($value);
             }
 
-            $key = $value::class.':'.$hash.':'.($collisions[$hash] ?? 0);
-
-            return $key;
+            return $value::class.':'.$hash.':'.($collisions[$hash] ?? 0);
         };
     }
 
