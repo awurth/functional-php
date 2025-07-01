@@ -15,8 +15,6 @@ use Closure;
 /**
  * Returns true if $a is less than or equal to $b.
  *
- * @param mixed $b
- *
  * @return Closure(mixed)
  *
  * @no-named-arguments

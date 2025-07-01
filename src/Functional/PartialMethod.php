@@ -18,7 +18,6 @@ use function is_callable;
  * Returns a function that expects an object as the first param and tries to invoke the given method on it.
  *
  * @param string $methodName
- * @param mixed  $defaultValue
  *
  * @return callable
  *

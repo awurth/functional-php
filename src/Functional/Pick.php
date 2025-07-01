@@ -21,11 +21,7 @@ use function is_array;
  * If no such index exists, return the default value.
  *
  * @param array|ArrayAccess $collection
- * @param mixed             $index
- * @param mixed             $default
- * @param null|callable     $callback   Custom function to check if index exists
- *
- * @return mixed
+ * @param callable|null     $callback   Custom function to check if index exists
  *
  * @no-named-arguments
  */

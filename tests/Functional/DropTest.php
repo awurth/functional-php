@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -13,8 +13,8 @@ namespace Functional\Tests;
 use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
 
-use function Functional\drop_last;
 use function Functional\drop_first;
+use function Functional\drop_last;
 use function is_int;
 
 class DropTest extends AbstractTestCase
@@ -32,6 +32,7 @@ class DropTest extends AbstractTestCase
     {
         $fn = static function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
+
             return is_int($k) ? (2 != $k) : (3 != $v[3]);
         };
         self::assertSame([0 => 'value1', 1 => 'value2'], drop_last($this->list, $fn));
@@ -84,7 +85,7 @@ class DropTest extends AbstractTestCase
     /** @dataProvider getFunctions */
     public function testPassNoCollection($fn): void
     {
-        $this->expectArgumentError($fn . '() expects parameter 1 to be array or instance of Traversable');
+        $this->expectArgumentError($fn.'() expects parameter 1 to be array or instance of Traversable');
         $fn('invalidCollection', 'strlen');
     }
 

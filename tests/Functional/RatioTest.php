@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -32,9 +32,9 @@ class RatioTest extends AbstractTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->intArray = [1 => 1, 2, "foo" => 3, 4];
+        $this->intArray = [1 => 1, 2, 'foo' => 3, 4];
         $this->intIterator = new ArrayIterator($this->intArray);
-        $this->floatArray = ["foo" => 1.5, 1.1, 1];
+        $this->floatArray = ['foo' => 1.5, 1.1, 1];
         $this->floatIterator = new ArrayIterator($this->floatArray);
     }
 

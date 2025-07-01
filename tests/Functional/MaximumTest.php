@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -20,7 +20,7 @@ class MaximumTest extends AbstractTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->list = [1, "foo", 5.1, 5, "5.2", true, false, [], new stdClass()];
+        $this->list = [1, 'foo', 5.1, 5, '5.2', true, false, [], new stdClass()];
         $this->listIterator = new ArrayIterator($this->list);
         $this->hash = [
             'k1' => 1,
@@ -50,7 +50,7 @@ class MaximumTest extends AbstractTestCase
 
     public function testSpecialCaseSameValueDifferentTypes(): void
     {
-        self::assertSame(1, maximum([0, 1, 0.0, 1.0, "0", "1", "0.0", "1.0"]));
+        self::assertSame(1, maximum([0, 1, 0.0, 1.0, '0', '1', '0.0', '1.0']));
     }
 
     public function testPassNoCollection(): void

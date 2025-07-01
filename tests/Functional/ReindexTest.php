@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -30,7 +30,8 @@ class ReindexTest extends AbstractTestCase
     {
         $fn = static function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-            return $k . $v;
+
+            return $k.$v;
         };
         self::assertSame(['0value' => 'value', '1value' => 'value'], reindex($this->list, $fn));
         self::assertSame(['0value' => 'value', '1value' => 'value'], reindex($this->listIterator, $fn));
@@ -42,6 +43,7 @@ class ReindexTest extends AbstractTestCase
     {
         $fn = static function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
+
             return $k[0];
         };
         self::assertSame(['k' => 'val2'], reindex($this->hash, $fn));

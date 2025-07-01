@@ -1,25 +1,25 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
 
 use ArrayIterator;
 use ArrayObject;
-use SplFixedArray;
-use Traversable;
 use DomainException;
 use Exception;
+use SplFixedArray;
 use stdClass;
+use Traversable;
 
-use function Functional\pluck;
 use function array_values;
+use function Functional\pluck;
 
 class MagicGetThrowException
 {
@@ -63,17 +63,19 @@ class MagicGetException
     public function __isset($propertyName): bool
     {
         if ($this->throwExceptionInIsset) {
-            throw new DomainException('__isset exception: ' . $propertyName);
+            throw new DomainException('__isset exception: '.$propertyName);
         }
+
         return true;
     }
 
     public function __get($propertyName): string
     {
         if ($this->throwExceptionInGet) {
-            throw new DomainException('__get exception: ' . $propertyName);
+            throw new DomainException('__get exception: '.$propertyName);
         }
-        return "value";
+
+        return 'value';
     }
 }
 
@@ -88,6 +90,7 @@ class PluckCaller
         if (!isset($this->property)) {
             throw new Exception('Property is no longer accessable');
         }
+
         return $plucked;
     }
 }
@@ -130,18 +133,18 @@ class PluckTest extends AbstractTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->propertyExistsEverywhereArray = [(object)['property' => 1], (object)['property' => 2]];
+        $this->propertyExistsEverywhereArray = [(object) ['property' => 1], (object) ['property' => 2]];
         $this->propertyExistsEverywhereIterator = new ArrayIterator($this->propertyExistsEverywhereArray);
-        $this->propertyExistsSomewhere = [(object)['property' => 1], (object)['otherProperty' => 2]];
+        $this->propertyExistsSomewhere = [(object) ['property' => 1], (object) ['otherProperty' => 2]];
         $this->propertyMagicGet = [new MagicGet(['property' => 1]), new MagicGet(['property' => 2]), ['property' => '3'], new ArrayObject(['property' => 4])];
-        $this->mixedCollection = [(object)['property' => 1], ['key'  => 'value'], ['property' => 2]];
-        $this->keyedCollection = ['test' => (object)['property' => 1], 'test2' => (object)['property' => 2]];
+        $this->mixedCollection = [(object) ['property' => 1], ['key' => 'value'], ['property' => 2]];
+        $this->keyedCollection = ['test' => (object) ['property' => 1], 'test2' => (object) ['property' => 2]];
         $fixedArray = new SplFixedArray(1);
         $fixedArray[0] = 3;
         $this->numericArrayCollection = ['one' => [1], 'two' => [1 => 2], 'three' => ['idx' => 2], 'four' => new ArrayObject([2]), 'five' => $fixedArray];
-        $this->issetExceptionArray = [(object)['property' => 1], new MagicGetException(true, false)];
+        $this->issetExceptionArray = [(object) ['property' => 1], new MagicGetException(true, false)];
         $this->issetExceptionIterator = new ArrayIterator($this->issetExceptionArray);
-        $this->getExceptionArray = [(object)['property' => 1], new MagicGetException(false, true)];
+        $this->getExceptionArray = [(object) ['property' => 1], new MagicGetException(false, true)];
         $this->getExceptionIterator = new ArrayIterator($this->getExceptionArray);
     }
 

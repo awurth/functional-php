@@ -17,9 +17,6 @@ use function array_pop;
 
 /**
  * @param array|Traversable $collection
- * @param mixed             $initial
- *
- * @return mixed
  *
  * @no-named-arguments
  */

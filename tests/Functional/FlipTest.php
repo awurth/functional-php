@@ -1,17 +1,17 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
 
-use function Functional\flip;
 use function Functional\filter;
+use function Functional\flip;
 use function Functional\id;
 use function implode;
 
@@ -50,7 +50,7 @@ class FlipTest extends AbstractTestCase
 
 function merge_strings(string $head, string $tail, ...$other): string
 {
-    return $head . $tail . implode('', $other);
+    return $head.$tail.implode('', $other);
 }
 
 function subtract(int $first, int $second, int $third): int

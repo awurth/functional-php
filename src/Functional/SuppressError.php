@@ -18,8 +18,6 @@ use function set_error_handler;
 /**
  * Takes a function and returns a new function that wraps the callback and suppresses the PHP error.
  *
- * @return mixed
- *
  * @throws ErrorException Throws exception if PHP error happened
  *
  * @no-named-arguments

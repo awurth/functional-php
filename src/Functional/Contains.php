@@ -18,7 +18,6 @@ use Traversable;
  * true values will be compared in strict mode.
  *
  * @param array|Traversable $collection
- * @param mixed             $value
  * @param bool              $strict
  *
  * @return bool

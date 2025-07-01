@@ -20,11 +20,9 @@ use const E_USER_DEPRECATED;
 /**
  * Memoizes callbacks and returns their value instead of calling them.
  *
- * @param null|callable $callback  Callable closure or function. Pass null to reset memory
+ * @param callable|null $callback  Callable closure or function. Pass null to reset memory
  * @param array         $arguments Arguments
  * @param array|string  $key       Optional memoize key to override the auto calculated hash
- *
- * @return mixed
  *
  * @no-named-arguments
  */

@@ -13,8 +13,6 @@ namespace Functional;
 /**
  * Return a new function that captures the return value of $callback in $result and returns the callbacks return value.
  *
- * @param mixed $result
- *
  * @return callable
  *
  * @no-named-arguments

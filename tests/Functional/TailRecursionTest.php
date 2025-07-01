@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -22,6 +22,7 @@ class TailRecursionTest extends TestCase
             if (0 == $n) {
                 return $acc;
             }
+
             return $fact($n - 1, $acc * $n);
         });
         self::assertEquals(3628800, $fact(10));
@@ -33,6 +34,7 @@ class TailRecursionTest extends TestCase
             if ($from > $to) {
                 return $acc;
             }
+
             return $sum_of_range($from + 1, $to, $acc + $from);
         });
 

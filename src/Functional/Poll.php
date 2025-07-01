@@ -23,7 +23,7 @@ use function usleep;
  * Retry a callback until it returns a truthy value or the timeout (in microseconds) is reached.
  *
  * @param int              $timeout       Timeout in microseconds
- * @param null|Traversable $delaySequence Default: no delay between calls
+ * @param Traversable|null $delaySequence Default: no delay between calls
  *
  * @return bool
  *

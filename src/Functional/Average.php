@@ -20,7 +20,7 @@ use function is_numeric;
  *
  * @param array|Traversable $collection
  *
- * @return null|float|int
+ * @return float|int|null
  *
  * @no-named-arguments
  */

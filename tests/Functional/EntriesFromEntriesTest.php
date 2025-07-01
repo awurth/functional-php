@@ -1,22 +1,21 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Hugo Sales <hugo@hsal.es>
  * @copyright 2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
 
 use ArrayIterator;
-use PHPUnit\Framework\MockObject\MockObject;
 
-use function Functional\entries;
-use function Functional\from_entries;
 use function array_keys;
 use function count;
+use function Functional\entries;
+use function Functional\from_entries;
 use function range;
 
 class EntriesFromEntriesTest extends AbstractTestCase

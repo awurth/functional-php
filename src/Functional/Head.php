@@ -18,8 +18,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return mixed
- *
  * @no-named-arguments
  */
 function head($collection, ?callable $callback = null)

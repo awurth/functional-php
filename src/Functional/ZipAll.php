@@ -32,7 +32,7 @@ use function is_callable;
  */
 function zip_all(...$args)
 {
-    /** @var null|callable $callback */
+    /** @var callable|null $callback */
     $callback = null;
     if (is_callable(end($args))) {
         $callback = array_pop($args);

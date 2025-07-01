@@ -1,18 +1,18 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 use Exception;
+use Functional\Exceptions\InvalidArgumentException;
 use stdClass;
 
 use function Functional\group;
@@ -35,6 +35,7 @@ class GroupTest extends AbstractTestCase
     {
         $fn = static function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
+
             return (is_int($k) ? ($k % 2 == 0) : ($v[3] % 2 == 0)) ? 'foo' : '';
         };
         self::assertSame(['foo' => [0 => 'value1', 2 => 'value3'], '' => [1 => 'value2', 3 => 'value4']], group($this->list, $fn));
@@ -51,20 +52,19 @@ class GroupTest extends AbstractTestCase
             return $keyMap[$k];
         };
         $result = [
-            1     => [0 => 'v1', 1 => 'v2'],
-            -1    => [2 => 'v3'],
-            2     => [3 => 'v4'],
+            1 => [0 => 'v1', 1 => 'v2'],
+            -1 => [2 => 'v3'],
+            2 => [3 => 'v4'],
             'str' => [4 => 'v5'],
-            null  => [5 => 'v6'],
+            null => [5 => 'v6'],
         ];
         self::assertSame($result, group($array, $fn));
         self::assertSame($result, group(new ArrayIterator($array), $fn));
 
-
         $invalidTypes = [
             'resource' => stream_context_create(),
-            'object'   => new stdClass(),
-            'array'    => [],
+            'object' => new stdClass(),
+            'array' => [],
         ];
 
         foreach ($invalidTypes as $type => $value) {

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -52,6 +52,6 @@ class PartialMethodTest extends AbstractPartialTestCase
 
     public function execute($arg1 = null, $arg2 = null): string
     {
-        return $arg1 ? $arg1 . ' ' . $arg2 : 'default';
+        return $arg1 ? $arg1.' '.$arg2 : 'default';
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -30,6 +30,7 @@ class SortTest extends AbstractTestCase
         $this->hashIterator = new ArrayIterator($this->hash);
         $this->sortCallback = static function ($left, $right, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
+
             return strcmp($left, $right);
         };
     }

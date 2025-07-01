@@ -13,7 +13,6 @@ namespace Functional\Sequences;
 use Functional\Exceptions\InvalidArgumentException;
 use Iterator;
 
-use function pow;
 use function round;
 
 /** @internal */

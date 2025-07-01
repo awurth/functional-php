@@ -22,8 +22,6 @@ use function is_callable;
  * @param array|Traversable $collection
  * @param string            $methodName
  *
- * @return mixed
- *
  * @no-named-arguments
  */
 function invoke_last($collection, $methodName, array $arguments = [])

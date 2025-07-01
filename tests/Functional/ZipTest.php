@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -58,14 +58,14 @@ class ZipTest extends AbstractTestCase
             $result,
             zip(
                 ['foo' => 1, 'bar' => 2, true],
-                ['foo' => -1, 'bar' => -2, false, "ignore"],
+                ['foo' => -1, 'bar' => -2, false, 'ignore'],
             ),
         );
         self::assertSame(
             $result,
             zip(
                 new ArrayIterator(['foo' => 1, 'bar' => 2, true]),
-                new ArrayIterator(['foo' => -1, 'bar' => -2, false, "ignore"]),
+                new ArrayIterator(['foo' => -1, 'bar' => -2, false, 'ignore']),
             ),
         );
     }
@@ -81,7 +81,7 @@ class ZipTest extends AbstractTestCase
                 [-1, -2, -3],
                 [true, false],
                 static function ($one, $two, $three, $four) {
-                    return $one . $two . $three . $four;
+                    return $one.$two.$three.$four;
                 },
             ),
         );
@@ -93,7 +93,7 @@ class ZipTest extends AbstractTestCase
                 new ArrayIterator([-1, -2, -3]),
                 new ArrayIterator([true, false]),
                 static function ($one, $two, $three, $four) {
-                    return $one . $two . $three . $four;
+                    return $one.$two.$three.$four;
                 },
             ),
         );

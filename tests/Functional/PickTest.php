@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -77,9 +77,9 @@ class PickTest extends AbstractTestCase
 
     public function testCustomCallback(): void
     {
-        //custom callback to check for false condition
-        //false - index does not exist or value is 0
-        //true - any other values other than 0, including false, 'false', null, and so on
+        // custom callback to check for false condition
+        // false - index does not exist or value is 0
+        // true - any other values other than 0, including false, 'false', null, and so on
         $customCallback = static function ($collection, $key) {
             return isset($collection[$key]) && 0 !== $collection[$key];
         };

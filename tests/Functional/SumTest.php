@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -32,7 +32,7 @@ class SumTest extends AbstractTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->intArray = [1 => 1, 2, "foo" => 3];
+        $this->intArray = [1 => 1, 2, 'foo' => 3];
         $this->intIterator = new ArrayIterator($this->intArray);
         $this->floatArray = [1.1, 2.9, 3.5];
         $this->floatIterator = new ArrayIterator($this->floatArray);

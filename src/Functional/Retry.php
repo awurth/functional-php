@@ -26,7 +26,7 @@ use function usleep;
  * Retry a callback until the number of retries are reached or the callback does no longer throw an exception.
  *
  * @param int              $retries
- * @param null|Traversable $delaySequence Default: no delay between calls
+ * @param Traversable|null $delaySequence Default: no delay between calls
  *
  * @return mixed Return value of the function
  *

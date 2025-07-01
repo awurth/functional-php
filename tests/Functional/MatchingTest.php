@@ -1,21 +1,21 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
 
 use Functional\Exceptions\InvalidArgumentException;
 
-use function Functional\matching;
-use function Functional\equal;
-use function Functional\const_function;
 use function call_user_func;
+use function Functional\const_function;
+use function Functional\equal;
+use function Functional\matching;
 
 use const PHP_VERSION_ID;
 
@@ -31,7 +31,7 @@ class MatchingTest extends AbstractTestCase
                 [
                     const_function(true),
                     static function ($x) {
-                        return 'default is ' . $x;
+                        return 'default is '.$x;
                     },
                 ],
             ],

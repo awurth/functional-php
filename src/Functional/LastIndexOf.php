@@ -19,9 +19,6 @@ use function is_callable;
  * Returns the last index holding specified value in the collection. Returns false if value was not found.
  *
  * @param array|Traversable $collection
- * @param mixed             $value
- *
- * @return mixed
  *
  * @no-named-arguments
  */

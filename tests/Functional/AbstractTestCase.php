@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -80,7 +80,7 @@ class AbstractTestCase extends TestCase
     {
         $values = [];
         $sequence->rewind();
-        for ($a = 0; $a < $limit; $a++) {
+        for ($a = 0; $a < $limit; ++$a) {
             $values[] = $sequence->current();
             $sequence->next();
         }
@@ -92,6 +92,7 @@ class AbstractTestCase extends TestCase
     {
         if (method_exists(parent::class, __FUNCTION__)) {
             parent::expectDeprecation();
+
             return;
         }
 
@@ -102,6 +103,7 @@ class AbstractTestCase extends TestCase
     {
         if (method_exists(parent::class, __FUNCTION__)) {
             parent::expectDeprecationMessage($message);
+
             return;
         }
 

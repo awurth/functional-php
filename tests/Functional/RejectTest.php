@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -14,7 +14,6 @@ use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\reject;
-use function strlen;
 
 class RejectTest extends AbstractTestCase
 {
@@ -31,6 +30,7 @@ class RejectTest extends AbstractTestCase
     {
         $fn = static function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
+
             return 'wrong' === $v && '' !== $k;
         };
         self::assertSame([0 => 'value', 2 => 'value'], reject($this->list, $fn));

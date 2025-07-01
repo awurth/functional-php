@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -47,7 +47,7 @@ class FalseTest extends AbstractTestCase
         $this->trueIterator = new ArrayIterator($this->trueArray);
         $this->trueHash = ['k1' => false, 'k2' => false, 'k3' => false];
         $this->trueHashIterator = new ArrayIterator($this->trueHash);
-        $this->falseArray = [false, 0, false, 'foo', [], (object)[]];
+        $this->falseArray = [false, 0, false, 'foo', [], (object) []];
         $this->falseIterator = new ArrayIterator($this->falseArray);
         $this->falseHash = ['k1' => false, 'k2' => 0, 'k3' => false];
         $this->falseHashIterator = new ArrayIterator($this->falseHash);

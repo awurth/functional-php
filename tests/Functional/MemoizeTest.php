@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -19,7 +19,7 @@ use function sprintf;
 
 function testfunc(): string
 {
-    return 'TESTFUNC' . MemoizeTest::invoke(__FUNCTION__);
+    return 'TESTFUNC'.MemoizeTest::invoke(__FUNCTION__);
 }
 
 class MemoizeTest extends AbstractTestCase
@@ -34,13 +34,14 @@ class MemoizeTest extends AbstractTestCase
         if (self::$invocation > 0) {
             throw new BadMethodCallException(sprintf('%s called more than once', $name));
         }
-        self::$invocation++;
+        ++self::$invocation;
+
         return self::$invocation;
     }
 
     public static function call(): string
     {
-        return 'STATIC METHOD VALUE' . self::invoke(__METHOD__);
+        return 'STATIC METHOD VALUE'.self::invoke(__METHOD__);
     }
 
     protected function setUp(): void
@@ -82,7 +83,7 @@ class MemoizeTest extends AbstractTestCase
     public function testMemoizeClosureCall(): void
     {
         $closure = static function () {
-            return 'CLOSURE VALUE' . MemoizeTest::invoke('Closure');
+            return 'CLOSURE VALUE'.MemoizeTest::invoke('Closure');
         };
         self::assertSame('CLOSURE VALUE1', memoize($closure));
         self::assertSame('CLOSURE VALUE1', memoize($closure));
@@ -167,7 +168,7 @@ class MemoizeTest extends AbstractTestCase
 
     private static function createFn(int $id, int $number): callable
     {
-        return new class ($id, $number) {
+        return new class($id, $number) {
             private $id;
             private $expectedInvocations;
             private $actualInvocations = 0;
@@ -185,16 +186,9 @@ class MemoizeTest extends AbstractTestCase
 
             public function __invoke(): int
             {
-                $this->actualInvocations++;
+                ++$this->actualInvocations;
                 if ($this->actualInvocations > $this->expectedInvocations) {
-                    throw new RuntimeException(
-                        sprintf(
-                            'ID %d: Expected %d invocations, got %d',
-                            $this->id,
-                            $this->expectedInvocations,
-                            $this->actualInvocations,
-                        ),
-                    );
+                    throw new RuntimeException(sprintf('ID %d: Expected %d invocations, got %d', $this->id, $this->expectedInvocations, $this->actualInvocations));
                 }
 
                 return $this->id;
@@ -203,14 +197,7 @@ class MemoizeTest extends AbstractTestCase
             public function __destruct()
             {
                 if ($this->actualInvocations !== $this->expectedInvocations) {
-                    throw new RuntimeException(
-                        sprintf(
-                            'ID %d: Expected %d invocations, got %d',
-                            $this->id,
-                            $this->expectedInvocations,
-                            $this->actualInvocations,
-                        ),
-                    );
+                    throw new RuntimeException(sprintf('ID %d: Expected %d invocations, got %d', $this->id, $this->expectedInvocations, $this->actualInvocations));
                 }
             }
         };

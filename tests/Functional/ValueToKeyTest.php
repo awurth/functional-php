@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -15,11 +15,11 @@ use Functional\Exceptions\InvalidArgumentException;
 use PHPUnit\Framework\Constraint\Constraint;
 use stdClass;
 
+use function array_pop;
 use function Functional\ary;
 use function Functional\filter;
 use function Functional\pluck;
 use function Functional\value_to_key;
-use function array_pop;
 use function preg_match;
 use function random_bytes;
 use function sprintf;
@@ -62,7 +62,7 @@ class ValueToKeyTest extends AbstractTestCase
                 '[i:0;~[i:0;~s:3:"foo";:i:1;~s:3:"bar";:i:2;~[i:0;~s:3:"foo";:i:1;~[i:0;~s:3:"bar";:i:1;~s:3:"baz";]]]]',
             ],
             'hashes' => [[['foo' => 'bar']], '[i:0;~[s:3:"foo";~s:3:"bar";]]'],
-            [[$binary], '[i:0;~s:10:"' . $binary . '";]'],
+            [[$binary], '[i:0;~s:10:"'.$binary.'";]'],
             [[new stdClass()], self::matchesRegularExpression(self::createObjectRefRegex('stdClass'))],
             [[new ArrayObject()], self::matchesRegularExpression(self::createObjectRefRegex('ArrayObject'))],
         ];
@@ -127,8 +127,8 @@ class ValueToKeyTest extends AbstractTestCase
 
         if (PHP_VERSION_ID >= 70400) {
             self::assertSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes match');
-            self::assertSame('[i:0;~stdClass:' . $key1Matches['hash'] . ':0]', $key1, 'Object versions do not match');
-            self::assertSame('[i:0;~stdClass:' . $key1Matches['hash'] . ':1]', $key2, 'Object versions do not match');
+            self::assertSame('[i:0;~stdClass:'.$key1Matches['hash'].':0]', $key1, 'Object versions do not match');
+            self::assertSame('[i:0;~stdClass:'.$key1Matches['hash'].':1]', $key2, 'Object versions do not match');
         } else {
             self::assertNotSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes should not match');
         }
@@ -153,8 +153,8 @@ class ValueToKeyTest extends AbstractTestCase
 
         if (PHP_VERSION_ID >= 70400) {
             self::assertSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes match');
-            self::assertSame('[i:0;~ArrayObject:' . $key1Matches['hash'] . ':2[]]', $key1, 'Object versions do not match');
-            self::assertSame('[i:0;~ArrayObject:' . $key1Matches['hash'] . ':3[s:3:"foo";~s:3:"bar";]]', $key2, 'Object versions do not match');
+            self::assertSame('[i:0;~ArrayObject:'.$key1Matches['hash'].':2[]]', $key1, 'Object versions do not match');
+            self::assertSame('[i:0;~ArrayObject:'.$key1Matches['hash'].':3[s:3:"foo";~s:3:"bar";]]', $key2, 'Object versions do not match');
         } else {
             self::assertNotSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes don’t match');
         }

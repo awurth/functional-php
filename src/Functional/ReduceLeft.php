@@ -15,9 +15,6 @@ use Traversable;
 
 /**
  * @param array|Traversable $collection
- * @param mixed             $initial
- *
- * @return mixed
  *
  * @no-named-arguments
  */

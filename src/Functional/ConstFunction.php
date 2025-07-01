@@ -13,8 +13,6 @@ namespace Functional;
 /**
  * Wrap value within a function, which will return it, without any modifications.
  *
- * @param mixed $value
- *
  * @return callable
  *
  * @no-named-arguments

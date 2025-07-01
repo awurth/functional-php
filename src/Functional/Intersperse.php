@@ -20,7 +20,6 @@ use function array_pop;
  * Indices are not preserved.
  *
  * @param array|Traversable $collection
- * @param mixed             $glue
  *
  * @return array
  *

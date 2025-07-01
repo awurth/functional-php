@@ -21,8 +21,6 @@ use function random_bytes;
  *
  * Use Functional\…, Functional\…() or Functional\placeholder() as a placeholder
  *
- * @param mixed ...$arguments
- *
  * @return callable
  *
  * @no-named-arguments

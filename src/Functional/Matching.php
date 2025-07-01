@@ -17,7 +17,7 @@ use Functional\Exceptions\MatchException;
  *
  * @param array $conditions the conditions to check against
  *
- * @return null|callable the function that calls the callable of the first truthy condition
+ * @return callable|null the function that calls the callable of the first truthy condition
  *
  * @no-named-arguments
  */

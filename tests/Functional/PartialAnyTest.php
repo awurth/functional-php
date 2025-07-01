@@ -1,21 +1,21 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
 
 use Functional\Exceptions\InvalidArgumentException;
 
+use function defined;
 use function Functional\partial_any;
 use function Functional\placeholder;
 use function Functional\…;
-use function defined;
 use function hash_final;
 use function hash_init;
 

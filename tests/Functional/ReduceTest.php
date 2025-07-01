@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Tests;
@@ -173,10 +173,11 @@ class ReduceTest extends AbstractTestCase
         self::assertTrue(isset($this->currentCollection[$key]));
         self::assertSame($collection, $this->currentCollection);
 
-        $ret = $key . ':' . $value;
+        $ret = $key.':'.$value;
         if ($returnValue) {
-            return $returnValue . ',' . $ret;
+            return $returnValue.','.$ret;
         }
+
         return $ret;
     }
 

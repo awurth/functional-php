@@ -13,10 +13,6 @@ namespace Functional;
 /**
  * Return value itself, without any modifications.
  *
- * @param mixed $value
- *
- * @return mixed
- *
  * @no-named-arguments
  */
 function id($value)

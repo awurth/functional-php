@@ -81,9 +81,7 @@ function value_to_key(...$any)
             } elseif ('object' === $type) {
                 $ref = $objectToRef($value);
             } elseif ('resource' === $type) {
-                throw new InvalidArgumentException(
-                    'Resource type cannot be used as part of a memoization key. Please pass a custom key instead',
-                );
+                throw new InvalidArgumentException('Resource type cannot be used as part of a memoization key. Please pass a custom key instead');
             } else {
                 $ref = serialize($value);
             }

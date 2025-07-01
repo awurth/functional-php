@@ -19,8 +19,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return mixed
- *
  * @no-named-arguments
  */
 function last($collection, ?callable $callback = null)

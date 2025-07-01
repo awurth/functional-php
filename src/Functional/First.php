@@ -20,8 +20,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return mixed
- *
  * @no-named-arguments
  */
 function first($collection, ?callable $callback = null)
