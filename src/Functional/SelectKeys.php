@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -18,11 +18,12 @@ use function array_intersect_key;
 use function iterator_to_array;
 
 /**
- * Select the specified keys from the array
+ * Select the specified keys from the array.
  *
- * @param Traversable|array $collection
- * @param array $keys
+ * @param array|Traversable $collection
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function select_keys($collection, array $keys)

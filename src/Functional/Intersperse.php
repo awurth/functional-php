@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -19,9 +19,11 @@ use function array_pop;
  * Insert a given value between each element of a collection.
  * Indices are not preserved.
  *
- * @param Traversable|array $collection
- * @param mixed $glue
+ * @param array|Traversable $collection
+ * @param mixed             $glue
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function intersperse($collection, $glue)

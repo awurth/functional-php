@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -18,11 +18,12 @@ use function array_flip;
 use function iterator_to_array;
 
 /**
- * Returns an array with the specified keys omitted from the array
+ * Returns an array with the specified keys omitted from the array.
  *
- * @param Traversable|array $collection
- * @param array $keys
+ * @param array|Traversable $collection
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function omit_keys($collection, array $keys)

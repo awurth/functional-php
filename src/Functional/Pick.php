@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -20,11 +20,13 @@ use function is_array;
  * Pick a single element from a collection of objects or arrays by index.
  * If no such index exists, return the default value.
  *
- * @param ArrayAccess|array $collection
- * @param mixed $index
- * @param mixed $default
- * @param callable|null $callback Custom function to check if index exists
+ * @param array|ArrayAccess $collection
+ * @param mixed             $index
+ * @param mixed             $default
+ * @param null|callable     $callback   Custom function to check if index exists
+ *
  * @return mixed
+ *
  * @no-named-arguments
  */
 function pick($collection, $index, $default = null, ?callable $callback = null)

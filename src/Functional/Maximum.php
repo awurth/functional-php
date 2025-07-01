@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -16,10 +16,12 @@ use Traversable;
 use function is_numeric;
 
 /**
- * Returns the maximum value of a collection
+ * Returns the maximum value of a collection.
  *
- * @param Traversable|array $collection
- * @return integer|float
+ * @param array|Traversable $collection
+ *
+ * @return float|int
+ *
  * @no-named-arguments
  */
 function maximum($collection)

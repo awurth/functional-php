@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Sequences;
@@ -16,13 +16,13 @@ use Iterator;
 /** @internal */
 class LinearSequence implements Iterator
 {
-    /** @var integer */
+    /** @var int */
     private $start;
 
-    /** @var integer */
+    /** @var int */
     private $amount;
 
-    /** @var integer */
+    /** @var int */
     private $value;
 
     public function __construct($start, $amount)

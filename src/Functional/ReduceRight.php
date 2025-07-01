@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -16,10 +16,11 @@ use Traversable;
 use function array_pop;
 
 /**
- * @param Traversable|array $collection
- * @param callable $callback
- * @param mixed $initial
+ * @param array|Traversable $collection
+ * @param mixed             $initial
+ *
  * @return mixed
+ *
  * @no-named-arguments
  */
 function reduce_right($collection, callable $callback, $initial = null)
@@ -31,7 +32,7 @@ function reduce_right($collection, callable $callback, $initial = null)
         $data[] = [$index, $value];
     }
 
-    while (([$index, $value] = array_pop($data))) {
+    while ([$index, $value] = array_pop($data)) {
         $initial = $callback($value, $index, $collection, $initial);
     }
 

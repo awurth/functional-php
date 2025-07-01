@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -16,12 +16,13 @@ use Traversable;
 use function iterator_to_array;
 
 /**
- * Sorts a collection with a user-defined function, optionally preserving array keys
+ * Sorts a collection with a user-defined function, optionally preserving array keys.
  *
- * @param Traversable|array $collection
- * @param callable $callback
- * @param bool $preserveKeys
+ * @param array|Traversable $collection
+ * @param bool              $preserveKeys
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function sort($collection, callable $callback, $preserveKeys = false)

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -20,13 +20,15 @@ use function microtime;
 use function usleep;
 
 /**
- * Retry a callback until it returns a truthy value or the timeout (in microseconds) is reached
+ * Retry a callback until it returns a truthy value or the timeout (in microseconds) is reached.
  *
- * @param callable $callback
- * @param integer $timeout Timeout in microseconds
- * @param Traversable|null $delaySequence Default: no delay between calls
+ * @param int              $timeout       Timeout in microseconds
+ * @param null|Traversable $delaySequence Default: no delay between calls
+ *
+ * @return bool
+ *
  * @throws InvalidArgumentException
- * @return boolean
+ *
  * @no-named-arguments
  */
 function poll(callable $callback, $timeout, ?Traversable $delaySequence = null)

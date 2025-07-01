@@ -1,19 +1,19 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
 
 use AppendIterator;
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 use Exception;
+use Functional\Exceptions\InvalidArgumentException;
 use InfiniteIterator;
 use LimitIterator;
 use Traversable;
@@ -23,14 +23,16 @@ use function range;
 use function usleep;
 
 /**
- * Retry a callback until the number of retries are reached or the callback does no longer throw an exception
+ * Retry a callback until the number of retries are reached or the callback does no longer throw an exception.
  *
- * @param callable $callback
- * @param integer $retries
- * @param Traversable|null $delaySequence Default: no delay between calls
- * @throws Exception Any exception thrown by the callback
- * @throws InvalidArgumentException
+ * @param int              $retries
+ * @param null|Traversable $delaySequence Default: no delay between calls
+ *
  * @return mixed Return value of the function
+ *
+ * @throws Exception                Any exception thrown by the callback
+ * @throws InvalidArgumentException
+ *
  * @no-named-arguments
  */
 function retry(callable $callback, $retries, ?Traversable $delaySequence = null)

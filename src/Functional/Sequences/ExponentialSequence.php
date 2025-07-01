@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional\Sequences;
@@ -19,16 +19,16 @@ use function round;
 /** @internal */
 class ExponentialSequence implements Iterator
 {
-    /** @var integer */
+    /** @var int */
     private $start;
 
-    /** @var integer */
+    /** @var int */
     private $percentage;
 
-    /** @var integer */
+    /** @var int */
     private $value;
 
-    /** @var integer */
+    /** @var int */
     private $times;
 
     public function __construct($start, $percentage)
@@ -49,7 +49,7 @@ class ExponentialSequence implements Iterator
     public function next(): void
     {
         $this->value = (int) round(pow($this->start * (1 + $this->percentage / 100), $this->times));
-        $this->times++;
+        ++$this->times;
     }
 
     public function key()

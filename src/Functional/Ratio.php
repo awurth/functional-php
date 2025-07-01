@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -16,11 +16,13 @@ use Traversable;
 use function is_numeric;
 
 /**
- * Takes a collection and returns the quotient of all elements
+ * Takes a collection and returns the quotient of all elements.
  *
- * @param Traversable|array $collection
- * @param integer|float $initial
- * @return integer|float
+ * @param array|Traversable $collection
+ * @param float|int         $initial
+ *
+ * @return float|int
+ *
  * @no-named-arguments
  */
 function ratio($collection, $initial = 1)

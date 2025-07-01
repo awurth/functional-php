@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -25,9 +25,10 @@ use function count;
  * Elements are not re-ordered and have the same index they had in the
  * original array.
  *
- * @param Traversable|array $collection
- * @param callable ...$callbacks
+ * @param array|Traversable $collection
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function partition($collection, callable ...$callbacks)
@@ -41,6 +42,7 @@ function partition($collection, callable ...$callbacks)
         foreach ($callbacks as $partition => $callback) {
             if ($callback($element, $index, $collection)) {
                 $partitions[$partition][$index] = $element;
+
                 continue 2;
             }
         }

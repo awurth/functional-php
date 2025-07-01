@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -18,12 +18,14 @@ use function trigger_error;
 use const E_USER_DEPRECATED;
 
 /**
- * Memoizes callbacks and returns their value instead of calling them
+ * Memoizes callbacks and returns their value instead of calling them.
  *
- * @param callable|null $callback Callable closure or function. Pass null to reset memory
- * @param array $arguments Arguments
- * @param array|string $key Optional memoize key to override the auto calculated hash
+ * @param null|callable $callback  Callable closure or function. Pass null to reset memory
+ * @param array         $arguments Arguments
+ * @param array|string  $key       Optional memoize key to override the auto calculated hash
+ *
  * @return mixed
+ *
  * @no-named-arguments
  */
 function memoize(?callable $callback = null, $arguments = [], $key = null)

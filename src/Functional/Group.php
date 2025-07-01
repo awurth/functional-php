@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -16,9 +16,10 @@ use Traversable;
 /**
  * Groups a collection by index returned by callback.
  *
- * @param Traversable|array $collection
- * @param callable $callback
+ * @param array|Traversable $collection
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function group($collection, callable $callback)

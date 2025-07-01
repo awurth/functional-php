@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -15,11 +15,13 @@ use Functional\Sequences\LinearSequence;
 use Traversable;
 
 /**
- * Returns an infinite, traversable sequence that linearly grows by given amount
+ * Returns an infinite, traversable sequence that linearly grows by given amount.
  *
- * @param integer $start
- * @param integer $amount
+ * @param int $start
+ * @param int $amount
+ *
  * @return Traversable
+ *
  * @no-named-arguments
  */
 function sequence_linear($start, $amount)

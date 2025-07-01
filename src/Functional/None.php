@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -17,9 +17,10 @@ use Traversable;
  * Returns true if all of the elements in the collection pass the callback falsy test. Opposite of Functional\all().
  * Callback arguments will be element, index, collection.
  *
- * @param Traversable|array $collection
- * @param callable|null $callback
+ * @param array|Traversable $collection
+ *
  * @return bool
+ *
  * @no-named-arguments
  */
 function none($collection, ?callable $callback = null)

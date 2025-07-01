@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Hugo Sales <hugo@hsal.es>
  * @copyright 2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -15,11 +15,14 @@ use Traversable;
 
 /**
  * Inspired by JavaScript’s `Object.fromEntries`,
- * convert an array of key-value pairs into a key-value map
+ * convert an array of key-value pairs into a key-value map.
  *
  * @see Functional\entries
- * @param Traversable|array $collection
+ *
+ * @param array|Traversable $collection
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function from_entries($collection)

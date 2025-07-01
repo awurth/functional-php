@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -15,11 +15,12 @@ use Traversable;
 
 /**
  * Looks through each element in the collection, returning the last one that passes a truthy test (callback).
- * Callback arguments will be element, index, collection
+ * Callback arguments will be element, index, collection.
  *
- * @param Traversable|array $collection
- * @param callable $callback
+ * @param array|Traversable $collection
+ *
  * @return mixed
+ *
  * @no-named-arguments
  */
 function last($collection, ?callable $callback = null)

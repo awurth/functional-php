@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -19,9 +19,11 @@ use function is_callable;
  * Returns a list of array indexes, either matching the predicate or strictly equal to the the passed value. Returns an
  * empty array if no values were found.
  *
- * @param Traversable|array $collection
- * @param mixed|callable $value
+ * @param array|Traversable $collection
+ * @param callable|mixed    $value
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function indexes_of($collection, $value)

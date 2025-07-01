@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -17,13 +17,14 @@ use function define;
 use function random_bytes;
 
 /**
- * Return a new function with the arguments partially applied
+ * Return a new function with the arguments partially applied.
  *
  * Use Functional\…, Functional\…() or Functional\placeholder() as a placeholder
  *
- * @param callable $callback
  * @param mixed ...$arguments
+ *
  * @return callable
+ *
  * @no-named-arguments
  */
 function partial_any(callable $callback, ...$arguments)
@@ -44,6 +45,7 @@ function partial_any(callable $callback, ...$arguments)
 
 /**
  * @return resource
+ *
  * @no-named-arguments
  */
 function …()
@@ -57,9 +59,9 @@ function …()
     return $placeholder;
 }
 
-
 /**
  * @return resource
+ *
  * @no-named-arguments
  */
 function placeholder()

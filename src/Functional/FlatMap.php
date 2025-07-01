@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -26,9 +26,10 @@ use function is_array;
  * then flat_map(collection, callback) will return [1,2,3,[4]]
  * while flatten(map(collection, callback)) will return [1,2,3,4]
  *
- * @param Traversable|array $collection
- * @param callable $callback
+ * @param array|Traversable $collection
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function flat_map($collection, callable $callback)

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -23,11 +23,12 @@ use function iterator_to_array;
  * This function will reorder and reset the integer array indices by default. This behaviour can be changed by setting
  * preserveKeys to TRUE. String keys are always preserved, regardless of this parameter.
  *
- * @param Traversable|array $collection
- * @param int $count
- * @param bool $preserveKeys
+ * @param array|Traversable $collection
+ * @param int               $count
+ * @param bool              $preserveKeys
  *
  * @return array
+ *
  * @no-named-arguments
  */
 function take_right($collection, $count, $preserveKeys = false)

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -18,14 +18,13 @@ use function array_shift;
  * I took the solution from here https://gist.github.com/beberlei/4145442
  * but reworked it and made without classes.
  *
- * @param callable $fn
- * @return callable
  * @no-named-arguments
  */
 function tail_recursion(callable $fn): callable
 {
     $underCall = false;
     $queue = [];
+
     return function (...$args) use (&$fn, &$underCall, &$queue) {
         $result = null;
         $queue[] = $args;
@@ -36,6 +35,7 @@ function tail_recursion(callable $fn): callable
             }
             $underCall = false;
         }
+
         return $result;
     };
 }

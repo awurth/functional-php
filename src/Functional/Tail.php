@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -17,9 +17,10 @@ use Traversable;
  * Returns all items from $collection except first element (head). Preserves $collection keys.
  * Takes an optional callback for filtering the collection.
  *
- * @param Traversable|array $collection
- * @param callable $callback
+ * @param array|Traversable $collection
+ *
  * @return array
+ *
  * @no-named-arguments
  */
 function tail($collection, ?callable $callback = null)
@@ -32,6 +33,7 @@ function tail($collection, ?callable $callback = null)
     foreach ($collection as $index => $element) {
         if ($isHead) {
             $isHead = false;
+
             continue;
         }
 

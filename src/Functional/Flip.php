@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package   Functional-php
  * @author    Lars Strojny <lstrojny@php.net>
  * @copyright 2011-2021 Lars Strojny
  * @license   https://opensource.org/licenses/MIT MIT
- * @link      https://github.com/lstrojny/functional-php
+ *
+ * @see      https://github.com/lstrojny/functional-php
  */
 
 namespace Functional;
@@ -19,7 +19,9 @@ use function func_get_args;
  * If one argument is provided, it is passed to the function without change.
  *
  * @param callable $callback the function you want to flip
+ *
  * @return callable a flipped version of the given function
+ *
  * @no-named-arguments
  */
 function flip(callable $callback)
