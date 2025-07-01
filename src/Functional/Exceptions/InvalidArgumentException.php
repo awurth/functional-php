@@ -123,7 +123,7 @@ class InvalidArgumentException extends \InvalidArgumentException
             !is_string($propertyName)
             && !is_int($propertyName)
             && !is_float($propertyName)
-            && !is_null($propertyName)
+            && null !== $propertyName
         ) {
             throw new static(
                 sprintf(
@@ -288,7 +288,7 @@ class InvalidArgumentException extends \InvalidArgumentException
 
     public static function assertNonZeroInteger($value, $callee): void
     {
-        if (!is_int($value) || 0 == $value) {
+        if (!is_int($value) || 0 === $value) {
             throw new static(sprintf('%s expected parameter %d to be non-zero', $callee, $value));
         }
     }
