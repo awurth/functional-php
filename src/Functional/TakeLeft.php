@@ -28,7 +28,7 @@ use function iterator_to_array;
  *
  * @no-named-arguments
  */
-function take_left($collection, $count)
+function take_left($collection, $count): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertPositiveInteger($count, __FUNCTION__, 2);

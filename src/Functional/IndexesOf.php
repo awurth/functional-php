@@ -26,7 +26,7 @@ use function is_callable;
  *
  * @no-named-arguments
  */
-function indexes_of($collection, $value)
+function indexes_of($collection, $value): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

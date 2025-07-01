@@ -19,5 +19,5 @@ namespace Functional;
  */
 function identical($b)
 {
-    return static fn ($a) => $a === $b;
+    return static fn ($a): bool => $a === $b;
 }

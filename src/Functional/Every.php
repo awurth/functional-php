@@ -23,7 +23,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function every($collection, ?callable $callback = null)
+function every($collection, ?callable $callback = null): bool
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

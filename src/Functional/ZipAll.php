@@ -30,7 +30,7 @@ use function is_callable;
  *
  * @no-named-arguments
  */
-function zip_all(...$args)
+function zip_all(...$args): array
 {
     /** @var callable|null $callback */
     $callback = null;

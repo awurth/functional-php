@@ -25,7 +25,7 @@ use Functional\Sequences\ExponentialSequence;
  *
  * @no-named-arguments
  */
-function sequence_exponential($start, $percentage)
+function sequence_exponential($start, $percentage): ExponentialSequence
 {
     InvalidArgumentException::assertIntegerGreaterThanOrEqual($start, 1, __METHOD__, 1);
     InvalidArgumentException::assertIntegerGreaterThanOrEqual($percentage, 1, __METHOD__, 2);

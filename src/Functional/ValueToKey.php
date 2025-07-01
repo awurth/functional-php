@@ -29,7 +29,7 @@ function value_to_key(...$any)
 
     static $objectToRef = null;
     if (!$objectToRef) {
-        $objectToRef = static function ($value) use (&$objectReferences) {
+        $objectToRef = static function ($value) use (&$objectReferences): string {
             $hash = spl_object_hash($value);
             /*
              * spl_object_hash() will return the same hash twice in a single request if an object goes out of scope
@@ -58,7 +58,7 @@ function value_to_key(...$any)
 
     static $valueToRef = null;
     if (!$valueToRef) {
-        $valueToRef = static function ($value, $key = null) use (&$valueToRef, $objectToRef) {
+        $valueToRef = static function ($value, $key = null) use (&$valueToRef, $objectToRef): string {
             $type = gettype($value);
             if ('array' === $type) {
                 $ref = '['.implode(':', map($value, $valueToRef)).']';

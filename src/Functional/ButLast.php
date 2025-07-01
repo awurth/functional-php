@@ -26,7 +26,7 @@ use function iterator_to_array;
  *
  * @no-named-arguments
  */
-function but_last($collection)
+function but_last($collection): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

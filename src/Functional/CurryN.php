@@ -10,6 +10,7 @@
 
 namespace Functional;
 
+use Closure;
 use function array_merge;
 use function call_user_func_array;
 use function count;
@@ -30,7 +31,7 @@ use function count;
  */
 function curry_n($count, callable $function)
 {
-    $accumulator = static function (array $arguments) use ($count, $function, &$accumulator) {
+    $accumulator = static function (array $arguments) use ($count, $function, &$accumulator): Closure {
         return static function (...$newArguments) use ($count, $function, $arguments, $accumulator) {
             $arguments = array_merge($arguments, $newArguments);
 

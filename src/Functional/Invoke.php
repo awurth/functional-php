@@ -26,7 +26,7 @@ use function is_callable;
  *
  * @no-named-arguments
  */
-function invoke($collection, $methodName, array $arguments = [])
+function invoke($collection, $methodName, array $arguments = []): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertMethodName($methodName, __FUNCTION__, 2);

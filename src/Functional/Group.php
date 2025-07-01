@@ -22,7 +22,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function group($collection, callable $callback)
+function group($collection, callable $callback): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

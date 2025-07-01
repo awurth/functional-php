@@ -24,7 +24,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function contains($collection, $value, $strict = true)
+function contains($collection, $value, $strict = true): bool
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

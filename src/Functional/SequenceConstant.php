@@ -24,7 +24,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function sequence_constant($value)
+function sequence_constant($value): InfiniteIterator
 {
     InvalidArgumentException::assertIntegerGreaterThanOrEqual($value, 0, __FUNCTION__, 1);
 

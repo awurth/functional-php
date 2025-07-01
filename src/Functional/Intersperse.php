@@ -25,7 +25,7 @@ use function array_pop;
  *
  * @no-named-arguments
  */
-function intersperse($collection, $glue)
+function intersperse($collection, $glue): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

@@ -23,7 +23,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function reject($collection, ?callable $callback = null)
+function reject($collection, ?callable $callback = null): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

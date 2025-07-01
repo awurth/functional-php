@@ -27,7 +27,7 @@ use function is_object;
  *
  * @no-named-arguments
  */
-function pluck($collection, $propertyName)
+function pluck($collection, $propertyName): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertPropertyName($propertyName, __FUNCTION__, 2);

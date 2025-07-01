@@ -21,7 +21,7 @@ use function implode;
  *
  * @no-named-arguments
  */
-function concat(string ...$strings)
+function concat(string ...$strings): string
 {
     return implode('', $strings);
 }

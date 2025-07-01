@@ -28,21 +28,21 @@ class MatchException extends InvalidArgumentException
         }
     }
 
-    private static function assertArray($key, $condition, $callee): void
+    private static function assertArray(int|string $key, $condition, $callee): void
     {
         if (!is_array($condition)) {
             throw new static(sprintf('%s() expects condition at key %d to be array, %s given', $callee, $key, gettype($condition)),);
         }
     }
 
-    private static function assertLength($key, $condition, $callee): void
+    private static function assertLength(int|string $key, $condition, $callee): void
     {
         if (count($condition) < 2) {
             throw new static(sprintf('%s() expects size of condition at key %d to be greater than or equals to 2, %d given', $callee, $key, count($condition)),);
         }
     }
 
-    private static function assertCallables($key, $condition, $callee): void
+    private static function assertCallables(int|string $key, $condition, $callee): void
     {
         if (!is_callable($condition[0]) || !is_callable($condition[1])) {
             throw new static(sprintf('%s() expects first two items of condition at key %d to be callables', $callee, $key),);

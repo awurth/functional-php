@@ -27,7 +27,7 @@ use function is_array;
  *
  * @no-named-arguments
  */
-function flatten($collection)
+function flatten($collection): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

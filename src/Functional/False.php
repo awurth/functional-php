@@ -22,7 +22,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function false($collection)
+function false($collection): bool
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

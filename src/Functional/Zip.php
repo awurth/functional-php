@@ -27,7 +27,7 @@ use function reset;
  *
  * @no-named-arguments
  */
-function zip(...$args)
+function zip(...$args): array
 {
     $callback = null;
     if (is_callable(end($args))) {

@@ -22,7 +22,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function filter($collection, callable $callback)
+function filter($collection, callable $callback): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

@@ -22,7 +22,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function drop_last($collection, callable $callback)
+function drop_last($collection, callable $callback): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertCallback($callback, __FUNCTION__, 2);

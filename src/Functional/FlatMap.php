@@ -32,7 +32,7 @@ use function is_array;
  *
  * @no-named-arguments
  */
-function flat_map($collection, callable $callback)
+function flat_map($collection, callable $callback): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

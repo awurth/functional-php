@@ -24,7 +24,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function sequence_linear($start, $amount)
+function sequence_linear($start, $amount): LinearSequence
 {
     InvalidArgumentException::assertIntegerGreaterThanOrEqual($start, 0, __FUNCTION__, 1);
     InvalidArgumentException::assertInteger($amount, __FUNCTION__, 2);

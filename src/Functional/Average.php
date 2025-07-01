@@ -24,7 +24,7 @@ use function is_numeric;
  *
  * @no-named-arguments
  */
-function average($collection)
+function average($collection): null|int|float
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

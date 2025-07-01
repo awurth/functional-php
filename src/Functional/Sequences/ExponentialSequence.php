@@ -27,8 +27,7 @@ class ExponentialSequence implements Iterator
     /** @var int */
     private $value;
 
-    /** @var int */
-    private $times;
+    private int $times = 0;
 
     public function __construct($start, $percentage)
     {

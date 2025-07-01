@@ -221,14 +221,14 @@ class InvalidArgumentException extends \InvalidArgumentException
      *
      * @throws InvalidArgumentException
      */
-    private static function assertCollectionAlike($collection, $className, $callee, $parameterPosition): void
+    private static function assertCollectionAlike($collection, string $className, $callee, $parameterPosition): void
     {
         if (!is_array($collection) && !$collection instanceof $className) {
             throw new static(sprintf('%s() expects parameter %d to be array or instance of %s, %s given', $callee, $parameterPosition, $className, self::getType($collection)),);
         }
     }
 
-    private static function getType($value)
+    private static function getType($value): string
     {
         return is_object($value) ? $value::class : gettype($value);
     }

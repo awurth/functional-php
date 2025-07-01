@@ -23,7 +23,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function reindex($collection, callable $callback)
+function reindex($collection, callable $callback): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

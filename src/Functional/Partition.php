@@ -31,7 +31,7 @@ use function count;
  *
  * @no-named-arguments
  */
-function partition($collection, callable ...$callbacks)
+function partition($collection, callable ...$callbacks): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

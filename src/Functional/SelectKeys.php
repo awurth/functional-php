@@ -26,7 +26,7 @@ use function iterator_to_array;
  *
  * @no-named-arguments
  */
-function select_keys($collection, array $keys)
+function select_keys($collection, array $keys): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

@@ -25,7 +25,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function from_entries($collection)
+function from_entries($collection): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

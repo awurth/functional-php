@@ -23,7 +23,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function map($collection, callable $callback)
+function map($collection, callable $callback): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 
