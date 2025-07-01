@@ -18,8 +18,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function group($collection, callable $callback): array

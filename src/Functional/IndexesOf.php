@@ -22,8 +22,6 @@ use function is_callable;
  * @param array|Traversable $collection
  * @param callable|mixed    $value
  *
- * @return array
- *
  * @no-named-arguments
  */
 function indexes_of($collection, $value): array

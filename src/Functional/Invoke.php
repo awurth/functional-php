@@ -22,8 +22,6 @@ use function is_callable;
  * @param array|Traversable $collection
  * @param string            $methodName
  *
- * @return array
- *
  * @no-named-arguments
  */
 function invoke($collection, $methodName, array $arguments = []): array

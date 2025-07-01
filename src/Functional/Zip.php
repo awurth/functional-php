@@ -23,8 +23,6 @@ use function reset;
  *
  * @param array|Traversable ...$args One or more callbacks
  *
- * @return array
- *
  * @no-named-arguments
  */
 function zip(...$args): array

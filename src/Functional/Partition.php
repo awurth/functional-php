@@ -27,8 +27,6 @@ use function count;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function partition($collection, callable ...$callbacks): array

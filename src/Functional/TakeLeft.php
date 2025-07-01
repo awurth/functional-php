@@ -24,8 +24,6 @@ use function iterator_to_array;
  * @param array|Traversable $collection
  * @param int               $count
  *
- * @return array
- *
  * @no-named-arguments
  */
 function take_left($collection, $count): array

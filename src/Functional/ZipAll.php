@@ -26,8 +26,6 @@ use function is_callable;
  *
  * @param array|Traversable ...$args One or more callbacks
  *
- * @return array
- *
  * @no-named-arguments
  */
 function zip_all(...$args): array

@@ -22,8 +22,6 @@ use function iterator_to_array;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function but_last($collection): array

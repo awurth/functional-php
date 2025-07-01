@@ -27,8 +27,6 @@ use function iterator_to_array;
  * @param int               $count
  * @param bool              $preserveKeys
  *
- * @return array
- *
  * @no-named-arguments
  */
 function take_right($collection, $count, $preserveKeys = false): array

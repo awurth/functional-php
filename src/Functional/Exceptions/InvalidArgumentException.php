@@ -215,7 +215,6 @@ class InvalidArgumentException extends \InvalidArgumentException
     }
 
     /**
-     * @param string $className
      * @param string $callee
      * @param int    $parameterPosition
      *

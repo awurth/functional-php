@@ -28,8 +28,6 @@ use function is_array;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function flat_map($collection, callable $callback): array

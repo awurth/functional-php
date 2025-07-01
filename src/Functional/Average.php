@@ -20,11 +20,9 @@ use function is_numeric;
  *
  * @param array|Traversable $collection
  *
- * @return float|int|null
- *
  * @no-named-arguments
  */
-function average($collection): null|int|float
+function average($collection): int|float|null
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 

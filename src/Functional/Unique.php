@@ -21,8 +21,6 @@ use function in_array;
  * @param array|Traversable $collection
  * @param bool              $strict
  *
- * @return array
- *
  * @no-named-arguments
  */
 function unique($collection, ?callable $callback = null, $strict = true): array

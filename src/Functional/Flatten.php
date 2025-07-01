@@ -23,8 +23,6 @@ use function is_array;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function flatten($collection): array

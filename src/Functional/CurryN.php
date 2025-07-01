@@ -11,6 +11,7 @@
 namespace Functional;
 
 use Closure;
+
 use function array_merge;
 use function call_user_func_array;
 use function count;

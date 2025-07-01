@@ -21,8 +21,6 @@ use function array_pop;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function intersperse($collection, $glue): array

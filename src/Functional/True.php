@@ -18,8 +18,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return bool
- *
  * @no-named-arguments
  */
 function true($collection): bool

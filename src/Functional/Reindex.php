@@ -19,8 +19,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function reindex($collection, callable $callback): array

@@ -18,8 +18,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function drop_first($collection, callable $callback): array

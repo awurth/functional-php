@@ -17,8 +17,6 @@ use function implode;
  *
  * @param string[] ...$strings
  *
- * @return string
- *
  * @no-named-arguments
  */
 function concat(string ...$strings): string

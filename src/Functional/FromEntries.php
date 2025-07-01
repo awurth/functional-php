@@ -21,8 +21,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function from_entries($collection): array

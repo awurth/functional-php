@@ -19,8 +19,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function select($collection, ?callable $callback = null): array

@@ -23,8 +23,6 @@ use function is_object;
  * @param array|Traversable $collection
  * @param string            $propertyName
  *
- * @return array
- *
  * @no-named-arguments
  */
 function pluck($collection, $propertyName): array

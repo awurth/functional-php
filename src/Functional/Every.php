@@ -19,8 +19,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return bool
- *
  * @no-named-arguments
  */
 function every($collection, ?callable $callback = null): bool

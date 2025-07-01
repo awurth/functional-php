@@ -20,8 +20,6 @@ use Traversable;
  * @param array|Traversable $collection
  * @param bool              $strict
  *
- * @return bool
- *
  * @no-named-arguments
  */
 function contains($collection, $value, $strict = true): bool

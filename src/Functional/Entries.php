@@ -21,8 +21,6 @@ use Traversable;
  *
  * @param array|Traversable $collection
  *
- * @return array
- *
  * @no-named-arguments
  */
 function entries($collection, int $start = 0): array
