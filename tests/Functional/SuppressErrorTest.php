@@ -23,7 +23,7 @@ class SuppressErrorTest extends AbstractTestCase
 {
     public function testErrorIsSuppressed(): void
     {
-        $origFn = function (): void {
+        $origFn = static function (): void {
             trigger_error('Some error', E_USER_ERROR);
         };
 
@@ -43,7 +43,7 @@ class SuppressErrorTest extends AbstractTestCase
     {
         $expectedException = new RuntimeException();
         $fn = suppress_error(
-            function () use ($expectedException): void {
+            static function () use ($expectedException): void {
                 throw $expectedException;
             },
         );

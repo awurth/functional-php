@@ -38,10 +38,10 @@ function memoize(?callable $callback = null, $arguments = [], $key = null)
     }
 
     if (is_callable($key)) {
-        trigger_error('Passing a callable as key is deprecated and will be removed in 2.0', E_USER_DEPRECATED);
+        @trigger_error('Passing a callable as key is deprecated and will be removed in 2.0', E_USER_DEPRECATED);
         $key = $key();
     } elseif (is_callable($arguments)) {
-        trigger_error('Passing a callable as key is deprecated and will be removed in 2.0', E_USER_DEPRECATED);
+        @trigger_error('Passing a callable as key is deprecated and will be removed in 2.0', E_USER_DEPRECATED);
         $key = $arguments();
     }
 

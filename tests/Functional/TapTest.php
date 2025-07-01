@@ -32,7 +32,7 @@ class TapTest extends AbstractTestCase
         $input = new stdClass();
         $input->property = 'foo';
 
-        $output = tap($input, function ($o): void {
+        $output = tap($input, static function ($o): void {
             $o->property = 'bar';
         });
 

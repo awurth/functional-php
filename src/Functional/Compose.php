@@ -29,8 +29,8 @@ function compose(...$functions)
 {
     return array_reduce(
         $functions,
-        function ($carry, $item) {
-            return function ($x) use ($carry, $item) {
+        static function ($carry, $item) {
+            return static function ($x) use ($carry, $item) {
                 return $item($carry($x));
             };
         },

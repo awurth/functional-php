@@ -29,7 +29,7 @@ use function random_bytes;
  */
 function partial_any(callable $callback, ...$arguments)
 {
-    return function (...$innerArguments) use ($callback, $arguments) {
+    return static function (...$innerArguments) use ($callback, $arguments) {
         $placeholder = …();
 
         foreach ($arguments as $position => &$argument) {

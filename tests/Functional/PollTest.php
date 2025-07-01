@@ -59,7 +59,7 @@ class PollTest extends AbstractTestCase
             ->method('poll')
             ->withConsecutive([0, 0])
             ->willReturnCallback(
-                function () {
+                static function () {
                     usleep(100);
                     return false;
                 },

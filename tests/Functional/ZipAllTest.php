@@ -22,7 +22,7 @@ class ZipAllTest extends AbstractTestCase
         self::assertSame([], zip_all());
         self::assertSame([], zip_all([]));
         self::assertSame([], zip_all([], [], []));
-        self::assertSame([], zip_all([], [], function (): void {
+        self::assertSame([], zip_all([], [], static function (): void {
             throw new BadFunctionCallException('Should not be called');
         }));
     }

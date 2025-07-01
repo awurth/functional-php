@@ -19,7 +19,7 @@ class WithTest extends AbstractTestCase
     public function testWithNull(): void
     {
         self::assertNull(
-            with(null, function (): void {
+            with(null, static function (): void {
                 throw new Exception('Should not be called');
             }),
         );
@@ -31,7 +31,7 @@ class WithTest extends AbstractTestCase
             2,
             with(
                 1,
-                function ($value) {
+                static function ($value) {
                     return $value + 1;
                 },
             ),

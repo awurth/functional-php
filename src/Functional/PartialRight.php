@@ -23,7 +23,7 @@ use function array_merge;
  */
 function partial_right(callable $callback, ...$arguments)
 {
-    return function (...$innerArguments) use ($callback, $arguments) {
+    return static function (...$innerArguments) use ($callback, $arguments) {
         return $callback(...array_merge($innerArguments, $arguments));
     };
 }

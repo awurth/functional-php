@@ -29,4 +29,6 @@ namespace Functional;
  *
  * @no-named-arguments
  */
-function noop(): void {}
+function noop(): void
+{
+}

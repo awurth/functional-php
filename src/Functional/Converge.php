@@ -25,7 +25,7 @@ namespace Functional;
  */
 function converge($convergingFunction, array $branchingFunctions)
 {
-    return function (...$values) use ($convergingFunction, $branchingFunctions) {
+    return static function (...$values) use ($convergingFunction, $branchingFunctions) {
         $result = [];
 
         foreach ($branchingFunctions as $branchingFunction) {

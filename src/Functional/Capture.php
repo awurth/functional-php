@@ -21,7 +21,7 @@ namespace Functional;
  */
 function capture(callable $callback, &$result)
 {
-    return function (...$args) use ($callback, &$result) {
+    return static function (...$args) use ($callback, &$result) {
         $result = $callback(...$args);
 
         return $result;

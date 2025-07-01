@@ -23,7 +23,7 @@ use Closure;
  */
 function less_than($b)
 {
-    return function ($a) use ($b) {
+    return static function ($a) use ($b) {
         return $a < $b;
     };
 }

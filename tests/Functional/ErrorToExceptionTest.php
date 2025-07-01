@@ -24,7 +24,7 @@ class ErrorToExceptionTest extends AbstractTestCase
 {
     public function testErrorIsThrownAsException(): void
     {
-        $origFn = function (): void {
+        $origFn = static function (): void {
             trigger_error('Some error', E_USER_ERROR);
         };
 
@@ -47,7 +47,7 @@ class ErrorToExceptionTest extends AbstractTestCase
     {
         $expectedException = new RuntimeException();
         $fn = error_to_exception(
-            function () use ($expectedException): void {
+            static function () use ($expectedException): void {
                 throw $expectedException;
             },
         );

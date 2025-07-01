@@ -74,14 +74,14 @@ class MemoizeTest extends AbstractTestCase
 
     public function testMemoizeStaticMethodCall(): void
     {
-        self::assertSame('STATIC METHOD VALUE1', memoize([MemoizeTest::class, 'call']));
-        self::assertSame('STATIC METHOD VALUE1', memoize([MemoizeTest::class, 'call']));
-        self::assertSame('STATIC METHOD VALUE1', memoize([MemoizeTest::class, 'call']));
+        self::assertSame('STATIC METHOD VALUE1', memoize([self::class, 'call']));
+        self::assertSame('STATIC METHOD VALUE1', memoize([self::class, 'call']));
+        self::assertSame('STATIC METHOD VALUE1', memoize([self::class, 'call']));
     }
 
     public function testMemoizeClosureCall(): void
     {
-        $closure = function () {
+        $closure = static function () {
             return 'CLOSURE VALUE' . MemoizeTest::invoke('Closure');
         };
         self::assertSame('CLOSURE VALUE1', memoize($closure));

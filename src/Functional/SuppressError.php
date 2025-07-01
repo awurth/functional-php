@@ -26,7 +26,7 @@ use function set_error_handler;
  */
 function suppress_error(callable $callback)
 {
-    return function (...$arguments) use ($callback) {
+    return static function (...$arguments) use ($callback) {
         try {
             set_error_handler(const_function(null));
 
