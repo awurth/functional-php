@@ -26,8 +26,9 @@ class EachTest extends AbstractTestCase
     {
         parent::setUp();
         $this->cb = $this->getMockBuilder('cb')
-                         ->setMethods(['call'])
-                         ->getMock();
+            ->setMethods(['call'])
+            ->getMock()
+        ;
 
         $this->list = ['value0', 'value1', 'value2', 'value3'];
         $this->listIterator = new ArrayIterator($this->list);
@@ -82,7 +83,8 @@ class EachTest extends AbstractTestCase
         }
 
         $this->cb->method('call')
-            ->withConsecutive(...$args);
+            ->withConsecutive(...$args)
+        ;
     }
 
     public function testPassNonCallable(): void

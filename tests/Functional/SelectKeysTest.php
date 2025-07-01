@@ -39,7 +39,7 @@ class SelectKeysTest extends AbstractTestCase
 
     public function testPassNonArrayOrTraversable(): void
     {
-        $this->expectArgumentError("Functional\select_keys() expects parameter 1 to be array or instance of Traversable");
+        $this->expectArgumentError('Functional\\select_keys() expects parameter 1 to be array or instance of Traversable');
         select_keys(new stdclass(), []);
     }
 }

@@ -49,7 +49,8 @@ class MemoizeTest extends AbstractTestCase
         parent::setUp();
         $this->callback = $this->getMockBuilder('stdClass')
             ->setMethods(['execute'])
-            ->getMock();
+            ->getMock()
+        ;
 
         self::$invocation = 0;
     }
@@ -59,7 +60,8 @@ class MemoizeTest extends AbstractTestCase
         $this->callback
             ->expects(self::once())
             ->method('execute')
-            ->willReturn('VALUE1');
+            ->willReturn('VALUE1')
+        ;
 
         self::assertSame('VALUE1', memoize([$this->callback, 'execute']));
         self::assertSame('VALUE1', memoize([$this->callback, 'execute']));
@@ -95,7 +97,8 @@ class MemoizeTest extends AbstractTestCase
         $this->callback
             ->method('execute')
             ->withConsecutive(['FOO', 'BAR'], ['BAR', 'BAZ'])
-            ->willReturnOnConsecutiveCalls('FOO BAR', 'BAR BAZ');
+            ->willReturnOnConsecutiveCalls('FOO BAR', 'BAR BAZ')
+        ;
 
         self::assertSame('FOO BAR', memoize([$this->callback, 'execute'], ['FOO', 'BAR']));
         self::assertSame('FOO BAR', memoize([$this->callback, 'execute'], ['FOO', 'BAR']));
@@ -108,7 +111,8 @@ class MemoizeTest extends AbstractTestCase
         $this->callback
             ->method('execute')
             ->withConsecutive(['FOO', 'BAR'], ['BAR', 'BAZ'])
-            ->willReturnOnConsecutiveCalls('FOO BAR', 'BAR BAZ');
+            ->willReturnOnConsecutiveCalls('FOO BAR', 'BAR BAZ')
+        ;
 
         self::assertSame('FOO BAR', memoize([$this->callback, 'execute'], ['FOO', 'BAR'], 'MY:CUSTOM:KEY'));
         self::assertSame('FOO BAR', memoize([$this->callback, 'execute'], ['BAR', 'BAZ'], 'MY:CUSTOM:KEY'), 'Result already memoized');
@@ -123,7 +127,8 @@ class MemoizeTest extends AbstractTestCase
         $this->callback
             ->expects(self::exactly(2))
             ->method('execute')
-            ->will(self::throwException(new BadMethodCallException('EXCEPTION')));
+            ->will(self::throwException(new BadMethodCallException('EXCEPTION')))
+        ;
 
         try {
             memoize([$this->callback, 'execute']);
@@ -142,7 +147,8 @@ class MemoizeTest extends AbstractTestCase
     {
         $this->callback
             ->expects(self::exactly(2))
-            ->method('execute');
+            ->method('execute')
+        ;
 
         memoize([$this->callback, 'execute']);
         memoize([$this->callback, 'execute']);

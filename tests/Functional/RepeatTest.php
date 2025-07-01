@@ -37,7 +37,8 @@ class RepeatTest extends AbstractTestCase
     {
         $this->repeated
             ->expects(self::exactly(10))
-            ->method('foo');
+            ->method('foo')
+        ;
 
         repeat([$this->repeated, 'foo'])(10);
     }

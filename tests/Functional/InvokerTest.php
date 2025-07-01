@@ -42,7 +42,7 @@ class InvokerTest extends AbstractTestCase
 
         $fn = invoker('undefinedMethod');
 
-        $this->expectException('Error', 'Call to undefined method Functional\\Tests\\InvokerTest::undefinedMethod');
+        $this->expectException('Error', 'Call to undefined method Functional\Tests\InvokerTest::undefinedMethod');
         $fn($this);
     }
 

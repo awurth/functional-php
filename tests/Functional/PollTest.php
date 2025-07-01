@@ -38,7 +38,8 @@ class PollTest extends AbstractTestCase
             ->expects(self::once())
             ->method('poll')
             ->with(0, 0)
-            ->willReturn(true);
+            ->willReturn(true)
+        ;
 
         self::assertTrue(poll([$this->poller, 'poll'], 1000));
     }
@@ -48,7 +49,8 @@ class PollTest extends AbstractTestCase
         $this->poller
             ->method('poll')
             ->withConsecutive([0, 0], [1, 0])
-            ->willReturnOnConsecutiveCalls(false, 'OH HAI');
+            ->willReturnOnConsecutiveCalls(false, 'OH HAI')
+        ;
 
         self::assertSame('OH HAI', poll([$this->poller, 'poll'], 2000));
     }
@@ -64,7 +66,8 @@ class PollTest extends AbstractTestCase
 
                     return false;
                 },
-            );
+            )
+        ;
 
         self::assertFalse(poll([$this->poller, 'poll'], 100));
     }
@@ -74,7 +77,8 @@ class PollTest extends AbstractTestCase
         $this->poller
             ->method('poll')
             ->withConsecutive([0, 0])
-            ->willReturn(true);
+            ->willReturn(true)
+        ;
 
         self::assertTrue(poll([$this->poller, 'poll'], 0, new ArrayIterator([])));
     }

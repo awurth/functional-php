@@ -38,7 +38,8 @@ class RetryTest extends AbstractTestCase
             ->expects(self::once())
             ->method('retry')
             ->with(0, 0)
-            ->willReturn('value');
+            ->willReturn('value')
+        ;
 
         self::assertSame('value', retry([$this->retryer, 'retry'], 10));
     }
@@ -48,7 +49,8 @@ class RetryTest extends AbstractTestCase
         $this->retryer
             ->method('retry')
             ->withConsecutive([0, 0], [1, 0])
-            ->willReturnOnConsecutiveCalls(self::throwException(new Exception()), 'value');
+            ->willReturnOnConsecutiveCalls(self::throwException(new Exception()), 'value')
+        ;
 
         self::assertSame('value', retry([$this->retryer, 'retry'], 10));
     }
@@ -61,7 +63,8 @@ class RetryTest extends AbstractTestCase
             ->willReturnOnConsecutiveCalls(
                 self::throwException(new Exception('first')),
                 self::throwException(new Exception('second')),
-            );
+            )
+        ;
 
         $this->expectException('Exception');
 
@@ -77,7 +80,8 @@ class RetryTest extends AbstractTestCase
             ->willReturnOnConsecutiveCalls(
                 self::throwException(new Exception('first')),
                 self::throwException(new Exception('second')),
-            );
+            )
+        ;
 
         $this->expectException('Exception');
 
@@ -101,7 +105,8 @@ class RetryTest extends AbstractTestCase
             ->willReturnOnConsecutiveCalls(
                 self::throwException(new Exception('first')),
                 self::throwException(new Exception('second')),
-            );
+            )
+        ;
 
         $this->expectException('Exception');
 
@@ -119,7 +124,8 @@ class RetryTest extends AbstractTestCase
                 self::throwException(new Exception('second')),
                 self::throwException(new Exception('third')),
                 self::throwException(new Exception('fourth')),
-            );
+            )
+        ;
 
         $this->expectException('Exception');
 
