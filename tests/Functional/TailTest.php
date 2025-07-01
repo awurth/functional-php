@@ -69,14 +69,14 @@ class TailTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        tail($this->list, [$this, 'exception']);
+        tail($this->list, $this->exception(...));
     }
 
     public function testExceptionIsThrownInCollection(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        tail($this->listIterator, [$this, 'exception']);
+        tail($this->listIterator, $this->exception(...));
     }
 
     public function testPassNoCollection(): void

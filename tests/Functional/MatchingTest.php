@@ -30,9 +30,7 @@ class MatchingTest extends AbstractTestCase
                 [equal('baz'), const_function('is baz')],
                 [
                     const_function(true),
-                    static function ($x) {
-                        return 'default is '.$x;
-                    },
+                    static fn($x) => 'default is '.$x,
                 ],
             ],
         );

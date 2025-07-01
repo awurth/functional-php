@@ -51,7 +51,7 @@ class InvalidArgumentException extends \InvalidArgumentException
 
                     $sep = '::';
                     if (is_object($callback[0])) {
-                        $callback[0] = get_class($callback[0]);
+                        $callback[0] = $callback[0]::class;
                         $sep = '->';
                     }
 

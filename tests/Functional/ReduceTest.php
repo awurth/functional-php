@@ -30,16 +30,16 @@ class ReduceTest extends AbstractTestCase
     public function testReducing(): void
     {
         $this->currentCollection = $this->list;
-        self::assertSame('0:one,1:two,2:three', reduce_left($this->list, [$this, 'functionalCallback']));
-        self::assertSame('default,0:one,1:two,2:three', reduce_left($this->list, [$this, 'functionalCallback'], 'default'));
-        self::assertSame('2:three,1:two,0:one', reduce_right($this->list, [$this, 'functionalCallback']));
-        self::assertSame('default,2:three,1:two,0:one', reduce_right($this->list, [$this, 'functionalCallback'], 'default'));
+        self::assertSame('0:one,1:two,2:three', reduce_left($this->list, $this->functionalCallback(...)));
+        self::assertSame('default,0:one,1:two,2:three', reduce_left($this->list, $this->functionalCallback(...), 'default'));
+        self::assertSame('2:three,1:two,0:one', reduce_right($this->list, $this->functionalCallback(...)));
+        self::assertSame('default,2:three,1:two,0:one', reduce_right($this->list, $this->functionalCallback(...), 'default'));
 
         $this->currentCollection = $this->listIterator;
-        self::assertSame('0:one,1:two,2:three', reduce_left($this->listIterator, [$this, 'functionalCallback']));
-        self::assertSame('default,0:one,1:two,2:three', reduce_left($this->listIterator, [$this, 'functionalCallback'], 'default'));
-        self::assertSame('2:three,1:two,0:one', reduce_right($this->listIterator, [$this, 'functionalCallback']));
-        self::assertSame('default,2:three,1:two,0:one', reduce_right($this->listIterator, [$this, 'functionalCallback'], 'default'));
+        self::assertSame('0:one,1:two,2:three', reduce_left($this->listIterator, $this->functionalCallback(...)));
+        self::assertSame('default,0:one,1:two,2:three', reduce_left($this->listIterator, $this->functionalCallback(...), 'default'));
+        self::assertSame('2:three,1:two,0:one', reduce_right($this->listIterator, $this->functionalCallback(...)));
+        self::assertSame('default,2:three,1:two,0:one', reduce_right($this->listIterator, $this->functionalCallback(...), 'default'));
 
         self::assertSame(
             'initial',
@@ -143,28 +143,28 @@ class ReduceTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception: 0');
-        reduce_left($this->listIterator, [$this, 'exception']);
+        reduce_left($this->listIterator, $this->exception(...));
     }
 
     public function testExceptionThrownInIteratorCallbackWhileReduceRight(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception: 2');
-        reduce_right($this->listIterator, [$this, 'exception']);
+        reduce_right($this->listIterator, $this->exception(...));
     }
 
     public function testExceptionThrownInArrayCallbackWhileReduceLeft(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception: 0');
-        reduce_left($this->list, [$this, 'exception']);
+        reduce_left($this->list, $this->exception(...));
     }
 
     public function testExceptionThrownInArrayCallbackWhileReduceRight(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception: 2');
-        reduce_right($this->list, [$this, 'exception']);
+        reduce_right($this->list, $this->exception(...));
     }
 
     public function functionalCallback($value, $key, $collection, $returnValue): string

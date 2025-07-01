@@ -41,10 +41,10 @@ class SomeTest extends AbstractTestCase
 
     public function test(): void
     {
-        self::assertTrue(some($this->goodArray, [$this, 'functionalCallback']));
-        self::assertTrue(some($this->goodIterator, [$this, 'functionalCallback']));
-        self::assertFalse(some($this->badArray, [$this, 'functionalCallback']));
-        self::assertFalse(some($this->badIterator, [$this, 'functionalCallback']));
+        self::assertTrue(some($this->goodArray, $this->functionalCallback(...)));
+        self::assertTrue(some($this->goodIterator, $this->functionalCallback(...)));
+        self::assertFalse(some($this->badArray, $this->functionalCallback(...)));
+        self::assertFalse(some($this->badIterator, $this->functionalCallback(...)));
     }
 
     public function testPassNonCallable(): void
@@ -71,14 +71,14 @@ class SomeTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        some($this->goodArray, [$this, 'exception']);
+        some($this->goodArray, $this->exception(...));
     }
 
     public function testExceptionThrownInCollection(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        some($this->goodIterator, [$this, 'exception']);
+        some($this->goodIterator, $this->exception(...));
     }
 
     public function functionalCallback($value, $key, $collection): bool

@@ -65,14 +65,14 @@ class LastTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        last($this->list, [$this, 'exception']);
+        last($this->list, $this->exception(...));
     }
 
     public function testExceptionIsThrownInCollection(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        last($this->listIterator, [$this, 'exception']);
+        last($this->listIterator, $this->exception(...));
     }
 
     public function testPassNoCollection(): void

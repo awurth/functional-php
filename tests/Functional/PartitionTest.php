@@ -64,28 +64,28 @@ class PartitionTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        partition($this->list, [$this, 'exception']);
+        partition($this->list, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHash(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        partition($this->hash, [$this, 'exception']);
+        partition($this->hash, $this->exception(...));
     }
 
     public function testExceptionIsThrownInIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        partition($this->listIterator, [$this, 'exception']);
+        partition($this->listIterator, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHashIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        partition($this->hashIterator, [$this, 'exception']);
+        partition($this->hashIterator, $this->exception(...));
     }
 
     public function testPassNoCollection(): void

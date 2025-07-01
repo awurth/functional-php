@@ -139,7 +139,7 @@ class MemoizeTest extends AbstractTestCase
         try {
             memoize([$this->callback, 'execute']);
             self::fail('Expected failure');
-        } catch (BadMethodCallException $e) {
+        } catch (BadMethodCallException) {
         }
     }
 

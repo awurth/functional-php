@@ -29,11 +29,7 @@ function compose(...$functions)
 {
     return array_reduce(
         $functions,
-        static function ($carry, $item) {
-            return static function ($x) use ($carry, $item) {
-                return $item($carry($x));
-            };
-        },
+        static fn($carry, $item) => static fn($x) => $item($carry($x)),
         'Functional\id',
     );
 }

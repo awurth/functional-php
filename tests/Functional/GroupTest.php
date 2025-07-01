@@ -88,28 +88,28 @@ class GroupTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        group($this->list, [$this, 'exception']);
+        group($this->list, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHash(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        group($this->hash, [$this, 'exception']);
+        group($this->hash, $this->exception(...));
     }
 
     public function testExceptionIsThrownInIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        group($this->listIterator, [$this, 'exception']);
+        group($this->listIterator, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHashIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        group($this->hashIterator, [$this, 'exception']);
+        group($this->hashIterator, $this->exception(...));
     }
 
     public function testPassNoCollection(): void

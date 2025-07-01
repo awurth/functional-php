@@ -21,7 +21,5 @@ namespace Functional;
  */
 function equal($b)
 {
-    return static function ($a) use ($b) {
-        return $a == $b;
-    };
+    return static fn($a) => $a == $b;
 }

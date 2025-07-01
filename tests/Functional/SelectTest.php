@@ -90,7 +90,7 @@ class SelectTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        $functionName($this->list, [$this, 'exception']);
+        $functionName($this->list, $this->exception(...));
     }
 
     /**
@@ -100,7 +100,7 @@ class SelectTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        $functionName($this->hash, [$this, 'exception']);
+        $functionName($this->hash, $this->exception(...));
     }
 
     /**
@@ -110,7 +110,7 @@ class SelectTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        $functionName($this->listIterator, [$this, 'exception']);
+        $functionName($this->listIterator, $this->exception(...));
     }
 
     /**
@@ -120,6 +120,6 @@ class SelectTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        $functionName($this->hashIterator, [$this, 'exception']);
+        $functionName($this->hashIterator, $this->exception(...));
     }
 }

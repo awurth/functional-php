@@ -40,9 +40,7 @@ class UniqueTest extends AbstractTestCase
         self::assertSame([0 => 'value1', 1 => 'value2', 3 => 'value'], unique($this->listIterator));
         self::assertSame(['k1' => 'val1', 'k2' => 'val2'], unique($this->hash));
         self::assertSame(['k1' => 'val1', 'k2' => 'val2'], unique($this->hashIterator));
-        $fn = static function ($value, $key, $collection) {
-            return $value;
-        };
+        $fn = (static fn($value, $key, $collection) => $value);
         self::assertSame([0 => 'value1', 1 => 'value2', 3 => 'value'], unique($this->list, $fn));
         self::assertSame([0 => 'value1', 1 => 'value2', 3 => 'value'], unique($this->listIterator, $fn));
         self::assertSame(['k1' => 'val1', 'k2' => 'val2'], unique($this->hash, $fn));
@@ -51,14 +49,10 @@ class UniqueTest extends AbstractTestCase
 
     public function testUnifyingByClosure(): void
     {
-        $fn = static function ($value, $key, $collection) {
-            return 0 === $key ? 'zero' : 'else';
-        };
+        $fn = (static fn($value, $key, $collection) => 0 === $key ? 'zero' : 'else');
         self::assertSame([0 => 'value1', 1 => 'value2'], unique($this->list, $fn));
         self::assertSame([0 => 'value1', 1 => 'value2'], unique($this->listIterator, $fn));
-        $fn = static function ($value, $key, $collection) {
-            return 0;
-        };
+        $fn = (static fn($value, $key, $collection) => 0);
         self::assertSame(['k1' => 'val1'], unique($this->hash, $fn));
         self::assertSame(['k1' => 'val1'], unique($this->hashIterator, $fn));
     }
@@ -70,9 +64,7 @@ class UniqueTest extends AbstractTestCase
         self::assertSame([0 => 1, 2 => '2', 4 => '3', 5 => 4], unique($this->mixedTypesIterator, null, false));
         self::assertSame([1, '1', '2', 2, '3', 4], unique($this->mixedTypesIterator));
 
-        $fn = static function ($value, $key, $collection) {
-            return $value;
-        };
+        $fn = (static fn($value, $key, $collection) => $value);
 
         self::assertSame([0 => 1, 2 => '2', 4 => '3', 5 => 4], unique($this->mixedTypesArray, $fn, false));
         self::assertSame([1, '1', '2', 2, '3', 4], unique($this->mixedTypesArray, $fn));
@@ -92,28 +84,28 @@ class UniqueTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        unique($this->list, [$this, 'exception']);
+        unique($this->list, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHash(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        unique($this->hash, [$this, 'exception']);
+        unique($this->hash, $this->exception(...));
     }
 
     public function testExceptionIsThrownInIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        unique($this->listIterator, [$this, 'exception']);
+        unique($this->listIterator, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHashIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        unique($this->hashIterator, [$this, 'exception']);
+        unique($this->hashIterator, $this->exception(...));
     }
 
     public function testPassNoCollection(): void

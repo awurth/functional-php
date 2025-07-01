@@ -40,10 +40,10 @@ class NoneTest extends AbstractTestCase
 
     public function test(): void
     {
-        self::assertTrue(none($this->goodArray, [$this, 'functionalCallback']));
-        self::assertTrue(none($this->goodIterator, [$this, 'functionalCallback']));
-        self::assertFalse(none($this->badArray, [$this, 'functionalCallback']));
-        self::assertFalse(none($this->badIterator, [$this, 'functionalCallback']));
+        self::assertTrue(none($this->goodArray, $this->functionalCallback(...)));
+        self::assertTrue(none($this->goodIterator, $this->functionalCallback(...)));
+        self::assertFalse(none($this->badArray, $this->functionalCallback(...)));
+        self::assertFalse(none($this->badIterator, $this->functionalCallback(...)));
     }
 
     public function testPassNoCollection(): void
@@ -70,14 +70,14 @@ class NoneTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        none($this->goodArray, [$this, 'exception']);
+        none($this->goodArray, $this->exception(...));
     }
 
     public function testExceptionIsThrownInIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        none($this->goodIterator, [$this, 'exception']);
+        none($this->goodIterator, $this->exception(...));
     }
 
     public function functionalCallback($value, $key, $collection): bool

@@ -80,9 +80,7 @@ class ZipTest extends AbstractTestCase
                 [1, 2, 3],
                 [-1, -2, -3],
                 [true, false],
-                static function ($one, $two, $three, $four) {
-                    return $one.$two.$three.$four;
-                },
+                static fn($one, $two, $three, $four) => $one.$two.$three.$four,
             ),
         );
         self::assertSame(
@@ -92,9 +90,7 @@ class ZipTest extends AbstractTestCase
                 new ArrayIterator([1, 2, 3]),
                 new ArrayIterator([-1, -2, -3]),
                 new ArrayIterator([true, false]),
-                static function ($one, $two, $three, $four) {
-                    return $one.$two.$three.$four;
-                },
+                static fn($one, $two, $three, $four) => $one.$two.$three.$four,
             ),
         );
     }
@@ -144,6 +140,6 @@ class ZipTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        zip([null], [$this, 'exception']);
+        zip([null], $this->exception(...));
     }
 }

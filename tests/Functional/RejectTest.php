@@ -64,27 +64,27 @@ class RejectTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        reject($this->list, [$this, 'exception']);
+        reject($this->list, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHash(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        reject($this->hash, [$this, 'exception']);
+        reject($this->hash, $this->exception(...));
     }
 
     public function testExceptionIsThrownInIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        reject($this->listIterator, [$this, 'exception']);
+        reject($this->listIterator, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHashIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        reject($this->hashIterator, [$this, 'exception']);
+        reject($this->hashIterator, $this->exception(...));
     }
 }

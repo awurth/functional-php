@@ -53,28 +53,28 @@ class ReindexTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        reindex($this->list, [$this, 'exception']);
+        reindex($this->list, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHash(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        reindex($this->hash, [$this, 'exception']);
+        reindex($this->hash, $this->exception(...));
     }
 
     public function testExceptionIsThrownInIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        reindex($this->listIterator, [$this, 'exception']);
+        reindex($this->listIterator, $this->exception(...));
     }
 
     public function testExceptionIsThrownInHashIterator(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        reindex($this->hashIterator, [$this, 'exception']);
+        reindex($this->hashIterator, $this->exception(...));
     }
 
     public function testPassNoCollection(): void

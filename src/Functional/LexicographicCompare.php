@@ -22,7 +22,5 @@ use Closure;
  */
 function lexicographic_compare($b)
 {
-    return static function ($a) use ($b) {
-        return $a <=> $b;
-    };
+    return static fn($a) => $a <=> $b;
 }

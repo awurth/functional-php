@@ -89,7 +89,7 @@ class FirstTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        $functionName($this->list, [$this, 'exception']);
+        $functionName($this->list, $this->exception(...));
     }
 
     /**
@@ -99,7 +99,7 @@ class FirstTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        $functionName($this->listIterator, [$this, 'exception']);
+        $functionName($this->listIterator, $this->exception(...));
     }
 
     /**

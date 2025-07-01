@@ -64,14 +64,14 @@ class EachTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        each($this->list, [$this, 'exception']);
+        each($this->list, $this->exception(...));
     }
 
     public function testExceptionIsThrownInCollection(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
-        each($this->listIterator, [$this, 'exception']);
+        each($this->listIterator, $this->exception(...));
     }
 
     private function prepareCallback($collection): void
