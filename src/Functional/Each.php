@@ -21,7 +21,7 @@ use Traversable;
  *
  * @no-named-arguments
  */
-function each($collection, callable $callback)
+function each($collection, callable $callback): void
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 
