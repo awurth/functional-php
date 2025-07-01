@@ -44,7 +44,7 @@ class SelectTest extends AbstractTestCase
         $callback = static function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
 
-            return 'value' == $v && strlen($k) > 0;
+            return 'value' === $v && '' !== $k;
         };
         self::assertSame(['value', 2 => 'value'], $functionName($this->list, $callback));
         self::assertSame(['value', 2 => 'value'], $functionName($this->listIterator, $callback));

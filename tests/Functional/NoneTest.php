@@ -84,6 +84,6 @@ class NoneTest extends AbstractTestCase
     public function functionalCallback($value, $key, $collection): bool
     {
         InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-        return 'value' != $value && strlen($key) > 0;
+        return 'value' !== $value && '' !== $key;
     }
 }
