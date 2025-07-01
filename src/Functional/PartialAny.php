@@ -69,7 +69,5 @@ function placeholder()
     return …();
 }
 
-// phpcs:disable
-/** Define unicode ellipsis constant */
-define('Functional\\…', …());
-// phpcs:enable
+// Define unicode ellipsis constant
+define('Functional\…', …());
