@@ -25,6 +25,8 @@ use function method_exists;
 use function preg_quote;
 use function sprintf;
 
+use const PHP_VERSION_ID;
+
 class AbstractTestCase extends TestCase
 {
     /** @var array */

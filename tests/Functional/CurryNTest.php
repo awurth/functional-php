@@ -54,7 +54,7 @@ class CurryNTest extends AbstractPartialTestCase
      */
     public function testCallbackTypes($callback, $params, $expected, $required, $transformer = null): void
     {
-        if (is_null($transformer)) {
+        if (null === $transformer) {
             $transformer = 'Functional\id';
         }
 
