@@ -27,7 +27,6 @@ use function stream_context_create;
 
 use const INF;
 use const NAN;
-use const PHP_VERSION_ID;
 
 class ValueToKeyTest extends AbstractTestCase
 {
@@ -126,13 +125,9 @@ class ValueToKeyTest extends AbstractTestCase
             'Can extract object hash from key2',
         );
 
-        if (PHP_VERSION_ID >= 70400) {
-            self::assertSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes match');
-            self::assertSame('[i:0;~stdClass:'.$key1Matches['hash'].':0]', $key1, 'Object versions do not match');
-            self::assertSame('[i:0;~stdClass:'.$key1Matches['hash'].':1]', $key2, 'Object versions do not match');
-        } else {
-            self::assertNotSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes should not match');
-        }
+        self::assertSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes match');
+        self::assertSame('[i:0;~stdClass:'.$key1Matches['hash'].':0]', $key1, 'Object versions do not match');
+        self::assertSame('[i:0;~stdClass:'.$key1Matches['hash'].':1]', $key2, 'Object versions do not match');
     }
 
     public function testObjectReferencesWithArrayObject(): void
@@ -152,13 +147,9 @@ class ValueToKeyTest extends AbstractTestCase
             'Can extract object hash from key2',
         );
 
-        if (PHP_VERSION_ID >= 70400) {
-            self::assertSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes match');
-            self::assertSame('[i:0;~ArrayObject:'.$key1Matches['hash'].':2[]]', $key1, 'Object versions do not match');
-            self::assertSame('[i:0;~ArrayObject:'.$key1Matches['hash'].':3[s:3:"foo";~s:3:"bar";]]', $key2, 'Object versions do not match');
-        } else {
-            self::assertNotSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes don’t match');
-        }
+        self::assertSame($key1Matches['hash'], $key2Matches['hash'], 'Object hashes match');
+        self::assertSame('[i:0;~ArrayObject:'.$key1Matches['hash'].':2[]]', $key1, 'Object versions do not match');
+        self::assertSame('[i:0;~ArrayObject:'.$key1Matches['hash'].':3[s:3:"foo";~s:3:"bar";]]', $key2, 'Object versions do not match');
     }
 
     private static function createObjectRefRegex(string $class = '.*'): string

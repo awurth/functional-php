@@ -25,8 +25,6 @@ use function method_exists;
 use function preg_quote;
 use function sprintf;
 
-use const PHP_VERSION_ID;
-
 class AbstractTestCase extends TestCase
 {
     /** @var array */
@@ -51,18 +49,14 @@ class AbstractTestCase extends TestCase
     {
         $this->expectException(TypeError::class);
 
-        if (PHP_VERSION_ID < 80000) {
-            $this->expectExceptionMessage(sprintf('Argument %d passed to %s() must be callable', $position, $fn));
-        } else {
-            $this->expectExceptionMessageMatches(
-                sprintf(
-                    '/^%s\(\): Argument \#%d( \(\$callback\))? must be of type \??callable, %s given.*/',
-                    preg_quote($fn, '/'),
-                    $position,
-                    $actualType,
-                ),
-            );
-        }
+        $this->expectExceptionMessageMatches(
+            sprintf(
+                '/^%s\(\): Argument \#%d( \(\$callback\))? must be of type \??callable, %s given.*/',
+                preg_quote($fn, '/'),
+                $position,
+                $actualType,
+            ),
+        );
     }
 
     public function exception(): void

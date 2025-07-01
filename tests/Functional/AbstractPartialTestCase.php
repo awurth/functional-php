@@ -16,6 +16,6 @@ abstract class AbstractPartialTestCase extends AbstractTestCase
 {
     protected function ratio(): callable
     {
-        return static fn($initial, ...$args) => ratio($args, $initial);
+        return static fn ($initial, ...$args) => ratio($args, $initial);
     }
 }

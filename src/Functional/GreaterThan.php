@@ -21,5 +21,5 @@ use Closure;
  */
 function greater_than($b)
 {
-    return static fn($a) => $a > $b;
+    return static fn ($a) => $a > $b;
 }

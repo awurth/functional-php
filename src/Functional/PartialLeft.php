@@ -25,5 +25,5 @@ use function array_merge;
  */
 function partial_left(callable $callback, ...$arguments)
 {
-    return static fn(...$innerArguments) => $callback(...array_merge($arguments, $innerArguments));
+    return static fn (...$innerArguments) => $callback(...array_merge($arguments, $innerArguments));
 }

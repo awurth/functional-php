@@ -23,5 +23,5 @@ namespace Functional;
  */
 function if_else(callable $if, callable $then, callable $else)
 {
-    return static fn($value) => $if($value) ? $then($value) : $else($value);
+    return static fn ($value) => $if($value) ? $then($value) : $else($value);
 }

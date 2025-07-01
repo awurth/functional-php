@@ -38,7 +38,7 @@ function sort($collection, callable $callback, $preserveKeys = false)
 
     $fn = $preserveKeys ? 'uasort' : 'usort';
 
-    $fn($array, static fn($left, $right) => $callback($left, $right, $collection));
+    $fn($array, static fn ($left, $right) => $callback($left, $right, $collection));
 
     return $array;
 }

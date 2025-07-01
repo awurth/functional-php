@@ -80,7 +80,7 @@ class ZipTest extends AbstractTestCase
                 [1, 2, 3],
                 [-1, -2, -3],
                 [true, false],
-                static fn($one, $two, $three, $four) => $one.$two.$three.$four,
+                static fn ($one, $two, $three, $four) => $one.$two.$three.$four,
             ),
         );
         self::assertSame(
@@ -90,7 +90,7 @@ class ZipTest extends AbstractTestCase
                 new ArrayIterator([1, 2, 3]),
                 new ArrayIterator([-1, -2, -3]),
                 new ArrayIterator([true, false]),
-                static fn($one, $two, $three, $four) => $one.$two.$three.$four,
+                static fn ($one, $two, $three, $four) => $one.$two.$three.$four,
             ),
         );
     }

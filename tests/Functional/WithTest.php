@@ -31,7 +31,7 @@ class WithTest extends AbstractTestCase
             2,
             with(
                 1,
-                static fn($value) => $value + 1,
+                static fn ($value) => $value + 1,
             ),
         );
     }

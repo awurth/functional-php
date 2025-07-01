@@ -21,5 +21,5 @@ use Closure;
  */
 function greater_than_or_equal($b)
 {
-    return static fn($a) => $a >= $b;
+    return static fn ($a) => $a >= $b;
 }

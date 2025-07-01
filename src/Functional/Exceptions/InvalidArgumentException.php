@@ -13,7 +13,6 @@ namespace Functional\Exceptions;
 use function array_pop;
 use function array_values;
 use function count;
-use function get_class;
 use function gettype;
 use function implode;
 use function in_array;

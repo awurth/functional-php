@@ -12,12 +12,9 @@ namespace Functional\Tests;
 
 use Functional\Exceptions\InvalidArgumentException;
 
-use function call_user_func;
 use function Functional\const_function;
 use function Functional\equal;
 use function Functional\matching;
-
-use const PHP_VERSION_ID;
 
 class MatchingTest extends AbstractTestCase
 {
@@ -30,7 +27,7 @@ class MatchingTest extends AbstractTestCase
                 [equal('baz'), const_function('is baz')],
                 [
                     const_function(true),
-                    static fn($x) => 'default is '.$x,
+                    static fn ($x) => 'default is '.$x,
                 ],
             ],
         );
@@ -92,19 +89,5 @@ class MatchingTest extends AbstractTestCase
                 [const_function(null), ''],
             ],
         );
-    }
-
-    public function testDeprecatedAlias(): void
-    {
-        if (PHP_VERSION_ID >= 80000) {
-            self::markTestSkipped('Only works with PHP <8.0');
-        }
-
-        $this->expectDeprecation();
-        $this->expectDeprecationMessage(
-            'Functional\match() will be unavailable with PHP 8. Use Functional\matching() instead',
-        );
-
-        call_user_func('Functional\match', []);
     }
 }

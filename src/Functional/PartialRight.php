@@ -23,5 +23,5 @@ use function array_merge;
  */
 function partial_right(callable $callback, ...$arguments)
 {
-    return static fn(...$innerArguments) => $callback(...array_merge($innerArguments, $arguments));
+    return static fn (...$innerArguments) => $callback(...array_merge($innerArguments, $arguments));
 }

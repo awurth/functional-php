@@ -17,7 +17,7 @@ class CaptureTest extends AbstractTestCase
     public function testCaptureReturnValue(): void
     {
         $fn = capture(
-            static fn(...$args) => $args,
+            static fn (...$args) => $args,
             $result,
         );
 

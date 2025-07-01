@@ -25,5 +25,5 @@ function invoker($methodName, array $arguments = [])
 {
     InvalidArgumentException::assertMethodName($methodName, __FUNCTION__, 1);
 
-    return static fn($object) => $object->{$methodName}(...$arguments);
+    return static fn ($object) => $object->{$methodName}(...$arguments);
 }

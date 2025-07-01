@@ -27,7 +27,7 @@ class AnnotationsTest extends AbstractTestCase
             array_values(
                 array_filter(
                     get_defined_functions()['user'],
-                    static fn(string $function): bool => stripos($function, 'Functional\\') === 0,
+                    static fn (string $function): bool => stripos($function, 'Functional\\') === 0,
                 ),
             ),
             'Functional\id',

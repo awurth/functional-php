@@ -19,5 +19,5 @@ namespace Functional;
  */
 function const_function($value)
 {
-    return static fn() => $value;
+    return static fn () => $value;
 }
