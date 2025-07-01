@@ -31,7 +31,7 @@ function from_entries($collection): array
     foreach ($collection as $entry) {
         InvalidArgumentException::assertPair($entry, __FUNCTION__, 1);
         [$key, $value] = $entry;
-        InvalidArgumentException::assertValidArrayKey($key, __FUNCTION__, 1);
+        InvalidArgumentException::assertValidArrayKey($key, __FUNCTION__);
         $aggregation[$key] = $value;
     }
 

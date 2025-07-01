@@ -30,11 +30,7 @@ function sort($collection, callable $callback, $preserveKeys = false)
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertBoolean($preserveKeys, __FUNCTION__, 3);
 
-    if ($collection instanceof Traversable) {
-        $array = iterator_to_array($collection);
-    } else {
-        $array = $collection;
-    }
+    $array = $collection instanceof Traversable ? iterator_to_array($collection) : $collection;
 
     $fn = $preserveKeys ? 'uasort' : 'usort';
 

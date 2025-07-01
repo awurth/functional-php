@@ -28,11 +28,7 @@ function omit_keys($collection, array $keys): array
 {
     InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 
-    if ($collection instanceof Traversable) {
-        $array = iterator_to_array($collection);
-    } else {
-        $array = $collection;
-    }
+    $array = $collection instanceof Traversable ? iterator_to_array($collection) : $collection;
 
     return array_diff_key($array, array_flip($keys));
 }

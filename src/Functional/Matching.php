@@ -26,7 +26,7 @@ function matching(array $conditions)
     MatchException::assert($conditions, __FUNCTION__);
 
     return static function ($value) use ($conditions) {
-        if (empty($conditions)) {
+        if ([] === $conditions) {
             return null;
         }
 

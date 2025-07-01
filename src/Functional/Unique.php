@@ -30,11 +30,7 @@ function unique($collection, ?callable $callback = null, $strict = true): array
     $indexes = [];
     $aggregation = [];
     foreach ($collection as $key => $element) {
-        if ($callback) {
-            $index = $callback($element, $key, $collection);
-        } else {
-            $index = $element;
-        }
+        $index = $callback ? $callback($element, $key, $collection) : $element;
 
         if (!in_array($index, $indexes, $strict)) {
             $aggregation[$key] = $element;

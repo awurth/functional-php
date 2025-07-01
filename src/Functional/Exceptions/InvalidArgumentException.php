@@ -114,11 +114,9 @@ class InvalidArgumentException extends \InvalidArgumentException
     }
 
     /**
-     * @param string $callee
-     *
      * @throws static
      */
-    public static function assertValidArrayKey($key, $callee): void
+    public static function assertValidArrayKey($key, string $callee): void
     {
         $keyTypes = ['NULL', 'string', 'integer', 'double', 'boolean'];
 
@@ -132,7 +130,7 @@ class InvalidArgumentException extends \InvalidArgumentException
     public static function assertArrayKeyExists($collection, $key, $callee): void
     {
         if (!isset($collection[$key])) {
-            throw new static(sprintf('%s(): unknown key "%s"', $callee, $key),);
+            throw new static(sprintf('%s(): unknown key "%s"', $callee, $key));
         }
     }
 

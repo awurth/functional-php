@@ -43,11 +43,7 @@ function memoize(?callable $callback = null, $arguments = [], $key = null)
         $key = $arguments();
     }
 
-    if (null === $key) {
-        $key = value_to_key(array_merge([$callback], $arguments));
-    } else {
-        $key = value_to_key($key);
-    }
+    $key = null === $key ? value_to_key(array_merge([$callback], $arguments)) : value_to_key($key);
 
     if (!isset($storage[$key]) && !array_key_exists($key, $storage)) {
         $storage[$key] = $callback(...$arguments);

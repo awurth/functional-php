@@ -33,10 +33,8 @@ function pick($collection, $index, $default = null, ?callable $callback = null)
         if (!isset($collection[$index]) && (!is_array($collection) || !array_key_exists($index, $collection))) {
             return $default;
         }
-    } else {
-        if (!$callback($collection, $index)) {
-            return $default;
-        }
+    } elseif (!$callback($collection, $index)) {
+        return $default;
     }
 
     return $collection[$index];
