@@ -13,7 +13,7 @@ namespace Functional\Tests;
 use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\const_function;
-use function Functional\equal;
+use function Functional\identical;
 use function Functional\matching;
 
 class MatchingTest extends AbstractTestCase
@@ -22,9 +22,9 @@ class MatchingTest extends AbstractTestCase
     {
         $test = matching(
             [
-                [equal('foo'), const_function('is foo')],
-                [equal('bar'), const_function('is bar')],
-                [equal('baz'), const_function('is baz')],
+                [identical('foo'), const_function('is foo')],
+                [identical('bar'), const_function('is bar')],
+                [identical('baz'), const_function('is baz')],
                 [
                     const_function(true),
                     static fn ($x) => 'default is '.$x,
@@ -42,8 +42,8 @@ class MatchingTest extends AbstractTestCase
     {
         $test = matching(
             [
-                [equal('foo'), const_function('is foo')],
-                [equal('bar'), const_function('is bar')],
+                [identical('foo'), const_function('is foo')],
+                [identical('bar'), const_function('is bar')],
             ],
         );
 

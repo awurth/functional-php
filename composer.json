@@ -51,7 +51,6 @@
             "src/Functional/DropLast.php",
             "src/Functional/Each.php",
             "src/Functional/Entries.php",
-            "src/Functional/Equal.php",
             "src/Functional/ErrorToException.php",
             "src/Functional/Every.php",
             "src/Functional/False.php",

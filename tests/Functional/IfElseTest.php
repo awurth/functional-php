@@ -11,14 +11,14 @@
 namespace Functional\Tests;
 
 use function Functional\const_function;
-use function Functional\equal;
+use function Functional\identical;
 use function Functional\if_else;
 
 class IfElseTest extends AbstractTestCase
 {
     public function testIfElse(): void
     {
-        $if_foo = if_else(equal('foo'), const_function('bar'), const_function('baz'));
+        $if_foo = if_else(identical('foo'), const_function('bar'), const_function('baz'));
 
         self::assertEquals('bar', $if_foo('foo'));
         self::assertEquals('baz', $if_foo('qux'));
