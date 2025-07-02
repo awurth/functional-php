@@ -10,28 +10,23 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function is_numeric;
 
 /**
  * Returns the average of all numeric values in the array or null if no numeric value was found.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function average($collection): int|float|null
+function average(iterable $collection): int|float|null
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $sum = null;
     $divisor = 0;
 
     foreach ($collection as $element) {
         if (is_numeric($element)) {
-            $sum += $element;
+            $sum = ($sum ?? 0) + $element;
             ++$divisor;
         }
     }
