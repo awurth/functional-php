@@ -12,6 +12,7 @@ namespace Functional\Exceptions;
 
 use ArrayAccess;
 use Throwable;
+
 use function array_pop;
 use function array_values;
 use function count;
