@@ -10,14 +10,14 @@
 
 namespace Functional;
 
+use Closure;
+
 /**
- * Return a new function that captures the return value of $callback in $result and returns the callbacks return value.
- *
- * @return callable
+ * Return a new function that captures the return value of $callback in $result and returns the callback's return value.
  *
  * @no-named-arguments
  */
-function capture(callable $callback, &$result)
+function capture(callable $callback, mixed &$result): Closure
 {
     return static function (...$args) use ($callback, &$result) {
         $result = $callback(...$args);
