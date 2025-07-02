@@ -34,36 +34,28 @@ class ContainsTest extends AbstractTestCase
         self::assertTrue(contains($this->list, 'value1'));
         self::assertTrue(contains($this->list, 'value2'));
         self::assertTrue(contains($this->list, 2));
-        self::assertFalse(contains($this->list, '2', true));
         self::assertFalse(contains($this->list, '2'));
-        self::assertTrue(contains($this->list, '2', false));
         self::assertFalse(contains($this->list, 'value'));
 
         self::assertTrue(contains($this->listIterator, 'value0'));
         self::assertTrue(contains($this->listIterator, 'value1'));
         self::assertTrue(contains($this->listIterator, 'value2'));
         self::assertTrue(contains($this->listIterator, 2));
-        self::assertFalse(contains($this->listIterator, '2', true));
         self::assertFalse(contains($this->listIterator, '2'));
-        self::assertTrue(contains($this->listIterator, '2', false));
         self::assertFalse(contains($this->listIterator, 'value'));
 
         self::assertTrue(contains($this->hash, 'val1'));
         self::assertTrue(contains($this->hash, 'val2'));
         self::assertTrue(contains($this->hash, 'val3'));
         self::assertTrue(contains($this->hash, 2));
-        self::assertFalse(contains($this->hash, '2', true));
         self::assertFalse(contains($this->hash, '2'));
-        self::assertTrue(contains($this->hash, '2', false));
         self::assertFalse(contains($this->hash, 'value'));
 
         self::assertTrue(contains($this->hashIterator, 'val1'));
         self::assertTrue(contains($this->hashIterator, 'val2'));
         self::assertTrue(contains($this->hashIterator, 'val3'));
         self::assertTrue(contains($this->hashIterator, 2));
-        self::assertFalse(contains($this->hashIterator, '2', true));
         self::assertFalse(contains($this->hashIterator, '2'));
-        self::assertTrue(contains($this->hashIterator, '2', false));
         self::assertFalse(contains($this->hashIterator, 'value'));
     }
 

@@ -218,10 +218,9 @@ falsy([false, 'str', null, false]);
 
 
 ## contains()
-Returns true if given collection contains given element. If third parameter is true, the comparison
-will be strict
+Returns true if given collection contains given element.
 
-``bool Functional\contains(array|Traversable $collection, mixed $value[, bool $strict = true])``
+``bool Functional\contains(array|Traversable $collection, mixed $value)``
 
 ```php
 use function Functional\contains;
@@ -231,8 +230,6 @@ contains(['el1', 'el2'], 'el1');
 
 // Returns false
 contains(['0', '1', '2'], 2);
-// Returns true
-contains(['0', '1', '2'], 2, false);
 ```
 
 ## sort()
