@@ -10,6 +10,8 @@
 
 namespace Functional\Exceptions;
 
+use ArrayAccess;
+use Throwable;
 use function array_pop;
 use function array_values;
 use function count;
@@ -28,6 +30,11 @@ use function sprintf;
 /** @internal */
 class InvalidArgumentException extends \InvalidArgumentException
 {
+    final public function __construct(string $message = '', int $code = 0, ?Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
+
     /**
      * @param string $callee
      * @param int    $parameterPosition
