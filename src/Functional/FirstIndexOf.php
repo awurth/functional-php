@@ -15,11 +15,16 @@ use function is_callable;
 /**
  * Returns the first index holding specified value in the collection. Returns false if value was not found.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return TKey|false
  *
  * @no-named-arguments
  */
-function first_index_of(iterable $collection, $value)
+function first_index_of(iterable $collection, mixed $value): mixed
 {
     if (is_callable($value)) {
         foreach ($collection as $index => $element) {
