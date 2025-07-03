@@ -10,14 +10,14 @@
 
 namespace Functional;
 
+use Closure;
+
 /**
  * Wrap value within a function, which will return it, without any modifications.
  *
- * @return callable
- *
  * @no-named-arguments
  */
-function const_function($value)
+function const_function(mixed $value): Closure
 {
     return static fn () => $value;
 }

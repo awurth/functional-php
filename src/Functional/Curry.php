@@ -12,14 +12,6 @@ namespace Functional;
 
 use Closure;
 use ReflectionFunction;
-use ReflectionMethod;
-
-use function count;
-use function is_array;
-use function is_object;
-use function is_string;
-use function method_exists;
-use function strpos;
 
 /**
  * Return a curryied version of the given function. You can decide if you also
@@ -28,24 +20,13 @@ use function strpos;
  * @param callable $function the function to curry
  * @param bool     $required curry optional parameters ?
  *
- * @return callable a curryied version of the given function
+ * @return Closure a curryied version of the given function
  *
  * @no-named-arguments
  */
-function curry(callable $function, $required = true)
+function curry(callable $function, bool $required = true): Closure
 {
-    if (method_exists('Closure', 'fromCallable')) {
-        // Closure::fromCallable was introduced in PHP 7.1
-        $reflection = new ReflectionFunction(Closure::fromCallable($function));
-    } elseif (is_string($function) && strpos($function, '::', 1) !== false) {
-        $reflection = new ReflectionMethod($function);
-    } elseif (is_array($function) && count($function) === 2) {
-        $reflection = new ReflectionMethod($function[0], $function[1]);
-    } elseif (is_object($function) && method_exists($function, '__invoke')) {
-        $reflection = new ReflectionMethod($function, '__invoke');
-    } else {
-        $reflection = new ReflectionFunction($function);
-    }
+    $reflection = new ReflectionFunction(Closure::fromCallable($function));
 
     $count = $required
         ? $reflection->getNumberOfRequiredParameters()

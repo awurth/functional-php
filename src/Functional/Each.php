@@ -10,21 +10,16 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Iterates over a collection of elements, yielding each in turn to a callback function. Each invocation of $callback
  * is called with three arguments: (element, index, collection).
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function each($collection, callable $callback): void
+function each(iterable $collection, callable $callback): void
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     foreach ($collection as $index => $element) {
         $callback($element, $index, $collection);
     }

@@ -44,36 +44,32 @@ class InvalidArgumentException extends \InvalidArgumentException
      */
     public static function assertCallback($callback, $callee, $parameterPosition): void
     {
-        if (!is_callable($callback)) {
-            if (!is_array($callback) && !is_string($callback)) {
-                throw new static(sprintf('%s() expected parameter %d to be a valid callback, no array, string, closure or functor given', $callee, $parameterPosition),);
-            }
-
-            $type = gettype($callback);
-
-            switch ($type) {
-                case 'array':
-                    $type = 'method';
-                    $callback = array_values($callback);
-
-                    $sep = '::';
-                    if (is_object($callback[0])) {
-                        $callback[0] = $callback[0]::class;
-                        $sep = '->';
-                    }
-
-                    $callback = implode($sep, $callback);
-
-                    break;
-
-                default:
-                    $type = 'function';
-
-                    break;
-            }
-
-            throw new static(sprintf("%s() expects parameter %d to be a valid callback, %s '%s' not found or invalid %s name", $callee, $parameterPosition, $type, $callback, $type),);
+        if (is_callable($callback)) {
+            return;
         }
+
+        if (!is_array($callback) && !is_string($callback)) {
+            throw new static("{$callee}() expected parameter {$parameterPosition} to be a valid callback, no array, string, closure or functor given",);
+        }
+
+        $type = gettype($callback);
+
+        if ('array' === $type) {
+            $type = 'method';
+            $callback = array_values($callback);
+
+            $sep = '::';
+            if (is_object($callback[0])) {
+                $callback[0] = $callback[0]::class;
+                $sep = '->';
+            }
+
+            $callback = implode($sep, $callback);
+        } else {
+            $type = 'function';
+        }
+
+        throw new static("{$callee}() expects parameter {$parameterPosition} to be a valid callback, {$type} '{$callback}' not found or invalid {$type} name");
     }
 
     public static function assertCollection($collection, $callee, $parameterPosition): void

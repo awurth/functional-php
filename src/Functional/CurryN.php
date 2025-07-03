@@ -26,11 +26,11 @@ use function count;
  * @param int      $count    number of arguments you want to curry
  * @param callable $function the function you want to curry
  *
- * @return callable a curryied version of the given function
+ * @return Closure a curryied version of the given function
  *
  * @no-named-arguments
  */
-function curry_n($count, callable $function)
+function curry_n(int $count, callable $function): Closure
 {
     $accumulator = static function (array $arguments) use ($count, $function, &$accumulator): Closure {
         return static function (...$newArguments) use ($count, $function, $arguments, $accumulator) {

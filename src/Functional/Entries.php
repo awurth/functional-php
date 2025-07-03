@@ -10,23 +10,23 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Inspired by JavaScript’s `Object.entries`, and Python’s `enumerate`,
  * convert a key-value map into an array of key-value pairs.
  *
- * @see Functional\from_entries
+ * @see from_entries
  *
- * @param array|Traversable $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return array<int, array<int, TKey|TValue>>
  *
  * @no-named-arguments
  */
-function entries($collection, int $start = 0): array
+function entries(iterable $collection, int $start = 0): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $aggregation = [];
     foreach ($collection as $key => $value) {
         $aggregation[$start++] = [$key, $value];

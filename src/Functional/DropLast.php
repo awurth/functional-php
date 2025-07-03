@@ -10,21 +10,20 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Drop all elements from a collection after callback returns true.
  *
- * @param array|Traversable $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return array<TKey, TValue>
  *
  * @no-named-arguments
  */
-function drop_last($collection, callable $callback): array
+function drop_last(iterable $collection, callable $callback): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-    InvalidArgumentException::assertCallback($callback, __FUNCTION__, 2);
-
     $result = [];
 
     foreach ($collection as $index => $element) {

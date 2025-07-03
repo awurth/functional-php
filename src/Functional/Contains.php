@@ -10,20 +10,15 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Returns true if the collection contains the given value.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function contains($collection, mixed $value): bool
+function contains(iterable $collection, mixed $value): bool
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     foreach ($collection as $element) {
         if ($value === $element) {
             return true;

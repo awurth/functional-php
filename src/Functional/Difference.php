@@ -10,25 +10,17 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function is_numeric;
 
 /**
  * Takes a collection and returns the difference of all elements.
  *
- * @param array|Traversable $collection
- * @param float|int         $initial
- *
- * @return float|int
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function difference($collection, $initial = 0)
+function difference(iterable $collection, float|int $initial = 0): float|int
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $result = $initial;
     foreach ($collection as $value) {
         if (is_numeric($value)) {
