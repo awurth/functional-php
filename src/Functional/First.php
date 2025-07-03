@@ -15,11 +15,16 @@ namespace Functional;
  * function returns as soon as it finds an acceptable element, and doesn't traverse the entire collection. Callback
  * arguments will be element, index, collection.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return TValue|null
  *
  * @no-named-arguments
  */
-function first(iterable $collection, ?callable $callback = null)
+function first(iterable $collection, ?callable $callback = null): mixed
 {
     foreach ($collection as $index => $element) {
         if (null === $callback) {
