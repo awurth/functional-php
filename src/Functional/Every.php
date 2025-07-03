@@ -10,23 +10,18 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Returns true if every value in the collection passes the callback truthy test. Opposite of Functional\none().
  * Callback arguments will be element, index, collection.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function every($collection, ?callable $callback = null): bool
+function every(iterable $collection, ?callable $callback = null): bool
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     if (null === $callback) {
-        $callback = '\Functional\id';
+        $callback = id(...);
     }
 
     foreach ($collection as $index => $element) {
