@@ -14,7 +14,6 @@
   - [reject() & select()](#reject--select)
   - [drop_first() & drop_last()](#drop_first--drop_last)
   - [true() & false()](#true--false)
-  - [truthy() & falsy()](#truthy--falsy)
   - [contains()](#contains)
   - [sort()](#sort)
   - [Other](#other)
@@ -192,28 +191,6 @@ true([true, 1]);
 false([false, false, false]);
 // Returns false
 false([false, 0, null, false]);
-```
-
-
-## truthy() & falsy()
-Returns true or false if all elements in the collection evaluate to true or false
-
-``bool Functional\truthy(array|Traversable $collection)``
-``bool Functional\falsy(array|Traversable $collection)``
-
-```php
-use function Functional\truthy;
-use function Functional\falsy;
-
-// Returns true
-truthy([true, true, 1, 'foo']);
-// Returns false
-truthy([true, 0, false]);
-
-// Returns true
-falsy([false, false, 0, null]);
-// Returns false
-falsy([false, 'str', null, false]);
 ```
 
 
