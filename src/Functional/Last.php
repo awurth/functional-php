@@ -10,21 +10,16 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Looks through each element in the collection, returning the last one that passes a truthy test (callback).
  * Callback arguments will be element, index, collection.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function last($collection, ?callable $callback = null)
+function last(iterable $collection, ?callable $callback = null)
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $match = null;
     foreach ($collection as $index => $element) {
         if (null === $callback || $callback($element, $index, $collection)) {

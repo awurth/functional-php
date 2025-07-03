@@ -10,25 +10,20 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function is_numeric;
 
 /**
  * Takes a collection and returns the product of all elements.
  *
- * @param array|Traversable $collection
- * @param float|int         $initial
+ * @param iterable<mixed, mixed> $collection
+ * @param float|int              $initial
  *
  * @return float|int
  *
  * @no-named-arguments
  */
-function product($collection, $initial = 1)
+function product(iterable $collection, $initial = 1)
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $result = $initial;
     foreach ($collection as $value) {
         if (is_numeric($value)) {

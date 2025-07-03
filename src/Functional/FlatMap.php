@@ -10,7 +10,6 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
 use function is_array;
@@ -26,14 +25,12 @@ use function is_array;
  * then flat_map(collection, callback) will return [1,2,3,[4]]
  * while flatten(map(collection, callback)) will return [1,2,3,4]
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function flat_map($collection, callable $callback): array
+function flat_map(iterable $collection, callable $callback): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $flattened = [];
 
     foreach ($collection as $index => $element) {

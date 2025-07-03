@@ -10,19 +10,14 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Alias of Functional\select().
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function filter($collection, callable $callback): array
+function filter(iterable $collection, callable $callback): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     return select($collection, $callback);
 }

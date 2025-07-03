@@ -18,16 +18,15 @@ use function iterator_to_array;
 /**
  * Sorts a collection with a user-defined function, optionally preserving array keys.
  *
- * @param array|Traversable $collection
- * @param bool              $preserveKeys
+ * @param iterable<mixed, mixed> $collection
+ * @param bool                   $preserveKeys
  *
  * @return array
  *
  * @no-named-arguments
  */
-function sort($collection, callable $callback, $preserveKeys = false)
+function sort(iterable $collection, callable $callback, $preserveKeys = false)
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertBoolean($preserveKeys, __FUNCTION__, 3);
 
     $array = $collection instanceof Traversable ? iterator_to_array($collection) : $collection;

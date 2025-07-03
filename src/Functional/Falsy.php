@@ -10,20 +10,15 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Returns true if all elements of the collection evaluate to false.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function falsy($collection): bool
+function falsy(iterable $collection): bool
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     foreach ($collection as $value) {
         if ($value) {
             return false;

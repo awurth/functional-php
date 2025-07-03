@@ -10,22 +10,17 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function is_callable;
 
 /**
  * Returns the first index holding specified value in the collection. Returns false if value was not found.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function first_index_of($collection, $value)
+function first_index_of(iterable $collection, $value)
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     if (is_callable($value)) {
         foreach ($collection as $index => $element) {
             if ($value($element, $index, $collection) === $element) {

@@ -11,7 +11,6 @@
 namespace Functional;
 
 use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 use function array_slice;
 use function is_array;
@@ -23,15 +22,14 @@ use function iterator_to_array;
  * This function will reorder and reset the integer array indices by default. This behaviour can be changed by setting
  * preserveKeys to TRUE. String keys are always preserved, regardless of this parameter.
  *
- * @param array|Traversable $collection
- * @param int               $count
- * @param bool              $preserveKeys
+ * @param iterable<mixed, mixed> $collection
+ * @param int                    $count
+ * @param bool                   $preserveKeys
  *
  * @no-named-arguments
  */
-function take_right($collection, $count, $preserveKeys = false): array
+function take_right(iterable $collection, $count, $preserveKeys = false): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertPositiveInteger($count, __FUNCTION__, 2);
 
     return array_slice(

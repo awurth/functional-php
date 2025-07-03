@@ -11,7 +11,6 @@
 namespace Functional;
 
 use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 use function array_slice;
 use function is_array;
@@ -21,14 +20,13 @@ use function iterator_to_array;
  * Creates a slice of $collection with $count elements taken from the beginning. If the collection has less than $count
  * elements, the whole collection will be returned as an array.
  *
- * @param array|Traversable $collection
- * @param int               $count
+ * @param iterable<mixed, mixed> $collection
+ * @param int                    $count
  *
  * @no-named-arguments
  */
-function take_left($collection, $count): array
+function take_left(iterable $collection, $count): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertPositiveInteger($count, __FUNCTION__, 2);
 
     return array_slice(

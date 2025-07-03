@@ -17,46 +17,6 @@ use stdClass;
 
 class InvalidArgumentExceptionTest extends TestCase
 {
-    public function testCallbackExceptionWithUndefinedStaticMethod(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("func() expects parameter 1 to be a valid callback, method 'stdClass::method' not found or invalid method name");
-
-        InvalidArgumentException::assertCallback(['stdClass', 'method'], 'func', 1);
-    }
-
-    public function testCallbackExceptionWithUndefinedFunction(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("func() expects parameter 1 to be a valid callback, function 'undefinedFunction' not found or invalid function name");
-
-        InvalidArgumentException::assertCallback('undefinedFunction', 'func', 1);
-    }
-
-    public function testCallbackExceptionWithUndefinedMethod(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("func() expects parameter 2 to be a valid callback, method 'stdClass->method' not found or invalid method name");
-
-        InvalidArgumentException::assertCallback([new stdClass(), 'method'], 'func', 2);
-    }
-
-    public function testCallbackExceptionWithIncorrectArrayIndex(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("func() expects parameter 1 to be a valid callback, method 'stdClass->method' not found or invalid method name");
-
-        InvalidArgumentException::assertCallback([1 => new stdClass(), 2 => 'method'], 'func', 1);
-    }
-
-    public function testCallbackExceptionWithObject(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expected parameter 1 to be a valid callback, no array, string, closure or functor given');
-
-        InvalidArgumentException::assertCallback(new stdClass(), 'func', 1);
-    }
-
     public function testExceptionIfStringIsPassedAsList(): void
     {
         $this->expectException(InvalidArgumentException::class);

@@ -11,19 +11,16 @@
 namespace Functional;
 
 use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 /**
  * Groups a collection by index returned by callback.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function group($collection, callable $callback): array
+function group(iterable $collection, callable $callback): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $groups = [];
 
     foreach ($collection as $index => $element) {

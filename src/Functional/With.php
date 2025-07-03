@@ -10,8 +10,6 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-
 use function is_callable;
 use function trigger_error;
 
@@ -27,8 +25,6 @@ use const E_USER_DEPRECATED;
  */
 function with($value, callable $callback, $invokeValue = true, $default = null)
 {
-    InvalidArgumentException::assertCallback($callback, __FUNCTION__, 2);
-
     if (null === $value) {
         return $default;
     }

@@ -10,24 +10,19 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function is_numeric;
 
 /**
  * Returns the minimum value of a collection.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @return float|int
  *
  * @no-named-arguments
  */
-function minimum($collection)
+function minimum(iterable $collection)
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $min = null;
 
     foreach ($collection as $element) {

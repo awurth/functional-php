@@ -10,20 +10,15 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function array_pop;
 
 /**
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function reduce_right($collection, callable $callback, $initial = null)
+function reduce_right(iterable $collection, callable $callback, $initial = null)
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $data = [];
     foreach ($collection as $index => $value) {
         $data[] = [$index, $value];

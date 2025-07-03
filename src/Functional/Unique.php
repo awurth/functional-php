@@ -10,23 +10,18 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function in_array;
 
 /**
  * Returns an array of unique elements.
  *
- * @param array|Traversable $collection
- * @param bool              $strict
+ * @param iterable<mixed, mixed> $collection
+ * @param bool                   $strict
  *
  * @no-named-arguments
  */
-function unique($collection, ?callable $callback = null, $strict = true): array
+function unique(iterable $collection, ?callable $callback = null, $strict = true): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $indexes = [];
     $aggregation = [];
     foreach ($collection as $key => $element) {

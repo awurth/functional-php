@@ -11,22 +11,19 @@
 namespace Functional;
 
 use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 /**
  * Inspired by JavaScript’s `Object.fromEntries`,
  * convert an array of key-value pairs into a key-value map.
  *
- * @see Functional\entries
+ * @see entries
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function from_entries($collection): array
+function from_entries(iterable $collection): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $aggregation = [];
     foreach ($collection as $entry) {
         InvalidArgumentException::assertPair($entry, __FUNCTION__, 1);

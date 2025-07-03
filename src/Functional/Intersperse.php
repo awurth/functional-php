@@ -10,23 +10,18 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function array_pop;
 
 /**
  * Insert a given value between each element of a collection.
  * Indices are not preserved.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function intersperse($collection, $glue): array
+function intersperse(iterable $collection, $glue): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $aggregation = [];
 
     foreach ($collection as $element) {

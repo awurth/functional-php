@@ -10,18 +10,13 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function reduce_left($collection, callable $callback, $initial = null)
+function reduce_left(iterable $collection, callable $callback, $initial = null)
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     foreach ($collection as $index => $value) {
         $initial = $callback($value, $index, $collection, $initial);
     }

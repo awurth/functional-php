@@ -10,24 +10,19 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function is_callable;
 
 /**
  * Returns a list of array indexes, either matching the predicate or strictly equal to the the passed value. Returns an
  * empty array if no values were found.
  *
- * @param array|Traversable $collection
- * @param callable|mixed    $value
+ * @param iterable<mixed, mixed> $collection
+ * @param callable|mixed         $value
  *
  * @no-named-arguments
  */
-function indexes_of($collection, $value): array
+function indexes_of(iterable $collection, $value): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $result = [];
 
     if (is_callable($value)) {

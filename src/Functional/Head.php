@@ -10,19 +10,14 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Alias for Functional\first.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function head($collection, ?callable $callback = null)
+function head(iterable $collection, ?callable $callback = null)
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     return first($collection, $callback);
 }

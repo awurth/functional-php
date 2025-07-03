@@ -10,21 +10,16 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 /**
  * Looks through each element in the list, returning an array of all the elements that pass a truthy test (callback).
  * Opposite is Functional\reject(). Callback arguments will be element, index, collection.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function select($collection, ?callable $callback = null): array
+function select(iterable $collection, ?callable $callback = null): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $aggregation = [];
 
     if (null === $callback) {

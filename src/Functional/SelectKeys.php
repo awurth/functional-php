@@ -10,7 +10,6 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
 use function array_flip;
@@ -20,14 +19,12 @@ use function iterator_to_array;
 /**
  * Select the specified keys from the array.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function select_keys($collection, array $keys): array
+function select_keys(iterable $collection, array $keys): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $array = $collection instanceof Traversable ? iterator_to_array($collection) : $collection;
 
     return array_intersect_key($array, array_flip($keys));

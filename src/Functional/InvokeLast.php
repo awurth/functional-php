@@ -11,7 +11,6 @@
 namespace Functional;
 
 use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 use function is_callable;
 
@@ -19,14 +18,13 @@ use function is_callable;
  * Calls the method named by $methodName on last object in the collection containing a callable method named
  * $methodName. Any extra arguments passed to invoke will be forwarded on to the method invocation.
  *
- * @param array|Traversable $collection
- * @param string            $methodName
+ * @param iterable<mixed, mixed> $collection
+ * @param string                 $methodName
  *
  * @no-named-arguments
  */
-function invoke_last($collection, $methodName, array $arguments = [])
+function invoke_last(iterable $collection, $methodName, array $arguments = [])
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
     InvalidArgumentException::assertMethodName($methodName, __FUNCTION__, 2);
 
     $lastCallback = null;

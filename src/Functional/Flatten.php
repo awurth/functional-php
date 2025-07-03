@@ -10,7 +10,6 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
 use function array_shift;
@@ -21,14 +20,12 @@ use function is_array;
  * Takes a nested combination of collections and returns their contents as a single, flat array.
  * Does not preserve indexes.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function flatten($collection): array
+function flatten(iterable $collection): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $stack = [$collection];
     $result = [];
 

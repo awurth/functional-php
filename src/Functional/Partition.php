@@ -10,9 +10,6 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
-
 use function array_fill;
 use function count;
 
@@ -25,14 +22,12 @@ use function count;
  * Elements are not re-ordered and have the same index they had in the
  * original array.
  *
- * @param array|Traversable $collection
+ * @param iterable<mixed, mixed> $collection
  *
  * @no-named-arguments
  */
-function partition($collection, callable ...$callbacks): array
+function partition(iterable $collection, callable ...$callbacks): array
 {
-    InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
     $partition = 0;
     $partitions = array_fill(0, count($callbacks) + 1, []);
 
