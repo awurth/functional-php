@@ -10,6 +10,7 @@
 
 namespace Functional;
 
+use Closure;
 use ErrorException;
 
 use function restore_error_handler;
@@ -21,8 +22,10 @@ use function set_error_handler;
  * @throws ErrorException Throws exception if PHP error happened
  *
  * @no-named-arguments
+ *
+ * @phpstan-ignore throws.unusedType
  */
-function error_to_exception(callable $callback)
+function error_to_exception(callable $callback): Closure
 {
     return static function (...$arguments) use ($callback) {
         try {
