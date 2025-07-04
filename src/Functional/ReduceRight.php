@@ -17,7 +17,7 @@ use function array_pop;
  *
  * @no-named-arguments
  */
-function reduce_right(iterable $collection, callable $callback, $initial = null)
+function reduce_right(iterable $collection, callable $callback, mixed $initial = null): mixed
 {
     $data = [];
     foreach ($collection as $index => $value) {
