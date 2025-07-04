@@ -16,13 +16,10 @@ use function is_numeric;
  * Takes a collection and returns the quotient of all elements.
  *
  * @param iterable<mixed, mixed> $collection
- * @param float|int              $initial
- *
- * @return float|int
  *
  * @no-named-arguments
  */
-function ratio(iterable $collection, $initial = 1)
+function ratio(iterable $collection, float|int $initial = 1): float|int
 {
     $result = $initial;
     foreach ($collection as $value) {
