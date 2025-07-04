@@ -15,19 +15,23 @@ use function in_array;
 /**
  * Returns an array of unique elements.
  *
- * @param iterable<mixed, mixed> $collection
- * @param bool                   $strict
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return array<TKey, TValue>
  *
  * @no-named-arguments
  */
-function unique(iterable $collection, ?callable $callback = null, $strict = true): array
+function unique(iterable $collection, ?callable $callback = null): array
 {
     $indexes = [];
     $aggregation = [];
     foreach ($collection as $key => $element) {
-        $index = $callback ? $callback($element, $key, $collection) : $element;
+        $index = null !== $callback ? $callback($element, $key, $collection) : $element;
 
-        if (!in_array($index, $indexes, $strict)) {
+        if (!in_array($index, $indexes, true)) {
             $aggregation[$key] = $element;
 
             $indexes[] = $index;
