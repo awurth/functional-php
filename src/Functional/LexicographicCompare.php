@@ -16,11 +16,11 @@ use Closure;
  * Returns an integer less than, equal to, or greater than zero when
  * $a is respectively less than, equal to, or greater than $b.
  *
- * @return Closure(mixed)
+ * @return Closure(mixed): int
  *
  * @no-named-arguments
  */
-function lexicographic_compare($b)
+function lexicographic_compare(mixed $b): Closure
 {
-    return static fn ($a): int => $a <=> $b;
+    return static fn (mixed $a): int => $a <=> $b;
 }
