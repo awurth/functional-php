@@ -10,16 +10,18 @@
 
 namespace Functional;
 
+use Closure;
+
 /**
  * Logical negation of the given $function.
  *
  * @param callable $function The function to run value against
  *
- * @return callable A negation version on the given $function
+ * @return Closure A negation version on the given $function
  *
  * @no-named-arguments
  */
-function not(callable $function)
+function not(callable $function): Closure
 {
     return static fn ($value): bool => !$function($value);
 }
