@@ -21,7 +21,7 @@ namespace Functional;
 function some(iterable $collection, ?callable $callback = null): bool
 {
     if (null === $callback) {
-        $callback = '\Functional\id';
+        $callback = id(...);
     }
 
     foreach ($collection as $index => $element) {
