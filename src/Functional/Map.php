@@ -14,7 +14,14 @@ namespace Functional;
  * Produces a new array of elements by mapping each element in collection through a transformation function (callback).
  * Callback arguments will be element, index, collection.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ * @template TReturn
+ *
+ * @param iterable<TKey, TValue>                                  $collection
+ * @param callable(TValue, TKey, iterable<TKey, TValue>): TReturn $callback
+ *
+ * @return array<TKey, TReturn>
  *
  * @no-named-arguments
  */
