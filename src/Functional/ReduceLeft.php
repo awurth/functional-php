@@ -15,7 +15,7 @@ namespace Functional;
  *
  * @no-named-arguments
  */
-function reduce_left(iterable $collection, callable $callback, $initial = null)
+function reduce_left(iterable $collection, callable $callback, mixed $initial = null): mixed
 {
     foreach ($collection as $index => $value) {
         $initial = $callback($value, $index, $collection, $initial);
