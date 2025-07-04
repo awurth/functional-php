@@ -14,11 +14,16 @@ namespace Functional;
  * Looks through each element in the collection, returning the last one that passes a truthy test (callback).
  * Callback arguments will be element, index, collection.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return TValue|null
  *
  * @no-named-arguments
  */
-function last(iterable $collection, ?callable $callback = null)
+function last(iterable $collection, ?callable $callback = null): mixed
 {
     $match = null;
     foreach ($collection as $index => $element) {
