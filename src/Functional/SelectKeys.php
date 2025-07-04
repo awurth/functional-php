@@ -19,7 +19,13 @@ use function iterator_to_array;
 /**
  * Select the specified keys from the array.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ * @param array<mixed, TKey>     $keys
+ *
+ * @return array<TKey, TValue>
  *
  * @no-named-arguments
  */
