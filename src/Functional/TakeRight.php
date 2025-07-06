@@ -22,13 +22,16 @@ use function iterator_to_array;
  * This function will reorder and reset the integer array indices by default. This behaviour can be changed by setting
  * preserveKeys to TRUE. String keys are always preserved, regardless of this parameter.
  *
- * @param iterable<mixed, mixed> $collection
- * @param int                    $count
- * @param bool                   $preserveKeys
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return array<TKey, TValue>
  *
  * @no-named-arguments
  */
-function take_right(iterable $collection, $count, $preserveKeys = false): array
+function take_right(iterable $collection, int $count, bool $preserveKeys = false): array
 {
     InvalidArgumentException::assertPositiveInteger($count, __FUNCTION__, 2);
 
