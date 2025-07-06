@@ -20,12 +20,16 @@ use function iterator_to_array;
  * Creates a slice of $collection with $count elements taken from the beginning. If the collection has less than $count
  * elements, the whole collection will be returned as an array.
  *
- * @param iterable<mixed, mixed> $collection
- * @param int                    $count
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return array<TKey, TValue>
  *
  * @no-named-arguments
  */
-function take_left(iterable $collection, $count): array
+function take_left(iterable $collection, int $count): array
 {
     InvalidArgumentException::assertPositiveInteger($count, __FUNCTION__, 2);
 
