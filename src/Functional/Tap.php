@@ -13,9 +13,16 @@ namespace Functional;
 /**
  * Call the given Closure with the given value, then return the value.
  *
+ * @template T
+ *
+ * @param T                 $value
+ * @param callable(T): void $callback
+ *
+ * @return T
+ *
  * @no-named-arguments
  */
-function tap($value, callable $callback)
+function tap(mixed $value, callable $callback): mixed
 {
     $callback($value);
 

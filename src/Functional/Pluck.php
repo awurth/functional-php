@@ -20,11 +20,10 @@ use function is_object;
  * Extract a property from a collection of objects.
  *
  * @param iterable<mixed, mixed> $collection
- * @param string                 $propertyName
  *
  * @no-named-arguments
  */
-function pluck(iterable $collection, $propertyName): array
+function pluck(iterable $collection, string $propertyName): array
 {
     InvalidArgumentException::assertPropertyName($propertyName, __FUNCTION__, 2);
 

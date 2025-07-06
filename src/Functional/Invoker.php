@@ -10,20 +10,14 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
+use Closure;
 
 /**
  * Returns a function that invokes method `$method` with arguments `$methodArguments` on the object.
  *
- * @param string $methodName
- *
- * @return callable
- *
  * @no-named-arguments
  */
-function invoker($methodName, array $arguments = [])
+function invoker(string $methodName, array $arguments = []): Closure
 {
-    InvalidArgumentException::assertMethodName($methodName, __FUNCTION__, 1);
-
     return static fn ($object) => $object->{$methodName}(...$arguments);
 }

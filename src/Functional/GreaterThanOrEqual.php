@@ -15,11 +15,11 @@ use Closure;
 /**
  * Returns true if $a is greater than or equal to $b.
  *
- * @return Closure(mixed)
+ * @return Closure(mixed): bool
  *
  * @no-named-arguments
  */
-function greater_than_or_equal($b)
+function greater_than_or_equal($b): Closure
 {
     return static fn ($a): bool => $a >= $b;
 }

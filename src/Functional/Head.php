@@ -13,11 +13,16 @@ namespace Functional;
 /**
  * Alias for Functional\first.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return TValue|null
  *
  * @no-named-arguments
  */
-function head(iterable $collection, ?callable $callback = null)
+function head(iterable $collection, ?callable $callback = null): mixed
 {
     return first($collection, $callback);
 }

@@ -25,13 +25,11 @@ use function usleep;
  * @param int              $timeout       Timeout in microseconds
  * @param Traversable|null $delaySequence Default: no delay between calls
  *
- * @return bool
- *
  * @throws InvalidArgumentException
  *
  * @no-named-arguments
  */
-function poll(callable $callback, $timeout, ?Traversable $delaySequence = null)
+function poll(callable $callback, int $timeout, ?Traversable $delaySequence = null): bool
 {
     InvalidArgumentException::assertIntegerGreaterThanOrEqual($timeout, 0, __FUNCTION__, 2);
 

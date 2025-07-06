@@ -15,11 +15,11 @@ use Closure;
 /**
  * Returns true if $a is strictly less than $b.
  *
- * @return Closure(mixed)
+ * @return Closure(mixed): bool
  *
  * @no-named-arguments
  */
-function less_than($b)
+function less_than($b): Closure
 {
     return static fn ($a): bool => $a < $b;
 }

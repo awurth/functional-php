@@ -14,7 +14,12 @@ namespace Functional;
  * Returns the elements in list without the elements that the truthy test (callback) passes. The opposite of
  * Functional\select(). Callback arguments will be element, index, collection.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue> $collection
+ *
+ * @return array<TKey, TValue>
  *
  * @no-named-arguments
  */

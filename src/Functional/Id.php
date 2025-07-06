@@ -13,9 +13,15 @@ namespace Functional;
 /**
  * Return value itself, without any modifications.
  *
+ * @template T
+ *
+ * @param T $value
+ *
+ * @return T
+ *
  * @no-named-arguments
  */
-function id($value)
+function id(mixed $value): mixed
 {
     return $value;
 }

@@ -10,23 +10,17 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
+use Closure;
 
 use function is_callable;
 
 /**
  * Returns a function that expects an object as the first param and tries to invoke the given method on it.
  *
- * @param string $methodName
- *
- * @return callable
- *
  * @no-named-arguments
  */
-function partial_method($methodName, array $arguments = [], $defaultValue = null)
+function partial_method(string $methodName, array $arguments = [], $defaultValue = null): Closure
 {
-    InvalidArgumentException::assertMethodName($methodName, __FUNCTION__, 1);
-
     return static function ($object) use ($methodName, $arguments, $defaultValue) {
         if (!is_callable([$object, $methodName])) {
             return $defaultValue;

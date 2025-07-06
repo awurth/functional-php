@@ -16,13 +16,10 @@ use function is_numeric;
  * Takes a collection and returns the sum of the elements.
  *
  * @param iterable<mixed, mixed> $collection
- * @param float|int              $initial
- *
- * @return float|int
  *
  * @no-named-arguments
  */
-function sum(iterable $collection, $initial = 0)
+function sum(iterable $collection, float|int $initial = 0): float|int
 {
     $result = $initial;
     foreach ($collection as $value) {

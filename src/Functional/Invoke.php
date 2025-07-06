@@ -10,8 +10,6 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-
 use function is_callable;
 
 /**
@@ -19,14 +17,11 @@ use function is_callable;
  * forwarded on to the method invocation.
  *
  * @param iterable<mixed, mixed> $collection
- * @param string                 $methodName
  *
  * @no-named-arguments
  */
-function invoke(iterable $collection, $methodName, array $arguments = []): array
+function invoke(iterable $collection, string $methodName, array $arguments = []): array
 {
-    InvalidArgumentException::assertMethodName($methodName, __FUNCTION__, 2);
-
     $aggregation = [];
 
     foreach ($collection as $index => $element) {

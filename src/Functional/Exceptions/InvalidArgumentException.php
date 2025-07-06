@@ -19,7 +19,6 @@ use function gettype;
 use function implode;
 use function in_array;
 use function is_array;
-use function is_bool;
 use function is_float;
 use function is_int;
 use function is_object;
@@ -42,13 +41,6 @@ class InvalidArgumentException extends \InvalidArgumentException
     public static function assertArrayAccess(mixed $collection, string $callee, int $parameterPosition): void
     {
         self::assertCollectionAlike($collection, 'ArrayAccess', $callee, $parameterPosition);
-    }
-
-    public static function assertMethodName(mixed $methodName, string $callee, int $parameterPosition): void
-    {
-        if (!is_string($methodName)) {
-            throw new static(sprintf('%s() expects parameter %d to be string, %s given', $callee, $parameterPosition, self::getType($methodName)),);
-        }
     }
 
     /**
@@ -87,26 +79,6 @@ class InvalidArgumentException extends \InvalidArgumentException
 
         if (!in_array($keyType, $keyTypes, true)) {
             throw new static(sprintf('%s(): callback returned invalid array key of type "%s". Expected %4$s or %3$s', $callee, $keyType, array_pop($keyTypes), implode(', ', $keyTypes)),);
-        }
-    }
-
-    /**
-     * @throws static
-     */
-    public static function assertBoolean(mixed $value, string $callee, int $parameterPosition): void
-    {
-        if (!is_bool($value)) {
-            throw new static(sprintf('%s() expects parameter %d to be boolean, %s given', $callee, $parameterPosition, self::getType($value)),);
-        }
-    }
-
-    /**
-     * @throws static
-     */
-    public static function assertInteger(mixed $value, string $callee, int $parameterPosition): void
-    {
-        if (!is_int($value)) {
-            throw new static(sprintf('%s() expects parameter %d to be integer, %s given', $callee, $parameterPosition, self::getType($value)),);
         }
     }
 

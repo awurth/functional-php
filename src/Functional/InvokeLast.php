@@ -10,8 +10,6 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
-
 use function is_callable;
 
 /**
@@ -19,14 +17,11 @@ use function is_callable;
  * $methodName. Any extra arguments passed to invoke will be forwarded on to the method invocation.
  *
  * @param iterable<mixed, mixed> $collection
- * @param string                 $methodName
  *
  * @no-named-arguments
  */
-function invoke_last(iterable $collection, $methodName, array $arguments = [])
+function invoke_last(iterable $collection, string $methodName, array $arguments = []): mixed
 {
-    InvalidArgumentException::assertMethodName($methodName, __FUNCTION__, 2);
-
     $lastCallback = null;
 
     foreach ($collection as $element) {

@@ -55,13 +55,6 @@ class InvalidArgumentExceptionTest extends TestCase
         InvalidArgumentException::assertArrayAccess(new stdClass(), 'func', 2);
     }
 
-    public function testExceptionIfInvalidMethodName(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('foo() expects parameter 2 to be string, stdClass given');
-        InvalidArgumentException::assertMethodName(new stdClass(), 'foo', 2);
-    }
-
     public function testExceptionIfInvalidPropertyName(): void
     {
         InvalidArgumentException::assertPropertyName('property', 'func', 2);
@@ -91,34 +84,6 @@ class InvalidArgumentExceptionTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('func() expects parameter 2 to be positive integer, string given');
         InvalidArgumentException::assertPositiveInteger('str', 'func', 2);
-    }
-
-    public function testAssertIntegerAccessWithString(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expects parameter 4 to be integer, string given');
-        InvalidArgumentException::assertInteger('string', 'func', 4);
-    }
-
-    public function testAssertIntegerAccessWithObject(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expects parameter 4 to be integer, stdClass given');
-        InvalidArgumentException::assertInteger(new stdClass(), 'func', 4);
-    }
-
-    public function testAssertBooleanAccessWithString(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expects parameter 4 to be boolean, string given');
-        InvalidArgumentException::assertBoolean('string', 'func', 4);
-    }
-
-    public function testAssertBooleanAccessWithObject(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expects parameter 4 to be boolean, stdClass given');
-        InvalidArgumentException::assertBoolean(new stdClass(), 'func', 4);
     }
 
     public function testAssertPairWithPair(): void

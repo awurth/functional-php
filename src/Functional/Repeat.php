@@ -16,11 +16,9 @@ use Functional\Exceptions\InvalidArgumentException;
 /**
  * Creates a function that can be used to repeat the execution of $callback.
  *
- * @return Closure
- *
  * @no-named-arguments
  */
-function repeat(callable $callback)
+function repeat(callable $callback): Closure
 {
     return static function ($times) use ($callback): void {
         InvalidArgumentException::assertPositiveInteger($times, __FUNCTION__, 1);

@@ -10,6 +10,8 @@
 
 namespace Functional;
 
+use Closure;
+
 /**
  * Performs an if/else condition over a value using functions as statements.
  *
@@ -21,7 +23,7 @@ namespace Functional;
  *
  * @no-named-arguments
  */
-function if_else(callable $if, callable $then, callable $else)
+function if_else(callable $if, callable $then, callable $else): Closure
 {
     return static fn ($value) => $if($value) ? $then($value) : $else($value);
 }

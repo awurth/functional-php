@@ -16,11 +16,18 @@ use function array_pop;
  * Insert a given value between each element of a collection.
  * Indices are not preserved.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ * @template TGlue
+ *
+ * @param iterable<TKey, TValue> $collection
+ * @param TGlue                  $glue
+ *
+ * @return array<TKey, TValue|TGlue>
  *
  * @no-named-arguments
  */
-function intersperse(iterable $collection, $glue): array
+function intersperse(iterable $collection, mixed $glue): array
 {
     $aggregation = [];
 

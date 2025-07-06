@@ -16,11 +16,9 @@ use function is_callable;
  * Calls the method named by $methodName on $object. Any extra arguments passed to invoke_if will be
  * forwarded on to the method invocation. If $method is not callable on $object, $defaultValue is returned.
  *
- * @param string $methodName
- *
  * @no-named-arguments
  */
-function invoke_if($object, $methodName, array $methodArguments = [], $defaultValue = null)
+function invoke_if($object, string $methodName, array $methodArguments = [], mixed $defaultValue = null): mixed
 {
     $callback = [$object, $methodName];
     if (is_callable($callback)) {

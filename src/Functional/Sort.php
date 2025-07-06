@@ -10,7 +10,6 @@
 
 namespace Functional;
 
-use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
 use function iterator_to_array;
@@ -19,16 +18,11 @@ use function iterator_to_array;
  * Sorts a collection with a user-defined function, optionally preserving array keys.
  *
  * @param iterable<mixed, mixed> $collection
- * @param bool                   $preserveKeys
- *
- * @return array
  *
  * @no-named-arguments
  */
-function sort(iterable $collection, callable $callback, $preserveKeys = false)
+function sort(iterable $collection, callable $callback, bool $preserveKeys = false): array
 {
-    InvalidArgumentException::assertBoolean($preserveKeys, __FUNCTION__, 3);
-
     $array = $collection instanceof Traversable ? iterator_to_array($collection) : $collection;
 
     $fn = $preserveKeys ? 'uasort' : 'usort';

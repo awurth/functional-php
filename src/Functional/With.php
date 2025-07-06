@@ -23,7 +23,7 @@ use const E_USER_DEPRECATED;
  *
  * @no-named-arguments
  */
-function with($value, callable $callback, $invokeValue = true, $default = null)
+function with($value, callable $callback, bool $invokeValue = true, mixed $default = null)
 {
     if (null === $value) {
         return $default;
