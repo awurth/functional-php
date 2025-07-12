@@ -46,17 +46,16 @@ class GroupTest extends AbstractTestCase
 
     public function testExceptionIsThrownWhenCallbacksReturnsInvalidKey(): void
     {
-        $array = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'];
-        $keyMap = [true, 1, -1, 2.1, 'str', null];
+        $array = ['v1', 'v2', 'v3', 'v4'];
+        $keyMap = [1, -1, 'str', null];
         $fn = static function ($v, $k, $collection) use (&$keyMap) {
             return $keyMap[$k];
         };
         $result = [
-            1 => [0 => 'v1', 1 => 'v2'],
-            -1 => [2 => 'v3'],
-            2 => [3 => 'v4'],
-            'str' => [4 => 'v5'],
-            null => [5 => 'v6'],
+            1 => [0 => 'v1'],
+            -1 => [1 => 'v2'],
+            'str' => [2 => 'v3'],
+            null => [3 => 'v4'],
         ];
         self::assertSame($result, group($array, $fn));
         self::assertSame($result, group(new ArrayIterator($array), $fn));
@@ -65,6 +64,8 @@ class GroupTest extends AbstractTestCase
             'resource' => stream_context_create(),
             'object' => new stdClass(),
             'array' => [],
+            'boolean' => true,
+            'double' => 1.1,
         ];
 
         foreach ($invalidTypes as $type => $value) {
@@ -75,7 +76,7 @@ class GroupTest extends AbstractTestCase
             } catch (Exception $e) {
                 self::assertSame(
                     sprintf(
-                        'Functional\group(): callback returned invalid array key of type "%s". Expected NULL, string, integer, double or boolean',
+                        'Functional\group(): callback returned invalid array key of type "%s". Expected NULL, string or integer',
                         $type,
                     ),
                     $e->getMessage(),
