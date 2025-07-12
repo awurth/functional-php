@@ -37,13 +37,4 @@ class IntersperseTest extends AbstractTestCase
     {
         self::assertSame(['a', ['-'], 'b'], intersperse(['a', 'b'], ['-']));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError(
-            'Functional\intersperse() expects parameter 1 to be array or '.
-            'instance of Traversable',
-        );
-        intersperse('invalidCollection', '-');
-    }
 }

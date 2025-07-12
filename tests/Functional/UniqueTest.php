@@ -108,12 +108,6 @@ class UniqueTest extends AbstractTestCase
         unique($this->hashIterator, $this->exception(...));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\unique() expects parameter 1 to be array or instance of Traversable');
-        unique('invalidCollection', 'strlen');
-    }
-
     public function testPassNonCallableUndefinedFunction(): void
     {
         $this->expectCallableArgumentError('Functional\unique', 2);

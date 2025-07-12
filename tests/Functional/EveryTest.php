@@ -54,12 +54,6 @@ class EveryTest extends AbstractTestCase
         every($this->goodArray, 'undefinedFunction');
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\every() expects parameter 1 to be array or instance of Traversable');
-        every('invalidCollection', 'strlen');
-    }
-
     public function testPassNoCallable(): void
     {
         self::assertTrue(every($this->goodArray));

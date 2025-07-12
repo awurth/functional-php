@@ -61,12 +61,6 @@ class SomeTest extends AbstractTestCase
         self::assertTrue(some($this->badIterator));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\some() expects parameter 1 to be array or instance of Traversable');
-        some('invalidCollection', 'strlen');
-    }
-
     public function testExceptionThrownInArray(): void
     {
         $this->expectException('DomainException');

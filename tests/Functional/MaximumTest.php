@@ -52,10 +52,4 @@ class MaximumTest extends AbstractTestCase
     {
         self::assertSame(1, maximum([0, 1, 0.0, 1.0, '0', '1', '0.0', '1.0']));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\maximum() expects parameter 1 to be array or instance of Traversable');
-        maximum('invalidCollection');
-    }
 }

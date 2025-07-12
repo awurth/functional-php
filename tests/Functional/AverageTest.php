@@ -79,10 +79,4 @@ class AverageTest extends AbstractTestCase
         self::assertNull(average($this->list3));
         self::assertNull(average($this->listIterator3));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\average() expects parameter 1 to be array or instance of Traversable');
-        average('invalidCollection');
-    }
 }

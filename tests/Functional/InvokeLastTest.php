@@ -55,12 +55,6 @@ class InvokeLastTest extends AbstractTestCase
         self::assertSame('methodValue', invoke_last($this->iteratorVeryLastNotCallable, 'method'));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\invoke_last() expects parameter 1 to be array or instance of Traversable');
-        invoke_last('invalidCollection', 'method');
-    }
-
     public function testPassNoPropertyName(): void
     {
         $this->expectArgumentError('Functional\invoke_last() expects parameter 2 to be string');

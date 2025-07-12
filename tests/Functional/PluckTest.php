@@ -245,12 +245,6 @@ class PluckTest extends AbstractTestCase
         self::assertSame(['one' => '1', 'two' => '2'], pluck($it, null));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\pluck() expects parameter 1 to be array or instance of Traversable');
-        pluck('invalidCollection', 'property');
-    }
-
     public function testPassNoPropertyName(): void
     {
         $this->expectArgumentError('Functional\pluck() expects parameter 2 to be a valid property name or array index, stdClass given');

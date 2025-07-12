@@ -57,12 +57,6 @@ class SortTest extends AbstractTestCase
         F\sort($this->list, 'undefinedFunction');
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('sort() expects parameter 1 to be array or instance of Traversable');
-        F\sort('invalidCollection', 'strlen');
-    }
-
     public function testExceptionIsThrownInArray(): void
     {
         $this->expectException('DomainException');

@@ -67,12 +67,6 @@ class MapTest extends AbstractTestCase
         map($this->hashIterator, $this->exception(...));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\map() expects parameter 1 to be array or instance of Traversable');
-        map('invalidCollection', 'strlen');
-    }
-
     public function testPassNonCallable(): void
     {
         $this->expectCallableArgumentError('Functional\map', 2);

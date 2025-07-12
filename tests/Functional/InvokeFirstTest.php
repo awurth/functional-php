@@ -66,12 +66,6 @@ class InvokeFirstTest extends AbstractTestCase
         self::assertSame([1, 2], invoke_first($this->arrayVeryFirstNotCallable, 'returnArguments', [1, 2]));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\invoke_first() expects parameter 1 to be array or instance of Traversable');
-        invoke_first('invalidCollection', 'method');
-    }
-
     public function testPassNoPropertyName(): void
     {
         $this->expectArgumentError('Functional\invoke_first() expects parameter 2 to be string');

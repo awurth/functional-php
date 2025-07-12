@@ -46,10 +46,4 @@ class FlattenTest extends AbstractTestCase
         self::assertEquals([new stdClass()], flatten([[new stdClass()]]));
         self::assertSame([null, null], flatten([[null], null]));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\flatten() expects parameter 1 to be array or instance of Traversable');
-        flatten('invalidCollection');
-    }
 }

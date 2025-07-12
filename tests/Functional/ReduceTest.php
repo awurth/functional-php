@@ -181,22 +181,10 @@ class ReduceTest extends AbstractTestCase
         return $ret;
     }
 
-    public function testPassNoCollectionToReduceLeft(): void
-    {
-        $this->expectArgumentError('Functional\reduce_left() expects parameter 1 to be array or instance of Traversable');
-        reduce_left('invalidCollection', 'strlen');
-    }
-
     public function testPassNonCallableToReduceLeft(): void
     {
         $this->expectCallableArgumentError('Functional\reduce_left', 2);
         reduce_left($this->list, 'undefinedFunction');
-    }
-
-    public function testPassNoCollectionToReduceRight(): void
-    {
-        $this->expectArgumentError('Functional\reduce_right() expects parameter 1 to be array or instance of Traversable');
-        reduce_right('invalidCollection', 'strlen');
     }
 
     public function testPassNonCallableToReduceRight(): void

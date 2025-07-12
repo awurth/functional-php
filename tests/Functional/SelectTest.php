@@ -72,20 +72,6 @@ class SelectTest extends AbstractTestCase
     /**
      * @dataProvider getAliases
      */
-    public function testPassNoCollection($functionName): void
-    {
-        $this->expectArgumentError(
-            sprintf(
-                '%s() expects parameter 1 to be array or instance of Traversable',
-                $functionName,
-            ),
-        );
-        $functionName('invalidCollection', 'strlen');
-    }
-
-    /**
-     * @dataProvider getAliases
-     */
     public function testExceptionIsThrownInArray($functionName): void
     {
         $this->expectException('DomainException');

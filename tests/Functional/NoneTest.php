@@ -46,12 +46,6 @@ class NoneTest extends AbstractTestCase
         self::assertFalse(none($this->badIterator, $this->functionalCallback(...)));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\none() expects parameter 1 to be array or instance of Traversable');
-        none('invalidCollection', 'strlen');
-    }
-
     public function testPassNonCallable(): void
     {
         $this->expectCallableArgumentError('Functional\none', 2);

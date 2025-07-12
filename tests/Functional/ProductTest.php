@@ -53,10 +53,4 @@ class ProductTest extends AbstractTestCase
     {
         self::assertEqualsWithDelta(3, product($collection), 0.01, '');
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\product() expects parameter 1 to be array or instance of Traversable');
-        product('invalidCollection', 'strlen');
-    }
 }

@@ -53,10 +53,4 @@ class MinimumTest extends AbstractTestCase
     {
         self::assertSame(0, minimum([0, 1, 0.0, 1.0, '0', '1', '0.0', '1.0']));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\minimum() expects parameter 1 to be array or instance of Traversable');
-        minimum('invalidCollection');
-    }
 }

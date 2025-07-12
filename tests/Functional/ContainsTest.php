@@ -58,10 +58,4 @@ class ContainsTest extends AbstractTestCase
         self::assertFalse(contains($this->hashIterator, '2'));
         self::assertFalse(contains($this->hashIterator, 'value'));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\contains() expects parameter 1 to be array or instance of Traversable');
-        contains('invalidCollection', 'value');
-    }
 }

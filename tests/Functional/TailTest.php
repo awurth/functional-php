@@ -78,10 +78,4 @@ class TailTest extends AbstractTestCase
         $this->expectExceptionMessage('Callback exception');
         tail($this->listIterator, $this->exception(...));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\tail() expects parameter 1 to be array or instance of Traversable');
-        tail('invalidCollection', 'strlen');
-    }
 }

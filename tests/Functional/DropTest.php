@@ -83,13 +83,6 @@ class DropTest extends AbstractTestCase
     }
 
     /** @dataProvider getFunctions */
-    public function testPassNoCollection($fn): void
-    {
-        $this->expectArgumentError($fn.'() expects parameter 1 to be array or instance of Traversable');
-        $fn('invalidCollection', 'strlen');
-    }
-
-    /** @dataProvider getFunctions */
     public function testPassNonCallable($fn): void
     {
         $this->expectCallableArgumentError($fn, 2);

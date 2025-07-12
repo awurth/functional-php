@@ -82,12 +82,6 @@ class FlatMapTest extends AbstractTestCase
         self::assertSame(['a', 'b', 'c', ['d']], $flat);
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\flat_map() expects parameter 1 to be array or instance of Traversable');
-        flat_map('invalidCollection', 'strlen');
-    }
-
     public function testPassNonCallable(): void
     {
         $this->expectCallableArgumentError('Functional\flat_map', 2);

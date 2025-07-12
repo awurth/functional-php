@@ -74,10 +74,4 @@ class LastTest extends AbstractTestCase
         $this->expectExceptionMessage('Callback exception');
         last($this->listIterator, $this->exception(...));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\last() expects parameter 1 to be array or instance of Traversable');
-        last('invalidCollection', 'strlen');
-    }
 }

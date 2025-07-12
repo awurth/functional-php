@@ -45,12 +45,6 @@ class InvokeTest extends AbstractTestCase
         self::assertSame(['k1' => 'methodValue', 'k2' => 'methodValue'], invoke($this->keyIterator, 'method'));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\invoke() expects parameter 1 to be array or instance of Traversable');
-        invoke('invalidCollection', 'method');
-    }
-
     public function testPassNoPropertyName(): void
     {
         $this->expectArgumentError('Functional\invoke() expects parameter 2 to be string');

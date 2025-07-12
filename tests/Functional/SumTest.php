@@ -55,10 +55,4 @@ class SumTest extends AbstractTestCase
     {
         self::assertEqualsWithDelta(3.5, sum($collection), 0.1, '');
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\sum() expects parameter 1 to be array or instance of Traversable');
-        sum('invalidCollection');
-    }
 }

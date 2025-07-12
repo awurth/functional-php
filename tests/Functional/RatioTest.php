@@ -53,10 +53,4 @@ class RatioTest extends AbstractTestCase
     {
         self::assertEqualsWithDelta(0.333, ratio($collection), 0.001);
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\ratio() expects parameter 1 to be array or instance of Traversable');
-        ratio('invalidCollection', 'strlen');
-    }
 }

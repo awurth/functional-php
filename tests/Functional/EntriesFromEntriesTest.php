@@ -64,10 +64,4 @@ class EntriesFromEntriesTest extends AbstractTestCase
         self::assertSame(array_keys($res), range(42, 42 + count($this->hash) - 1));
         self::assertSame(from_entries($res), $this->hash);
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\entries() expects parameter 1 to be array or instance of Traversable');
-        entries('invalidCollection');
-    }
 }

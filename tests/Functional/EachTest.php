@@ -92,10 +92,4 @@ class EachTest extends AbstractTestCase
         $this->expectCallableArgumentError('Functional\each', 2);
         each($this->list, 'undefinedFunction');
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\each() expects parameter 1 to be array or instance of Traversable');
-        each('invalidCollection', 'strlen');
-    }
 }

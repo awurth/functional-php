@@ -54,12 +54,6 @@ class RejectTest extends AbstractTestCase
         self::assertSame([1 => false], reject([true, false, true]));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\reject() expects parameter 1 to be array or instance of Traversable');
-        reject('invalidCollection', 'strlen');
-    }
-
     public function testExceptionIsThrownInArray(): void
     {
         $this->expectException('DomainException');

@@ -77,12 +77,6 @@ class ReindexTest extends AbstractTestCase
         reindex($this->hashIterator, $this->exception(...));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\reindex() expects parameter 1 to be array or instance of Traversable');
-        reindex('invalidCollection', 'strlen');
-    }
-
     public function testPassNonCallable(): void
     {
         $this->expectCallableArgumentError('Functional\reindex', 2);

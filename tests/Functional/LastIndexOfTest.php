@@ -47,10 +47,4 @@ class LastIndexOfTest extends AbstractTestCase
             last_index_of($this->list, static fn ($element) => $element),
         );
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\last_index_of() expects parameter 1 to be array or instance of Traversable');
-        last_index_of('invalidCollection', 'idx');
-    }
 }

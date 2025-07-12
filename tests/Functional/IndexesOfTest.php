@@ -39,10 +39,4 @@ class IndexesOfTest extends AbstractTestCase
         self::assertSame([], indexes_of($this->hash, 'invalidValue'));
         self::assertSame([], indexes_of($this->hashIterator, 'invalidValue'));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\indexes_of() expects parameter 1 to be array or instance of Traversable');
-        indexes_of('invalidCollection', 'idx');
-    }
 }

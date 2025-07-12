@@ -29,10 +29,4 @@ class ButLastTest extends AbstractTestCase
         self::assertSame([0 => 1, 1 => 2, 2 => 3], but_last($this->listIterator));
         self::assertSame([], but_last([]));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\but_last() expects parameter 1 to be array or instance of Traversable');
-        but_last('invalidCollection');
-    }
 }

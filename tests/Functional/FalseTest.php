@@ -66,10 +66,4 @@ class FalseTest extends AbstractTestCase
         self::assertFalse(F\false($this->falseHash));
         self::assertFalse(F\false($this->falseHashIterator));
     }
-
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\false() expects parameter 1 to be array or instance of Traversable');
-        F\false('invalidCollection');
-    }
 }

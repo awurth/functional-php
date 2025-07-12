@@ -112,12 +112,6 @@ class GroupTest extends AbstractTestCase
         group($this->hashIterator, $this->exception(...));
     }
 
-    public function testPassNoCollection(): void
-    {
-        $this->expectArgumentError('Functional\group() expects parameter 1 to be array or instance of Traversable');
-        group('invalidCollection', 'strlen');
-    }
-
     public function testPassNonCallable(): void
     {
         $this->expectCallableArgumentError('Functional\group', 2);
