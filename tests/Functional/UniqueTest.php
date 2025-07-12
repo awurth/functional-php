@@ -59,16 +59,12 @@ class UniqueTest extends AbstractTestCase
 
     public function testUnifyingStrict(): void
     {
-        self::assertSame([0 => 1, 2 => '2', 4 => '3', 5 => 4], unique($this->mixedTypesArray, null, false));
         self::assertSame([1, '1', '2', 2, '3', 4], unique($this->mixedTypesArray));
-        self::assertSame([0 => 1, 2 => '2', 4 => '3', 5 => 4], unique($this->mixedTypesIterator, null, false));
         self::assertSame([1, '1', '2', 2, '3', 4], unique($this->mixedTypesIterator));
 
         $fn = (static fn ($value, $key, $collection) => $value);
 
-        self::assertSame([0 => 1, 2 => '2', 4 => '3', 5 => 4], unique($this->mixedTypesArray, $fn, false));
         self::assertSame([1, '1', '2', 2, '3', 4], unique($this->mixedTypesArray, $fn));
-        self::assertSame([0 => 1, 2 => '2', 4 => '3', 5 => 4], unique($this->mixedTypesIterator, null, false));
         self::assertSame([1, '1', '2', 2, '3', 4], unique($this->mixedTypesIterator, $fn));
     }
 

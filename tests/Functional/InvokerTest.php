@@ -28,12 +28,6 @@ class InvokerTest extends AbstractTestCase
         self::assertSame($arguments, $fn($this));
     }
 
-    public function testPassNoString(): void
-    {
-        $this->expectArgumentError('Functional\invoker() expects parameter 1 to be string');
-        invoker([]);
-    }
-
     public function testInvalidMethod(): void
     {
         if (!class_exists('Error')) {

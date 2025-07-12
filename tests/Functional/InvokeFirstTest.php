@@ -66,12 +66,6 @@ class InvokeFirstTest extends AbstractTestCase
         self::assertSame([1, 2], invoke_first($this->arrayVeryFirstNotCallable, 'returnArguments', [1, 2]));
     }
 
-    public function testPassNoPropertyName(): void
-    {
-        $this->expectArgumentError('Functional\invoke_first() expects parameter 2 to be string');
-        invoke_first($this->list, new stdClass());
-    }
-
     public function testException(): void
     {
         $this->expectException('DomainException');

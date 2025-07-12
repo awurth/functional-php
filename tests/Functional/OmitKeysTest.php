@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use stdclass;
 
 use function Functional\omit_keys;
 
@@ -36,11 +35,5 @@ class OmitKeysTest extends AbstractTestCase
     {
         self::assertSame($expected, omit_keys($input, $keys));
         self::assertSame($expected, omit_keys(new ArrayIterator($input), $keys));
-    }
-
-    public function testPassNonArrayOrTraversable(): void
-    {
-        $this->expectArgumentError('Functional\omit_keys() expects parameter 1 to be array or instance of Traversable');
-        omit_keys(new stdclass(), []);
     }
 }

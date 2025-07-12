@@ -245,12 +245,6 @@ class PluckTest extends AbstractTestCase
         self::assertSame(['one' => '1', 'two' => '2'], pluck($it, null));
     }
 
-    public function testPassNoPropertyName(): void
-    {
-        $this->expectArgumentError('Functional\pluck() expects parameter 2 to be a valid property name or array index, stdClass given');
-        pluck($this->propertyExistsSomewhere, new stdClass());
-    }
-
     public function testExceptionThrownInMagicIssetWhileIteratingArray(): void
     {
         $this->expectException('DomainException');

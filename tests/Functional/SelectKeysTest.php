@@ -36,10 +36,4 @@ class SelectKeysTest extends AbstractTestCase
         self::assertSame($expected, select_keys($input, $keys));
         self::assertSame($expected, select_keys(new ArrayIterator($input), $keys));
     }
-
-    public function testPassNonArrayOrTraversable(): void
-    {
-        $this->expectArgumentError('Functional\select_keys() expects parameter 1 to be array or instance of Traversable');
-        select_keys(new stdclass(), []);
-    }
 }

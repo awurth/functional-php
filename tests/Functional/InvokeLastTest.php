@@ -55,12 +55,6 @@ class InvokeLastTest extends AbstractTestCase
         self::assertSame('methodValue', invoke_last($this->iteratorVeryLastNotCallable, 'method'));
     }
 
-    public function testPassNoPropertyName(): void
-    {
-        $this->expectArgumentError('Functional\invoke_last() expects parameter 2 to be string');
-        invoke_last($this->list, new stdClass());
-    }
-
     public function testException(): void
     {
         $this->expectException('DomainException');

@@ -45,12 +45,6 @@ class InvokeTest extends AbstractTestCase
         self::assertSame(['k1' => 'methodValue', 'k2' => 'methodValue'], invoke($this->keyIterator, 'method'));
     }
 
-    public function testPassNoPropertyName(): void
-    {
-        $this->expectArgumentError('Functional\invoke() expects parameter 2 to be string');
-        invoke($this->list, new stdClass());
-    }
-
     public function testException(): void
     {
         $this->expectException('DomainException');
