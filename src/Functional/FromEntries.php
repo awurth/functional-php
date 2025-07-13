@@ -20,6 +20,8 @@ use Functional\Exceptions\InvalidArgumentException;
  *
  * @param iterable<mixed, mixed> $collection
  *
+ * @return array<int|string, mixed>
+ *
  * @no-named-arguments
  */
 function from_entries(iterable $collection): array

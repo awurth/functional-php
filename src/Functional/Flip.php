@@ -10,6 +10,8 @@
 
 namespace Functional;
 
+use Closure;
+
 use function array_reverse;
 use function func_get_args;
 
@@ -20,11 +22,11 @@ use function func_get_args;
  *
  * @param callable $callback the function you want to flip
  *
- * @return callable a flipped version of the given function
+ * @return Closure a flipped version of the given function
  *
  * @no-named-arguments
  */
-function flip(callable $callback)
+function flip(callable $callback): Closure
 {
     return static function () use ($callback) {
         return $callback(...array_reverse(func_get_args()));

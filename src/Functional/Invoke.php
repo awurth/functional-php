@@ -17,6 +17,9 @@ use function is_callable;
  * forwarded on to the method invocation.
  *
  * @param iterable<mixed, mixed> $collection
+ * @param array<mixed, mixed>    $arguments
+ *
+ * @return array<mixed, mixed>
  *
  * @no-named-arguments
  */

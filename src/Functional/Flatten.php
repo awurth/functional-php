@@ -20,6 +20,8 @@ use function is_iterable;
  *
  * @param iterable<mixed, mixed> $collection
  *
+ * @return array<int, mixed>
+ *
  * @no-named-arguments
  */
 function flatten(iterable $collection): array

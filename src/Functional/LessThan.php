@@ -19,7 +19,7 @@ use Closure;
  *
  * @no-named-arguments
  */
-function less_than($b): Closure
+function less_than(mixed $b): Closure
 {
-    return static fn ($a): bool => $a < $b;
+    return static fn (mixed $a): bool => $a < $b;
 }

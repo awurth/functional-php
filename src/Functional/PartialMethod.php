@@ -17,9 +17,11 @@ use function is_callable;
 /**
  * Returns a function that expects an object as the first param and tries to invoke the given method on it.
  *
+ * @param array<mixed, mixed> $arguments
+ *
  * @no-named-arguments
  */
-function partial_method(string $methodName, array $arguments = [], $defaultValue = null): Closure
+function partial_method(string $methodName, array $arguments = [], mixed $defaultValue = null): Closure
 {
     return static function ($object) use ($methodName, $arguments, $defaultValue) {
         if (!is_callable([$object, $methodName])) {

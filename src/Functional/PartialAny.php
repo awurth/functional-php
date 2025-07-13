@@ -10,6 +10,7 @@
 
 namespace Functional;
 
+use Closure;
 use Functional\Exceptions\InvalidArgumentException;
 
 use function array_shift;
@@ -21,11 +22,9 @@ use function random_bytes;
  *
  * Use Functional\…, Functional\…() or Functional\placeholder() as a placeholder
  *
- * @return callable
- *
  * @no-named-arguments
  */
-function partial_any(callable $callback, ...$arguments)
+function partial_any(callable $callback, ...$arguments): Closure
 {
     return static function (...$innerArguments) use ($callback, $arguments) {
         $placeholder = …();

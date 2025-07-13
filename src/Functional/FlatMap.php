@@ -25,6 +25,8 @@ use function is_iterable;
  *
  * @param iterable<mixed, mixed> $collection
  *
+ * @return array<int, mixed>
+ *
  * @no-named-arguments
  */
 function flat_map(iterable $collection, callable $callback): array

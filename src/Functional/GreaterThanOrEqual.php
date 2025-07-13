@@ -19,7 +19,7 @@ use Closure;
  *
  * @no-named-arguments
  */
-function greater_than_or_equal($b): Closure
+function greater_than_or_equal(mixed $b): Closure
 {
-    return static fn ($a): bool => $a >= $b;
+    return static fn (mixed $a): bool => $a >= $b;
 }

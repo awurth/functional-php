@@ -17,6 +17,7 @@ use function is_callable;
  * $methodName. Any extra arguments passed to invoke will be forwarded on to the method invocation.
  *
  * @param iterable<mixed, mixed> $collection
+ * @param array<mixed, mixed>    $arguments
  *
  * @no-named-arguments
  */
@@ -31,7 +32,7 @@ function invoke_last(iterable $collection, string $methodName, array $arguments 
         }
     }
 
-    if (!$lastCallback) {
+    if (!is_callable($lastCallback)) {
         return null;
     }
 

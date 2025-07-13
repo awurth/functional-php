@@ -15,7 +15,13 @@ use Functional\Exceptions\InvalidArgumentException;
 /**
  * Groups a collection by index returned by callback.
  *
- * @param iterable<mixed, mixed> $collection
+ * @template TKey
+ * @template TValue
+ *
+ * @param iterable<TKey, TValue>                                            $collection
+ * @param callable(TValue, TKey, iterable<TKey, TValue>): (int|string|null) $callback
+ *
+ * @return array<int|string|null, array<TKey, TValue>>
  *
  * @no-named-arguments
  */

@@ -10,18 +10,16 @@
 
 namespace Functional;
 
+use Closure;
+
 use function array_merge;
 
 /**
  * Return a new function with the arguments partially applied starting from the right.
  *
- * @param array ...$arguments
- *
- * @return callable
- *
  * @no-named-arguments
  */
-function partial_right(callable $callback, ...$arguments)
+function partial_right(callable $callback, mixed ...$arguments): Closure
 {
-    return static fn (...$innerArguments) => $callback(...array_merge($innerArguments, $arguments));
+    return static fn (mixed ...$innerArguments) => $callback(...array_merge($innerArguments, $arguments));
 }

@@ -10,6 +10,7 @@
 
 namespace Functional;
 
+use Closure;
 use Functional\Exceptions\MatchException;
 
 /**
@@ -17,11 +18,11 @@ use Functional\Exceptions\MatchException;
  *
  * @param array $conditions the conditions to check against
  *
- * @return callable|null the function that calls the callable of the first truthy condition
+ * @return Closure the function that calls the callable of the first truthy condition
  *
  * @no-named-arguments
  */
-function matching(array $conditions)
+function matching(array $conditions): Closure
 {
     MatchException::assert($conditions, __FUNCTION__);
 
