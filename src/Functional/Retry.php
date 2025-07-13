@@ -15,8 +15,8 @@ use ArrayIterator;
 use Exception;
 use Functional\Exceptions\InvalidArgumentException;
 use InfiniteIterator;
+use Iterator;
 use LimitIterator;
-use Traversable;
 
 use function array_fill_keys;
 use function range;
@@ -25,8 +25,7 @@ use function usleep;
 /**
  * Retry a callback until the number of retries are reached or the callback does no longer throw an exception.
  *
- * @param int              $retries
- * @param Traversable|null $delaySequence Default: no delay between calls
+ * @param Iterator|null $delaySequence Default: no delay between calls
  *
  * @return mixed Return value of the function
  *
@@ -35,11 +34,11 @@ use function usleep;
  *
  * @no-named-arguments
  */
-function retry(callable $callback, $retries, ?Traversable $delaySequence = null)
+function retry(callable $callback, int $retries, ?Iterator $delaySequence = null)
 {
     InvalidArgumentException::assertIntegerGreaterThanOrEqual($retries, 1, __FUNCTION__, 2);
 
-    if ($delaySequence) {
+    if ($delaySequence instanceof Iterator) {
         $delays = new AppendIterator();
         $delays->append(new InfiniteIterator($delaySequence));
         $delays->append(new InfiniteIterator(new ArrayIterator([0])));

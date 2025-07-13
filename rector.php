@@ -20,7 +20,7 @@ return RectorConfig::configure()
         privatization: true,
         instanceOf: true,
         earlyReturn: true,
-        // strictBooleans: true,
+        strictBooleans: true,
         // rectorPreset: true,
     )
     // ->withComposerBased(phpunit: true)

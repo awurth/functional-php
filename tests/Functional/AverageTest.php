@@ -12,7 +12,6 @@ namespace Functional\Tests;
 
 use ArrayIterator;
 use stdClass;
-use Traversable;
 
 use function array_values;
 use function Functional\average;
