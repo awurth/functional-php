@@ -14,8 +14,6 @@ use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
 use Traversable;
 
-use function sprintf;
-
 class FirstTest extends AbstractTestCase
 {
     /** @var string[] */

@@ -15,7 +15,6 @@ use ArrayObject;
 use DomainException;
 use Exception;
 use SplFixedArray;
-use stdClass;
 use Traversable;
 
 use function array_values;

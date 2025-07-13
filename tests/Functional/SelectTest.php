@@ -14,7 +14,6 @@ use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\select;
-use function sprintf;
 
 class SelectTest extends AbstractTestCase
 {

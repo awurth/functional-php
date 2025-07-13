@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use stdClass;
 
 use function func_get_args;
 use function Functional\invoke_last;

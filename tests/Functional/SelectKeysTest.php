@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use stdclass;
 
 use function Functional\select_keys;
 

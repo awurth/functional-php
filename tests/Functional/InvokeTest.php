@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use stdClass;
 use Traversable;
 
 use function func_get_args;
