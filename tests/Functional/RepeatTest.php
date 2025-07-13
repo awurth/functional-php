@@ -22,14 +22,14 @@ class Repeated
     }
 }
 
-class RepeatTest extends AbstractTestCase
+final class RepeatTest extends AbstractTestCase
 {
-    /** @var Repeated|MockObject */
-    private $repeated;
+    private Repeated&MockObject $repeated;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->repeated = $this->createMock(Repeated::class);
     }
 
@@ -40,16 +40,16 @@ class RepeatTest extends AbstractTestCase
             ->method('foo')
         ;
 
-        repeat([$this->repeated, 'foo'])(10);
+        repeat($this->repeated->foo(...))(10);
     }
 
     public function testNegativeRepeatedTimes(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            'Functional\{closure}() expects parameter 1 to be positive integer, negative integer given',
+            '{closure:Functional\repeat():23}() expects parameter 1 to be positive integer, negative integer given',
         );
 
-        repeat([$this->repeated, 'foo'])(-1);
+        repeat($this->repeated->foo(...))(-1);
     }
 }
