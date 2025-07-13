@@ -10,6 +10,8 @@
 
 namespace Functional;
 
+use Closure;
+
 use function array_reduce;
 
 /**
@@ -17,11 +19,11 @@ use function array_reduce;
  *
  * @no-named-arguments
  */
-function compose(callable ...$functions): callable
+function compose(callable ...$functions): Closure
 {
     return array_reduce(
         $functions,
-        static fn ($carry, $item) => static fn ($x) => $item($carry($x)),
-        'Functional\id',
+        static fn (callable $carry, callable $item): Closure => static fn (mixed $x) => $item($carry($x)),
+        id(...),
     );
 }
