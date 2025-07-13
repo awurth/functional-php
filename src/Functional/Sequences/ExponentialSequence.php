@@ -18,18 +18,15 @@ use function round;
 /** @internal */
 class ExponentialSequence implements Iterator
 {
-    /** @var int */
-    private $start;
+    private int $start;
 
-    /** @var int */
-    private $percentage;
+    private int $percentage;
 
-    /** @var int */
-    private $value;
+    private int $value;
 
     private int $times = 0;
 
-    public function __construct($start, $percentage)
+    public function __construct(int $start, int $percentage)
     {
         InvalidArgumentException::assertIntegerGreaterThanOrEqual($start, 1, __METHOD__, 1);
         InvalidArgumentException::assertIntegerGreaterThanOrEqual($percentage, 1, __METHOD__, 2);
@@ -37,9 +34,10 @@ class ExponentialSequence implements Iterator
 
         $this->start = $start;
         $this->percentage = $percentage;
+        $this->value = $start;
     }
 
-    public function current()
+    public function current(): int
     {
         return $this->value;
     }
@@ -50,12 +48,12 @@ class ExponentialSequence implements Iterator
         ++$this->times;
     }
 
-    public function key()
+    public function key(): null
     {
         return null;
     }
 
-    public function valid()
+    public function valid(): true
     {
         return true;
     }

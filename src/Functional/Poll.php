@@ -14,7 +14,7 @@ use AppendIterator;
 use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
 use InfiniteIterator;
-use Traversable;
+use Iterator;
 
 use function microtime;
 use function usleep;
@@ -22,21 +22,21 @@ use function usleep;
 /**
  * Retry a callback until it returns a truthy value or the timeout (in microseconds) is reached.
  *
- * @param int              $timeout       Timeout in microseconds
- * @param Traversable|null $delaySequence Default: no delay between calls
+ * @param int           $timeout       Timeout in microseconds
+ * @param Iterator|null $delaySequence Default: no delay between calls
  *
  * @throws InvalidArgumentException
  *
  * @no-named-arguments
  */
-function poll(callable $callback, int $timeout, ?Traversable $delaySequence = null): bool
+function poll(callable $callback, int $timeout, ?Iterator $delaySequence = null): bool
 {
     InvalidArgumentException::assertIntegerGreaterThanOrEqual($timeout, 0, __FUNCTION__, 2);
 
     $retry = 0;
 
     $delays = new AppendIterator();
-    if ($delaySequence) {
+    if (null !== $delaySequence) {
         $delays->append(new InfiniteIterator($delaySequence));
     }
     $delays->append(new InfiniteIterator(new ArrayIterator([0])));

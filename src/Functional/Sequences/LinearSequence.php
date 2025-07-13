@@ -16,25 +16,22 @@ use Iterator;
 /** @internal */
 class LinearSequence implements Iterator
 {
-    /** @var int */
-    private $start;
+    private int $start;
 
-    /** @var int */
-    private $amount;
+    private int $amount;
 
-    /** @var int */
-    private $value;
+    private int $value;
 
-    public function __construct($start, $amount)
+    public function __construct(int $start, int $amount)
     {
         InvalidArgumentException::assertIntegerGreaterThanOrEqual($start, 0, __METHOD__, 1);
-        InvalidArgumentException::assertInteger($amount, __METHOD__, 2);
 
         $this->start = $start;
         $this->amount = $amount;
+        $this->value = $start;
     }
 
-    public function current()
+    public function current(): int
     {
         return $this->value;
     }
@@ -44,12 +41,12 @@ class LinearSequence implements Iterator
         $this->value += $this->amount;
     }
 
-    public function key()
+    public function key(): int
     {
         return 0;
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }

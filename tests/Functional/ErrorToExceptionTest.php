@@ -18,14 +18,12 @@ use function restore_error_handler;
 use function set_error_handler;
 use function trigger_error;
 
-use const E_USER_ERROR;
-
-class ErrorToExceptionTest extends AbstractTestCase
+final class ErrorToExceptionTest extends AbstractTestCase
 {
     public function testErrorIsThrownAsException(): void
     {
         $origFn = static function (): void {
-            trigger_error('Some error', E_USER_ERROR);
+            trigger_error('Some error');
         };
 
         $fn = error_to_exception($origFn);
@@ -67,7 +65,7 @@ class ErrorToExceptionTest extends AbstractTestCase
         );
 
         $origFn = static function (): void {
-            trigger_error('Some error', E_USER_ERROR);
+            trigger_error('Some error');
         };
 
         $fn = error_to_exception($origFn);

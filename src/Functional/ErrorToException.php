@@ -27,10 +27,10 @@ use function set_error_handler;
  */
 function error_to_exception(callable $callback): Closure
 {
-    return static function (...$arguments) use ($callback) {
+    return static function (mixed ...$arguments) use ($callback) {
         try {
             set_error_handler(
-                static function ($level, $message, $file, $line): void {
+                static function (int $level, string $message, string $file, int $line): never {
                     throw new ErrorException($message, 0, $level, $file, $line);
                 },
             );
