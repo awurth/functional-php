@@ -10,6 +10,7 @@
 
 namespace Functional;
 
+use Closure;
 use ErrorException;
 
 use function restore_error_handler;
@@ -22,7 +23,7 @@ use function set_error_handler;
  *
  * @no-named-arguments
  */
-function suppress_error(callable $callback)
+function suppress_error(callable $callback): Closure
 {
     return static function (...$arguments) use ($callback) {
         try {

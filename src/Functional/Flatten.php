@@ -10,11 +10,9 @@
 
 namespace Functional;
 
-use Traversable;
-
 use function array_shift;
 use function array_unshift;
-use function is_array;
+use function is_iterable;
 
 /**
  * Takes a nested combination of collections and returns their contents as a single, flat array.
@@ -32,7 +30,7 @@ function flatten(iterable $collection): array
     while ([] !== $stack) {
         $item = array_shift($stack);
 
-        if (is_array($item) || $item instanceof Traversable) {
+        if (is_iterable($item)) {
             foreach ($item as $element) {
                 array_unshift($stack, $element);
             }

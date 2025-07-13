@@ -23,7 +23,7 @@ use function array_pop;
  * @param iterable<TKey, TValue> $collection
  * @param TGlue                  $glue
  *
- * @return array<TKey, TValue|TGlue>
+ * @return array<int, TValue|TGlue>
  *
  * @no-named-arguments
  */

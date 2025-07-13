@@ -15,9 +15,11 @@ use Closure;
 /**
  * Returns a function that invokes method `$method` with arguments `$methodArguments` on the object.
  *
+ * @param array<mixed, mixed> $arguments
+ *
  * @no-named-arguments
  */
 function invoker(string $methodName, array $arguments = []): Closure
 {
-    return static fn ($object) => $object->{$methodName}(...$arguments);
+    return static fn (object $object): mixed => $object->{$methodName}(...$arguments);
 }

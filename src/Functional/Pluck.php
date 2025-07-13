@@ -23,7 +23,7 @@ use function is_object;
  *
  * @no-named-arguments
  */
-function pluck(iterable $collection, string $propertyName): array
+function pluck(iterable $collection, mixed $propertyName): array
 {
     InvalidArgumentException::assertPropertyName($propertyName, __FUNCTION__, 2);
 

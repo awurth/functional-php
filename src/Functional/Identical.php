@@ -10,14 +10,14 @@
 
 namespace Functional;
 
+use Closure;
+
 /**
  * Returns true if $a is equal to $b, and they are of the same type.
  *
- * @return callable
- *
  * @no-named-arguments
  */
-function identical($b)
+function identical(mixed $b): Closure
 {
-    return static fn ($a): bool => $a === $b;
+    return static fn (mixed $a): bool => $a === $b;
 }

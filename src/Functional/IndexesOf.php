@@ -13,15 +13,19 @@ namespace Functional;
 use function is_callable;
 
 /**
- * Returns a list of array indexes, either matching the predicate or strictly equal to the the passed value. Returns an
+ * Returns a list of array indexes, either matching the predicate or strictly equal to the passed value. Returns an
  * empty array if no values were found.
  *
- * @param iterable<mixed, mixed> $collection
- * @param callable|mixed         $value
+ * @template TKey
+ *
+ * @param iterable<TKey, mixed> $collection
+ * @param callable|mixed        $value
+ *
+ * @return array<int, TKey>
  *
  * @no-named-arguments
  */
-function indexes_of(iterable $collection, $value): array
+function indexes_of(iterable $collection, mixed $value): array
 {
     $result = [];
 

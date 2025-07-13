@@ -19,7 +19,7 @@ use Closure;
  * @param callable $then function to call if condition is true
  * @param callable $else function to call if condition is false
  *
- * @return mixed the return value of the given $then or $else functions
+ * @return Closure the return value of the given $then or $else functions
  *
  * @no-named-arguments
  */

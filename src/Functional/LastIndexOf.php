@@ -19,7 +19,7 @@ use function is_callable;
  *
  * @no-named-arguments
  */
-function last_index_of(iterable $collection, $value)
+function last_index_of(iterable $collection, mixed $value): mixed
 {
     $matchingIndex = false;
 

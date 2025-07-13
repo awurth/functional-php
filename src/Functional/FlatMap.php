@@ -10,9 +10,7 @@
 
 namespace Functional;
 
-use Traversable;
-
-use function is_array;
+use function is_iterable;
 
 /**
  * flat_map works applying a function (callback) that returns a sequence for each element in a collection,
@@ -36,7 +34,7 @@ function flat_map(iterable $collection, callable $callback): array
     foreach ($collection as $index => $element) {
         $result = $callback($element, $index, $collection);
 
-        if (is_array($result) || $result instanceof Traversable) {
+        if (is_iterable($result)) {
             foreach ($result as $item) {
                 $flattened[] = $item;
             }
