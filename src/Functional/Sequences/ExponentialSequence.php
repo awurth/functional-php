@@ -18,22 +18,18 @@ use function round;
 /** @internal */
 class ExponentialSequence implements Iterator
 {
-    private int $start;
-
-    private int $percentage;
-
     private int $value;
 
     private int $times = 0;
 
-    public function __construct(int $start, int $percentage)
-    {
+    public function __construct(
+        private readonly int $start,
+        private readonly int $percentage,
+    ) {
         InvalidArgumentException::assertIntegerGreaterThanOrEqual($start, 1, __METHOD__, 1);
         InvalidArgumentException::assertIntegerGreaterThanOrEqual($percentage, 1, __METHOD__, 2);
         InvalidArgumentException::assertIntegerLessThanOrEqual($percentage, 100, __METHOD__, 2);
 
-        $this->start = $start;
-        $this->percentage = $percentage;
         $this->value = $start;
     }
 

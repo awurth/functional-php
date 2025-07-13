@@ -16,18 +16,14 @@ use Iterator;
 /** @internal */
 class LinearSequence implements Iterator
 {
-    private int $start;
-
-    private int $amount;
-
     private int $value;
 
-    public function __construct(int $start, int $amount)
-    {
+    public function __construct(
+        private readonly int $start,
+        private readonly int $amount,
+    ) {
         InvalidArgumentException::assertIntegerGreaterThanOrEqual($start, 0, __METHOD__, 1);
 
-        $this->start = $start;
-        $this->amount = $amount;
         $this->value = $start;
     }
 
