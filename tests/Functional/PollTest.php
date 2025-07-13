@@ -21,14 +21,14 @@ interface Poller
     public function poll();
 }
 
-class PollTest extends AbstractTestCase
+final class PollTest extends AbstractTestCase
 {
-    /** @var MockObject */
-    private $poller;
+    private MockObject&Poller $poller;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->poller = $this->createMock(Poller::class);
     }
 
@@ -41,18 +41,18 @@ class PollTest extends AbstractTestCase
             ->willReturn(true)
         ;
 
-        self::assertTrue(poll([$this->poller, 'poll'], 1000));
+        self::assertTrue(poll($this->poller->poll(...), 1000));
     }
 
-    public function testPollRetriesIfNotTruthy(): void
+    public function testPollRetriesIfNotTrue(): void
     {
         $this->poller
             ->method('poll')
             ->withConsecutive([0, 0], [1, 0])
-            ->willReturnOnConsecutiveCalls(false, 'OH HAI')
+            ->willReturnOnConsecutiveCalls(false, true)
         ;
 
-        self::assertSame('OH HAI', poll([$this->poller, 'poll'], 2000));
+        self::assertTrue(poll($this->poller->poll(...), 2000));
     }
 
     public function testPollRetriesAndGivesUpAfterTimeout(): void
@@ -69,7 +69,7 @@ class PollTest extends AbstractTestCase
             )
         ;
 
-        self::assertFalse(poll([$this->poller, 'poll'], 100));
+        self::assertFalse(poll($this->poller->poll(...), 100));
     }
 
     public function testWithEmptyDelayCallsAtLeastOnce(): void
@@ -80,7 +80,7 @@ class PollTest extends AbstractTestCase
             ->willReturn(true)
         ;
 
-        self::assertTrue(poll([$this->poller, 'poll'], 0, new ArrayIterator([])));
+        self::assertTrue(poll($this->poller->poll(...), 0, new ArrayIterator([])));
     }
 
     public function testThrowsExceptionIfTimeoutCountNotAtLeast0(): void
@@ -88,6 +88,6 @@ class PollTest extends AbstractTestCase
         $this->expectArgumentError(
             'Functional\poll() expects parameter 2 to be an integer greater than or equal to 0',
         );
-        poll([$this->poller, 'poll'], -1);
+        poll($this->poller->poll(...), -1);
     }
 }

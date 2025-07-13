@@ -46,8 +46,8 @@ function poll(callable $callback, int $timeout, ?Iterator $delaySequence = null)
     foreach ($delays as $delay) {
         $value = $callback($retry, $delay);
 
-        if ($value) {
-            return $value;
+        if (true === $value) {
+            return true;
         }
 
         if (microtime(true) > $limit) {
@@ -60,4 +60,6 @@ function poll(callable $callback, int $timeout, ?Iterator $delaySequence = null)
 
         ++$retry;
     }
+
+    return false;
 }
