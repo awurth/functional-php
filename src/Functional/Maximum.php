@@ -17,11 +17,9 @@ use function is_numeric;
  *
  * @param iterable<mixed, mixed> $collection
  *
- * @return float|int
- *
  * @no-named-arguments
  */
-function maximum(iterable $collection)
+function maximum(iterable $collection): float|int|string|null
 {
     $max = null;
 
