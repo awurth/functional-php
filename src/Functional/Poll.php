@@ -36,7 +36,7 @@ function poll(callable $callback, int $timeout, ?Iterator $delaySequence = null)
     $retry = 0;
 
     $delays = new AppendIterator();
-    if (null !== $delaySequence) {
+    if ($delaySequence instanceof Iterator) {
         $delays->append(new InfiniteIterator($delaySequence));
     }
     $delays->append(new InfiniteIterator(new ArrayIterator([0])));
