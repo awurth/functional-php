@@ -61,11 +61,11 @@ class GroupTest extends AbstractTestCase
         self::assertSame($result, group(new ArrayIterator($array), $fn));
 
         $invalidTypes = [
-            'resource' => stream_context_create(),
-            'object' => new stdClass(),
+            'resource (stream-context)' => stream_context_create(),
+            'stdClass' => new stdClass(),
             'array' => [],
-            'boolean' => true,
-            'double' => 1.1,
+            'bool' => true,
+            'float' => 1.1,
         ];
 
         foreach ($invalidTypes as $type => $value) {
@@ -76,7 +76,7 @@ class GroupTest extends AbstractTestCase
             } catch (Exception $e) {
                 self::assertSame(
                     sprintf(
-                        'Functional\group(): callback returned invalid array key of type "%s". Expected NULL, string or integer',
+                        'Functional\group(): callback returned invalid array key of type "%s". Expected null, string or int',
                         $type,
                     ),
                     $e->getMessage(),

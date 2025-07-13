@@ -98,28 +98,28 @@ class InvalidArgumentExceptionTest extends TestCase
     public function testAssertPairWithEmptyArray(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expects paramter 1 to be a pair (array with two elements)');
+        $this->expectExceptionMessage('func() expects parameter 1 to be a pair (array with two elements)');
         InvalidArgumentException::assertPair([], 'func', 1);
     }
 
     public function testAssertPairWithInvalidArray(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expects paramter 1 to be a pair (array with two elements)');
+        $this->expectExceptionMessage('func() expects parameter 1 to be a pair (array with two elements)');
         InvalidArgumentException::assertPair(['one'], 'func', 1);
     }
 
     public function testAssertPairWithTwoCharacterString(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expects paramter 1 to be a pair (array with two elements)');
+        $this->expectExceptionMessage('func() expects parameter 1 to be a pair (array with two elements)');
         InvalidArgumentException::assertPair('ab', 'func', 1);
     }
 
     public function testAssertPairWithThreeCharacterString(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('func() expects paramter 1 to be a pair (array with two elements)');
+        $this->expectExceptionMessage('func() expects parameter 1 to be a pair (array with two elements)');
         InvalidArgumentException::assertPair('abc', 'func', 1);
     }
 }
