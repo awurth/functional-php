@@ -16,14 +16,14 @@ class ConvergeTest extends AbstractTestCase
 {
     public function testCallablesAsStrings(): void
     {
-        $average = converge(static fn ($dividend, $divisor) => $dividend / $divisor, ['array_sum', 'count']);
+        $average = converge(static fn ($dividend, $divisor): int|float => $dividend / $divisor, ['array_sum', 'count']);
         self::assertEquals(2.5, $average([1, 2, 3, 4]));
     }
 
     public function testCallablesAsAnonymous(): void
     {
         $strangeFunction = converge(
-            static fn ($u, $l) => $u.$l,
+            static fn ($u, $l): string => $u.$l,
             [
                 'strtoupper',
                 'strtolower',

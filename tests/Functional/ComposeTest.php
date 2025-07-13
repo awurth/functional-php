@@ -20,9 +20,9 @@ class ComposeTest extends AbstractTestCase
     {
         $input = range(0, 10);
 
-        $plus2 = (static fn ($x) => $x + 2);
-        $times4 = (static fn ($x) => $x * 4);
-        $square = (static fn ($x) => $x * $x);
+        $plus2 = (static fn ($x): int|float => $x + 2);
+        $times4 = (static fn ($x): int|float => $x * 4);
+        $square = (static fn ($x): int|float => $x * $x);
 
         $composed = compose($plus2, $times4, $square);
 
@@ -32,7 +32,7 @@ class ComposeTest extends AbstractTestCase
         );
 
         $manual_values = array_map(
-            static fn ($x) => $square($times4($plus2($x))),
+            static fn ($x): float|int => $square($times4($plus2($x))),
             $input,
         );
 

@@ -19,5 +19,5 @@ use Closure;
  */
 function const_function(mixed $value): Closure
 {
-    return static fn () => $value;
+    return static fn (): mixed => $value;
 }

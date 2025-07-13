@@ -51,7 +51,7 @@ class DifferenceTest extends AbstractTestCase
     }
 
     /** @dataProvider Functional\Tests\MathDataProvider::injectErrorCollection */
-    public function testElementsOfWrongTypeAreIgnored($collection): void
+    public function testElementsOfWrongTypeAreIgnored(iterable $collection): void
     {
         self::assertEqualsWithDelta(-3.5, difference($collection), 0.1, '');
     }

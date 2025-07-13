@@ -17,31 +17,23 @@ use Traversable;
 use function array_values;
 use function Functional\average;
 
-class AverageTest extends AbstractTestCase
+final class AverageTest extends AbstractTestCase
 {
-    /** @var array */
-    private $list2;
+    private array $list2;
 
-    /** @var Traversable */
-    private $listIterator2;
+    private ArrayIterator $listIterator2;
 
-    /** @var array */
-    private $list3;
+    private array $list3;
 
-    /** @var Traversable */
-    private $listIterator3;
+    private ArrayIterator $listIterator3;
 
-    /** @var array */
-    private $hash2;
+    private array $hash2;
 
-    /** @var Traversable */
-    private $hashIterator2;
+    private ArrayIterator $hashIterator2;
 
-    /** @var array */
-    private $hash3;
+    private array $hash3;
 
-    /** @var Traversable */
-    private $hashIterator3;
+    private ArrayIterator $hashIterator3;
 
     /** @before */
     public function createTestData(): void
