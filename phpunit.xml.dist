@@ -41,9 +41,6 @@
       <directory>tests/Functional/</directory>
     </testsuite>
   </testsuites>
-  <logging>
-    <junit outputFile="build/logs/junit.xml"/>
-  </logging>
   <php>
     <ini name="error_reporting" value="-1"/>
     <ini name="date.timezone" value="UTC"/>
