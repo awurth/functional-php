@@ -11,27 +11,23 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Traversable;
 
 use function Functional\ratio;
 
-class RatioTest extends AbstractTestCase
+final class RatioTest extends AbstractTestCase
 {
-    /** @var int[] */
-    private $intArray;
+    private array $intArray;
 
-    /** @var Traversable|int[] */
-    private $intIterator;
+    private ArrayIterator $intIterator;
 
-    /** @var float[] */
-    private $floatArray;
+    private array $floatArray;
 
-    /** @var Traversable|float[] */
-    private $floatIterator;
+    private ArrayIterator $floatIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->intArray = [1 => 1, 2, 'foo' => 3, 4];
         $this->intIterator = new ArrayIterator($this->intArray);
         $this->floatArray = ['foo' => 1.5, 1.1, 1];
@@ -48,7 +44,7 @@ class RatioTest extends AbstractTestCase
         self::assertEqualsWithDelta(-1, ratio($this->floatIterator, -1.65), 0.01);
     }
 
-    /** @dataProvider Functional\Tests\MathDataProvider::injectErrorCollection */
+    /** @dataProvider \Functional\Tests\MathDataProvider::injectErrorCollection */
     public function testElementsOfWrongTypeAreIgnored($collection): void
     {
         self::assertEqualsWithDelta(0.333, ratio($collection), 0.001);

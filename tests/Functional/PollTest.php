@@ -48,8 +48,7 @@ final class PollTest extends AbstractTestCase
     {
         $this->poller
             ->method('poll')
-            ->withConsecutive([0, 0], [1, 0])
-            ->willReturnOnConsecutiveCalls(false, true)
+            ->willReturnOnConsecutiveCalls(false, false, true)
         ;
 
         self::assertTrue(poll($this->poller->poll(...), 2000));
@@ -59,7 +58,6 @@ final class PollTest extends AbstractTestCase
     {
         $this->poller
             ->method('poll')
-            ->withConsecutive([0, 0])
             ->willReturnCallback(
                 static function () {
                     usleep(100);
@@ -76,7 +74,7 @@ final class PollTest extends AbstractTestCase
     {
         $this->poller
             ->method('poll')
-            ->withConsecutive([0, 0])
+            ->with(0, 0)
             ->willReturn(true)
         ;
 

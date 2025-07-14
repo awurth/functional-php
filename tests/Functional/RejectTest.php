@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\reject;
 
@@ -28,9 +27,7 @@ class RejectTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $fn = static function ($v, $k, iterable $collection) {
             return 'wrong' === $v && '' !== $k;
         };
         self::assertSame([0 => 'value', 2 => 'value'], reject($this->list, $fn));

@@ -15,14 +15,14 @@ use ArrayIterator;
 use function Functional\reduce_left;
 use function Functional\reduce_right;
 
-class ReduceTest extends AbstractTestCase
+final class ReduceTest extends AbstractTestCase
 {
-    /** @var iterable */
-    private $currentCollection;
+    private iterable $currentCollection;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->list = ['one', 'two', 'three'];
         $this->listIterator = new ArrayIterator($this->list);
     }

@@ -11,12 +11,11 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\partition;
 use function is_int;
 
-class PartitionTest extends AbstractTestCase
+final class PartitionTest extends AbstractTestCase
 {
     protected function setUp(): void
     {
@@ -29,9 +28,7 @@ class PartitionTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $fn = static function ($v, $k, iterable $collection) {
             return is_int($k) ? ($k % 2 == 0) : ($v[3] % 2 == 0);
         };
         self::assertSame([[0 => 'value1', 2 => 'value3'], [1 => 'value2']], partition($this->list, $fn));
@@ -42,15 +39,11 @@ class PartitionTest extends AbstractTestCase
 
     public function testMultiFn(): void
     {
-        $fn1 = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $fn1 = static function ($v, $k, iterable $collection) {
             return is_int($k) ? (1 === $k) : ('2' === $v[3]);
         };
 
-        $fn2 = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $fn2 = static function ($v, $k, iterable $collection) {
             return is_int($k) ? (2 === $k) : ('3' === $v[3]);
         };
 

@@ -15,7 +15,6 @@ use ArrayObject;
 use DomainException;
 use Exception;
 use SplFixedArray;
-use Traversable;
 
 use function array_values;
 use function Functional\pluck;
@@ -94,44 +93,34 @@ class PluckCaller
     }
 }
 
-class PluckTest extends AbstractTestCase
+final class PluckTest extends AbstractTestCase
 {
-    /** @var object[] */
-    private $propertyExistsEverywhereArray;
+    private array $propertyExistsEverywhereArray;
 
-    /** @var Traversable */
-    private $propertyExistsEverywhereIterator;
+    private ArrayIterator $propertyExistsEverywhereIterator;
 
-    /** @var object[] */
-    private $propertyExistsSomewhere;
+    private array $propertyExistsSomewhere;
 
-    /** @var array */
-    private $propertyMagicGet;
+    private array $propertyMagicGet;
 
-    /** @var array */
-    private $mixedCollection;
+    private array $mixedCollection;
 
-    /** @var object[] */
-    private $keyedCollection;
+    private array $keyedCollection;
 
-    /** @var array */
-    private $numericArrayCollection;
+    private array $numericArrayCollection;
 
-    /** @var array */
-    private $issetExceptionArray;
+    private array $issetExceptionArray;
 
-    /** @var Traversable */
-    private $issetExceptionIterator;
+    private ArrayIterator $issetExceptionIterator;
 
-    /** @var array */
-    private $getExceptionArray;
+    private array $getExceptionArray;
 
-    /** @var Traversable */
-    private $getExceptionIterator;
+    private ArrayIterator $getExceptionIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->propertyExistsEverywhereArray = [(object) ['property' => 1], (object) ['property' => 2]];
         $this->propertyExistsEverywhereIterator = new ArrayIterator($this->propertyExistsEverywhereArray);
         $this->propertyExistsSomewhere = [(object) ['property' => 1], (object) ['otherProperty' => 2]];

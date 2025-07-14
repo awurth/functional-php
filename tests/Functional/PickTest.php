@@ -15,13 +15,14 @@ use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\pick;
 
-class PickTest extends AbstractTestCase
+final class PickTest extends AbstractTestCase
 {
-    private $array_1;
+    private array $array_1;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->array_1 = [
             'one' => '1',
             'two' => '2',

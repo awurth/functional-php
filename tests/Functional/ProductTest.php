@@ -15,23 +15,20 @@ use Traversable;
 
 use function Functional\product;
 
-class ProductTest extends AbstractTestCase
+final class ProductTest extends AbstractTestCase
 {
-    /** @var int[] */
-    private $intArray;
+    private array $intArray;
 
-    /** @var Traversable|int[] */
-    private $intIterator;
+    private ArrayIterator $intIterator;
 
-    /** @var float[] */
-    private $floatArray;
+    private array $floatArray;
 
-    /** @var Traversable|float[] */
-    private $floatIterator;
+    private ArrayIterator $floatIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->intArray = [1 => 1, 2, 'foo' => 3, 4];
         $this->intIterator = new ArrayIterator($this->intArray);
         $this->floatArray = ['foo' => 1.5, 1.1, 1];
@@ -48,7 +45,7 @@ class ProductTest extends AbstractTestCase
         self::assertEqualsWithDelta(1.65, product($this->floatIterator), 0.01, '');
     }
 
-    /** @dataProvider Functional\Tests\MathDataProvider::injectErrorCollection */
+    /** @dataProvider \Functional\Tests\MathDataProvider::injectErrorCollection */
     public function testElementsOfWrongTypeAreIgnored($collection): void
     {
         self::assertEqualsWithDelta(3, product($collection), 0.01, '');

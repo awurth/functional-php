@@ -12,7 +12,6 @@ namespace Functional\Tests;
 
 use Functional\Exceptions\InvalidArgumentException;
 
-use function defined;
 use function Functional\partial_any;
 use function Functional\placeholder;
 use function Functional\…;
@@ -21,7 +20,7 @@ use function hash_init;
 
 use const Functional\…;
 
-class PartialAnyTest extends AbstractPartialTestCase
+final class PartialAnyTest extends AbstractPartialTestCase
 {
     public function testBindWithPlaceholder(): void
     {
@@ -62,11 +61,7 @@ class PartialAnyTest extends AbstractPartialTestCase
     public function testAliasForUnicodePlaceholder(): void
     {
         self::assertSame(…(), placeholder());
-
-        /* @see https://github.com/facebook/hhvm/issues/5548 */
-        if (!defined('HHVM_VERSION')) {
-            self::assertSame(…, placeholder());
-        }
+        self::assertSame(…, placeholder());
     }
 
     public function testStringConversion(): void
@@ -74,8 +69,8 @@ class PartialAnyTest extends AbstractPartialTestCase
         $ratio = partial_any($this->ratio(), …(), 2);
 
         $this->expectException(InvalidArgumentException::class);
-
         $this->expectExceptionMessage('Cannot resolve parameter placeholder at position 0. Parameter stack is empty.');
+
         $ratio();
     }
 }

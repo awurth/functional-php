@@ -15,23 +15,20 @@ use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\none;
 
-class NoneTest extends AbstractTestCase
+final class NoneTest extends AbstractTestCase
 {
-    /** @var string[] */
-    private $goodArray;
+    private array $goodArray;
 
-    /** @var Traversable|string[] */
-    private $goodIterator;
+    private ArrayIterator $goodIterator;
 
-    /** @var string[] */
-    private $badArray;
+    private array $badArray;
 
-    /** @var Traversable|string[] */
-    private $badIterator;
+    private ArrayIterator $badIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->goodArray = ['value', 'value', 'value'];
         $this->goodIterator = new ArrayIterator($this->goodArray);
         $this->badArray = ['value', 'value', 'foo'];
