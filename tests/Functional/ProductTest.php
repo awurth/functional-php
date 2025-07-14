@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 
 use function Functional\product;
 
@@ -44,7 +45,7 @@ final class ProductTest extends AbstractTestCase
         self::assertEqualsWithDelta(1.65, product($this->floatIterator), 0.01, '');
     }
 
-    /** @dataProvider \Functional\Tests\MathDataProvider::injectErrorCollection */
+    #[DataProviderExternal(MathDataProvider::class, 'injectErrorCollection')]
     public function testElementsOfWrongTypeAreIgnored($collection): void
     {
         self::assertEqualsWithDelta(3, product($collection), 0.01, '');

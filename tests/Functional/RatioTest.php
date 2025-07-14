@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 
 use function Functional\ratio;
 
@@ -44,7 +45,7 @@ final class RatioTest extends AbstractTestCase
         self::assertEqualsWithDelta(-1, ratio($this->floatIterator, -1.65), 0.01);
     }
 
-    /** @dataProvider \Functional\Tests\MathDataProvider::injectErrorCollection */
+    #[DataProviderExternal(MathDataProvider::class, 'injectErrorCollection')]
     public function testElementsOfWrongTypeAreIgnored($collection): void
     {
         self::assertEqualsWithDelta(0.333, ratio($collection), 0.001);

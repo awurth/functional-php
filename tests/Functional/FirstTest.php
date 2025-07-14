@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class FirstTest extends AbstractTestCase
 {
@@ -35,9 +36,7 @@ final class FirstTest extends AbstractTestCase
         $this->badIterator = new ArrayIterator($this->badArray);
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function test(string $functionName): void
     {
         $callback = static function ($v, $k, iterable $collection) {
@@ -50,9 +49,7 @@ final class FirstTest extends AbstractTestCase
         self::assertNull($functionName($this->badIterator, $callback));
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testWithoutCallback($functionName): void
     {
         self::assertSame('first', $functionName($this->list));
@@ -65,18 +62,14 @@ final class FirstTest extends AbstractTestCase
         self::assertSame('foo', $functionName($this->badIterator, null));
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testPassNonCallable($functionName): void
     {
         $this->expectCallableArgumentError($functionName, 2);
         $functionName($this->list, 'undefinedFunction');
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testExceptionIsThrownInArray($functionName): void
     {
         $this->expectException('DomainException');
@@ -84,9 +77,7 @@ final class FirstTest extends AbstractTestCase
         $functionName($this->list, $this->exception(...));
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testExceptionIsThrownInCollection($functionName): void
     {
         $this->expectException('DomainException');

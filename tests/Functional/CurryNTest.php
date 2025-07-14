@@ -12,6 +12,7 @@ namespace Functional\Tests;
 
 use DateTime;
 use DateTimeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function array_shift;
 use function call_user_func_array;
@@ -50,9 +51,7 @@ class CurryNTest extends AbstractPartialTestCase
         return curry_n(count($params), $callback);
     }
 
-    /**
-     * @dataProvider callbacks
-     */
+    #[DataProvider('callbacks')]
     public function testCallbackTypes($callback, $params, $expected, $required, $transformer = null): void
     {
         if (null === $transformer) {

@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 
 use function Functional\difference;
 
@@ -45,7 +46,7 @@ final class DifferenceTest extends AbstractTestCase
         self::assertEqualsWithDelta(-10, difference($this->floatIterator, -3.4), 0.01, '');
     }
 
-    /** @dataProvider \Functional\Tests\MathDataProvider::injectErrorCollection */
+    #[DataProviderExternal(MathDataProvider::class, 'injectErrorCollection')]
     public function testElementsOfWrongTypeAreIgnored(iterable $collection): void
     {
         self::assertEqualsWithDelta(-3.5, difference($collection), 0.1, '');

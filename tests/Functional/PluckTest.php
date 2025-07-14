@@ -14,6 +14,7 @@ use ArrayIterator;
 use ArrayObject;
 use DomainException;
 use Exception;
+use PHPUnit\Framework\Attributes\DataProvider;
 use SplFixedArray;
 
 use function array_values;
@@ -221,13 +222,13 @@ final class PluckTest extends AbstractTestCase
         self::assertSame(['one' => 1, 'two' => null, 'three' => null, 'four' => 2, 'five' => 3], pluck($this->numericArrayCollection, '0'));
     }
 
-    /** @dataProvider getNullList */
+    #[DataProvider('getNullList')]
     public function testNullLists($it): void
     {
         self::assertSame(['1', '2'], pluck($it, null));
     }
 
-    /** @dataProvider getNullHash */
+    #[DataProvider('getNullHash')]
     public function testNullHash($it): void
     {
         self::assertSame(['one' => '1', 'two' => '2'], pluck($it, null));

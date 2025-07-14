@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 
 use function Functional\sum;
 
@@ -45,7 +46,7 @@ final class SumTest extends AbstractTestCase
         self::assertEqualsWithDelta(10, sum($this->floatIterator, 2.5), 0.01, '');
     }
 
-    /** @dataProvider \Functional\Tests\MathDataProvider::injectErrorCollection */
+    #[DataProviderExternal(MathDataProvider::class, 'injectErrorCollection')]
     public function testElementsOfWrongTypeAreIgnored($collection): void
     {
         self::assertEqualsWithDelta(3.5, sum($collection), 0.1, '');

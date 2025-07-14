@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function Functional\drop_first;
 use function Functional\drop_last;
@@ -47,7 +48,7 @@ class DropTest extends AbstractTestCase
         return [['Functional\drop_first'], ['Functional\drop_last']];
     }
 
-    /** @dataProvider getFunctions */
+    #[DataProvider('getFunctions')]
     public function testExceptionIsThrownInArray($fn): void
     {
         $this->expectException('DomainException');
@@ -55,7 +56,7 @@ class DropTest extends AbstractTestCase
         $fn($this->list, $this->exception(...));
     }
 
-    /** @dataProvider getFunctions */
+    #[DataProvider('getFunctions')]
     public function testExceptionIsThrownInHash($fn): void
     {
         $this->expectException('DomainException');
@@ -63,7 +64,7 @@ class DropTest extends AbstractTestCase
         $fn($this->hash, $this->exception(...));
     }
 
-    /** @dataProvider getFunctions */
+    #[DataProvider('getFunctions')]
     public function testExceptionIsThrownInIterator($fn): void
     {
         $this->expectException('DomainException');
@@ -71,7 +72,7 @@ class DropTest extends AbstractTestCase
         $fn($this->listIterator, $this->exception(...));
     }
 
-    /** @dataProvider getFunctions */
+    #[DataProvider('getFunctions')]
     public function testExceptionIsThrownInHashIterator($fn): void
     {
         $this->expectException('DomainException');
@@ -79,7 +80,7 @@ class DropTest extends AbstractTestCase
         $fn($this->hashIterator, $this->exception(...));
     }
 
-    /** @dataProvider getFunctions */
+    #[DataProvider('getFunctions')]
     public function testPassNonCallable($fn): void
     {
         $this->expectCallableArgumentError($fn, 2);

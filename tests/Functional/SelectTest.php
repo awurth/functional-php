@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function Functional\select;
 
@@ -34,9 +35,7 @@ final class SelectTest extends AbstractTestCase
         $this->hashIterator = new ArrayIterator($this->hash);
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function test($functionName): void
     {
         $callback = static function ($v, $k, iterable $collection) {
@@ -48,9 +47,7 @@ final class SelectTest extends AbstractTestCase
         self::assertSame(['k1' => 'value', 'k3' => 'value'], $functionName($this->hashIterator, $callback));
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testPassNonCallable($functionName): void
     {
         $this->expectCallableArgumentError($functionName, 2);
@@ -66,9 +63,7 @@ final class SelectTest extends AbstractTestCase
         self::assertSame([0 => true, 2 => true], select([true, false, true]));
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testExceptionIsThrownInArray($functionName): void
     {
         $this->expectException('DomainException');
@@ -76,9 +71,7 @@ final class SelectTest extends AbstractTestCase
         $functionName($this->list, $this->exception(...));
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testExceptionIsThrownInHash($functionName): void
     {
         $this->expectException('DomainException');
@@ -86,9 +79,7 @@ final class SelectTest extends AbstractTestCase
         $functionName($this->hash, $this->exception(...));
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testExceptionIsThrownInIterator($functionName): void
     {
         $this->expectException('DomainException');
@@ -96,9 +87,7 @@ final class SelectTest extends AbstractTestCase
         $functionName($this->listIterator, $this->exception(...));
     }
 
-    /**
-     * @dataProvider getAliases
-     */
+    #[DataProvider('getAliases')]
     public function testExceptionIsThrownInHashIterator($functionName): void
     {
         $this->expectException('DomainException');
