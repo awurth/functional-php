@@ -11,15 +11,14 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use Closure;
 use Functional as F;
-use Functional\Exceptions\InvalidArgumentException;
 
 use function strcmp;
 
-class SortTest extends AbstractTestCase
+final class SortTest extends AbstractTestCase
 {
-    /** @var callable */
-    private $sortCallback;
+    private Closure $sortCallback;
 
     protected function setUp(): void
     {
@@ -28,9 +27,7 @@ class SortTest extends AbstractTestCase
         $this->listIterator = new ArrayIterator($this->list);
         $this->hash = ['c' => 'cat', 'b' => 'bear', 'a' => 'aardvark'];
         $this->hashIterator = new ArrayIterator($this->hash);
-        $this->sortCallback = static function ($left, $right, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $this->sortCallback = static function ($left, $right, iterable $collection) {
             return strcmp($left, $right);
         };
     }

@@ -11,21 +11,19 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Traversable;
 
 use function Functional\unique;
 
-class UniqueTest extends AbstractTestCase
+final class UniqueTest extends AbstractTestCase
 {
-    /** @var array */
-    private $mixedTypesArray;
+    private array $mixedTypesArray;
 
-    /** @var Traversable */
-    private $mixedTypesIterator;
+    private ArrayIterator $mixedTypesIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->list = ['value1', 'value2', 'value1', 'value'];
         $this->listIterator = new ArrayIterator($this->list);
         $this->mixedTypesArray = [1, '1', '2', 2, '3', 4];

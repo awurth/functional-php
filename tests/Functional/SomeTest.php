@@ -11,28 +11,23 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 use function Functional\some;
 
-class SomeTest extends AbstractTestCase
+final class SomeTest extends AbstractTestCase
 {
-    /** @var string[] */
-    private $goodArray;
+    private array $goodArray;
 
-    /** @var Traversable|string[] */
-    private $goodIterator;
+    private ArrayIterator $goodIterator;
 
-    /** @var string[] */
-    private $badArray;
+    private array $badArray;
 
-    /** @var Traversable|string[] */
-    private $badIterator;
+    private ArrayIterator $badIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->goodArray = ['value', 'wrong'];
         $this->goodIterator = new ArrayIterator($this->goodArray);
         $this->badArray = ['wrong', 'wrong', 'wrong'];
@@ -75,10 +70,8 @@ class SomeTest extends AbstractTestCase
         some($this->goodIterator, $this->exception(...));
     }
 
-    public function functionalCallback($value, $key, $collection): bool
+    public function functionalCallback($value, $key, iterable $collection): bool
     {
-        InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
         return 'value' === $value && 0 === $key;
     }
 }

@@ -11,23 +11,18 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Traversable;
 
 use function Functional\sum;
 
-class SumTest extends AbstractTestCase
+final class SumTest extends AbstractTestCase
 {
-    /** @var array */
-    private $intArray;
+    private array $intArray;
 
-    /** @var Traversable */
-    private $intIterator;
+    private ArrayIterator $intIterator;
 
-    /** @var array */
-    private $floatArray;
+    private array $floatArray;
 
-    /** @var Traversable */
-    private $floatIterator;
+    private ArrayIterator $floatIterator;
 
     protected function setUp(): void
     {
@@ -50,7 +45,7 @@ class SumTest extends AbstractTestCase
         self::assertEqualsWithDelta(10, sum($this->floatIterator, 2.5), 0.01, '');
     }
 
-    /** @dataProvider Functional\Tests\MathDataProvider::injectErrorCollection */
+    /** @dataProvider \Functional\Tests\MathDataProvider::injectErrorCollection */
     public function testElementsOfWrongTypeAreIgnored($collection): void
     {
         self::assertEqualsWithDelta(3.5, sum($collection), 0.1, '');

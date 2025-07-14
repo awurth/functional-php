@@ -21,14 +21,14 @@ interface Retryer
     public function retry();
 }
 
-class RetryTest extends AbstractTestCase
+final class RetryTest extends AbstractTestCase
 {
-    /** @var MockObject */
-    private $retryer;
+    private MockObject&Retryer $retryer;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->retryer = $this->createMock(Retryer::class);
     }
 
@@ -41,52 +41,67 @@ class RetryTest extends AbstractTestCase
             ->willReturn('value')
         ;
 
-        self::assertSame('value', retry([$this->retryer, 'retry'], 10));
+        self::assertSame('value', retry($this->retryer->retry(...), 10));
     }
 
     public function testRetriedIfItFails(): void
     {
+        $invokedCount = self::exactly(2);
         $this->retryer
+            ->expects($invokedCount)
             ->method('retry')
-            ->withConsecutive([0, 0], [1, 0])
-            ->willReturnOnConsecutiveCalls(self::throwException(new Exception()), 'value')
+            ->willReturnCallback(static function (int $retry, int $delay) use ($invokedCount): string {
+                if ($invokedCount->getInvocationCount() === 1) {
+                    throw new Exception('first');
+                }
+
+                return 'value';
+            })
         ;
 
-        self::assertSame('value', retry([$this->retryer, 'retry'], 10));
+        self::assertSame('value', retry($this->retryer->retry(...), 10));
     }
 
     public function testThrowsExceptionIfRetryCountIsReached(): void
     {
+        $invokedCount = self::exactly(2);
         $this->retryer
+            ->expects($invokedCount)
             ->method('retry')
-            ->withConsecutive([0, 0], [1, 0])
-            ->willReturnOnConsecutiveCalls(
-                self::throwException(new Exception('first')),
-                self::throwException(new Exception('second')),
-            )
+            ->willReturnCallback(static function (int $retry, int $delay) use ($invokedCount): string {
+                if ($invokedCount->getInvocationCount() === 1) {
+                    throw new Exception('first');
+                }
+
+                throw new Exception('second');
+            })
         ;
 
         $this->expectException('Exception');
-
         $this->expectExceptionMessage('second');
-        retry([$this->retryer, 'retry'], 2);
+
+        retry($this->retryer->retry(...), 2);
     }
 
     public function testRetryWithEmptyDelaySequence(): void
     {
+        $invokedCount = self::exactly(2);
         $this->retryer
+            ->expects($invokedCount)
             ->method('retry')
-            ->withConsecutive([0, 0], [1, 0])
-            ->willReturnOnConsecutiveCalls(
-                self::throwException(new Exception('first')),
-                self::throwException(new Exception('second')),
-            )
+            ->willReturnCallback(static function (int $retry, int $delay) use ($invokedCount): string {
+                if ($invokedCount->getInvocationCount() === 1) {
+                    throw new Exception('first');
+                }
+
+                throw new Exception('second');
+            })
         ;
 
         $this->expectException('Exception');
-
         $this->expectExceptionMessage('second');
-        retry([$this->retryer, 'retry'], 2, new ArrayIterator([]));
+
+        retry($this->retryer->retry(...), 2, new ArrayIterator([]));
     }
 
     public function testThrowsExceptionIfRetryCountNotAtLeast1(): void
@@ -94,31 +109,14 @@ class RetryTest extends AbstractTestCase
         $this->expectArgumentError(
             'Functional\retry() expects parameter 2 to be an integer greater than or equal to 1',
         );
-        retry([$this->retryer, 'retry'], 0);
-    }
 
-    public function testUsesDelayTraversableForSleeping(): void
-    {
-        $this->retryer
-            ->method('retry')
-            ->withConsecutive([0, 0], [1, 0])
-            ->willReturnOnConsecutiveCalls(
-                self::throwException(new Exception('first')),
-                self::throwException(new Exception('second')),
-            )
-        ;
-
-        $this->expectException('Exception');
-
-        $this->expectExceptionMessage('second');
-        retry([$this->retryer, 'retry'], 2);
+        retry($this->retryer->retry(...), 0);
     }
 
     public function testDelayerSmallerThanRetries(): void
     {
         $this->retryer
             ->method('retry')
-            ->withConsecutive([0, 10], [1, 20], [2, 30], [3, 10])
             ->willReturnOnConsecutiveCalls(
                 self::throwException(new Exception('first')),
                 self::throwException(new Exception('second')),
@@ -128,8 +126,8 @@ class RetryTest extends AbstractTestCase
         ;
 
         $this->expectException('Exception');
-
         $this->expectExceptionMessage('fourth');
-        retry([$this->retryer, 'retry'], 4, new ArrayIterator([10, 20, 30]));
+
+        retry($this->retryer->retry(...), 4, new ArrayIterator([10, 20, 30]));
     }
 }

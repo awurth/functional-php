@@ -14,13 +14,8 @@ use stdClass;
 
 use function Functional\tap;
 
-class TapTest extends AbstractTestCase
+final class TapTest extends AbstractTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testPassNonCallable(): void
     {
         $this->expectCallableArgumentError('Functional\tap', 2);

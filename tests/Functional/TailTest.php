@@ -11,22 +11,19 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 use function Functional\tail;
 
-class TailTest extends AbstractTestCase
+final class TailTest extends AbstractTestCase
 {
-    /** @var string[] */
-    private $badArray;
+    private array $badArray;
 
-    /** @var Traversable */
-    private $badIterator;
+    private ArrayIterator $badIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->list = [1, 2, 3, 4];
         $this->listIterator = new ArrayIterator($this->list);
         $this->badArray = [-1, 0, 1];
@@ -35,9 +32,7 @@ class TailTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
+        $fn = static function ($v, $k, iterable $collection) {
             return $v > 2;
         };
 
