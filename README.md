@@ -12,8 +12,7 @@ collection](http://www.scala-lang.org/archives/downloads/distrib/files/nightly/d
 
 - Works with arrays and everything implementing interface `Traversable`
 - Consistent interface: for functions taking collections and callbacks, first parameter is always the collection, then the callback.
-  Callbacks are always passed `$value`, `$index`, `$collection`. Strict comparison is the default but can be changed
-- Calls 5.3 closures as well as usual callbacks
+  Callbacks are always passed `$value`, `$index`, `$collection`.
 - All functions reside in namespace `Functional` to not raise conflicts with any other extension or library
 
 [![Functional Comic](http://imgs.xkcd.com/comics/functional.png)](http://xkcd.com/1270/)
@@ -22,7 +21,9 @@ collection](http://www.scala-lang.org/archives/downloads/distrib/files/nightly/d
 
 Run the following command in your project root:
 
-    composer require awurth/functional
+```bash
+$ composer require awurth/functional
+```
 
 ## Docs
 
@@ -34,11 +35,6 @@ Run the following command in your project root:
 2. Install dependencies via `composer install`
 3. Run the tests via `composer run tests`
 4. Write code and create a PR
-
-## Mailing lists
-
-- General help and development list: http://groups.google.com/group/functional-php
-- Commit list: http://groups.google.com/group/functional-php-commits
 
 ## Thank you
 
