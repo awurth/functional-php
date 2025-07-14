@@ -87,7 +87,6 @@
             "src/Functional/Map.php",
             "src/Functional/Matching.php",
             "src/Functional/Maximum.php",
-            "src/Functional/Memoize.php",
             "src/Functional/Minimum.php",
             "src/Functional/None.php",
             "src/Functional/Noop.php",
@@ -125,7 +124,6 @@
             "src/Functional/TakeRight.php",
             "src/Functional/True.php",
             "src/Functional/Unique.php",
-            "src/Functional/ValueToKey.php",
             "src/Functional/With.php",
             "src/Functional/Zip.php",
             "src/Functional/ZipAll.php"

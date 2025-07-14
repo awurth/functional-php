@@ -792,14 +792,6 @@ $isOdd(1); // true
 $isOdd(2); // false
 ```
 
-## Other
-
-`mixed Functional\memoize(callable $callback[, array $arguments = []], [string|array $key = null]])`
-Returns and stores the result of the function call. Second call to the same function will return the same result without calling the function again
-
-`string value_to_key(...$values)`
-Builds an array key out of any values, correctly handling object identity and traversables. Resources are not supported
-
 # Mathematical functions
 
 `mixed Functional\maximum(array|Traversable $collection)`
