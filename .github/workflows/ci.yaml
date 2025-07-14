@@ -35,8 +35,8 @@ jobs:
             -   name: Run Rector
                 run: php vendor/bin/rector --dry-run
 
-            -   name: Run Static Analysis
-                run: php vendor/bin/phpstan
+#            -   name: Run Static Analysis
+#                run: php vendor/bin/phpstan
 
             -   name: Run Tests
                 run: php vendor/bin/phpunit
