@@ -10,10 +10,13 @@
 
 namespace Functional\Tests;
 
+use Override;
+
 use function Functional\curry;
 
 class CurryTest extends CurryNTest
 {
+    #[Override]
     protected function getCurryiedCallable(callable $callback, array $params, bool $required): callable
     {
         return curry($callback, $required);

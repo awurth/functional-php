@@ -50,13 +50,8 @@ class MagicGet
 
 class MagicGetException
 {
-    protected $throwExceptionInIsset = false;
-    protected $throwExceptionInGet = false;
-
-    public function __construct($throwExceptionInIsset, $throwExceptionInGet)
+    public function __construct(protected bool $throwExceptionInIsset, protected bool $throwExceptionInGet)
     {
-        $this->throwExceptionInIsset = $throwExceptionInIsset;
-        $this->throwExceptionInGet = $throwExceptionInGet;
     }
 
     public function __isset($propertyName): bool

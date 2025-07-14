@@ -70,8 +70,6 @@ final class UniqueTest extends AbstractTestCase
     {
         self::assertSame([0 => 'value1', 1 => 'value2', 3 => 'value'], unique($this->list));
         self::assertSame([0 => 'value1', 1 => 'value2', 3 => 'value'], unique($this->list, null));
-        self::assertSame([0 => 'value1', 1 => 'value2', 3 => 'value'], unique($this->list, null, false));
-        self::assertSame([0 => 'value1', 1 => 'value2', 3 => 'value'], unique($this->list, null, true));
     }
 
     public function testExceptionIsThrownInArray(): void

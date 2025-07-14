@@ -27,9 +27,7 @@ final class SortTest extends AbstractTestCase
         $this->listIterator = new ArrayIterator($this->list);
         $this->hash = ['c' => 'cat', 'b' => 'bear', 'a' => 'aardvark'];
         $this->hashIterator = new ArrayIterator($this->hash);
-        $this->sortCallback = static function ($left, $right, iterable $collection) {
-            return strcmp($left, $right);
-        };
+        $this->sortCallback = (static fn (string $left, string $right, iterable $collection) => strcmp($left, $right));
     }
 
     public function testPreserveKeys(): void
