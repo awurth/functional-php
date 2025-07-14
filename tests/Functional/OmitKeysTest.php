@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function Functional\omit_keys;
 
@@ -28,9 +29,7 @@ class OmitKeysTest extends AbstractTestCase
         ];
     }
 
-    /**
-     * @dataProvider getData
-     */
+    #[DataProvider('getData')]
     public function test(array $expected, array $input, array $keys): void
     {
         self::assertSame($expected, omit_keys($input, $keys));

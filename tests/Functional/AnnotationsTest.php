@@ -10,6 +10,7 @@
 
 namespace Functional\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use ReflectionFunction;
 
 use function array_filter;
@@ -34,7 +35,7 @@ class AnnotationsTest extends AbstractTestCase
         );
     }
 
-    /** @dataProvider getFunctions */
+    #[DataProvider('getFunctions')]
     public function testNamedArgumentsNotSupportedInFunctions(string $function): void
     {
         $refl = new ReflectionFunction($function);

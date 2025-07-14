@@ -11,6 +11,7 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function Functional\select_keys;
 
@@ -27,9 +28,7 @@ class SelectKeysTest extends AbstractTestCase
         ];
     }
 
-    /**
-     * @dataProvider getData
-     */
+    #[DataProvider('getData')]
     public function test(array $expected, array $input, array $keys): void
     {
         self::assertSame($expected, select_keys($input, $keys));
