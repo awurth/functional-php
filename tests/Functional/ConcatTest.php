@@ -12,13 +12,8 @@ namespace Functional\Tests;
 
 use function Functional\concat;
 
-class ConcatTest extends AbstractTestCase
+final class ConcatTest extends AbstractTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function test(): void
     {
         self::assertSame('foobar', concat('foo', 'bar'));

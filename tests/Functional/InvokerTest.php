@@ -10,10 +10,9 @@
 
 namespace Functional\Tests;
 
-use function class_exists;
 use function Functional\invoker;
 
-class InvokerTest extends AbstractTestCase
+final class InvokerTest extends AbstractTestCase
 {
     public function testInvokerWithoutArguments(): void
     {
@@ -30,13 +29,11 @@ class InvokerTest extends AbstractTestCase
 
     public function testInvalidMethod(): void
     {
-        if (!class_exists('Error')) {
-            self::markTestSkipped('Requires PHP 7');
-        }
-
         $fn = invoker('undefinedMethod');
 
-        $this->expectException('Error', 'Call to undefined method Functional\Tests\InvokerTest::undefinedMethod');
+        $this->expectException('Error');
+        $this->expectExceptionMessage('Call to undefined method Functional\Tests\InvokerTest::undefinedMethod');
+
         $fn($this);
     }
 

@@ -10,34 +10,28 @@
 
 namespace Functional\Tests;
 
+use ArrayIterator;
 use DomainException;
 use Functional\Exceptions\InvalidArgumentException;
 use Iterator;
-use PHPUnit\Framework\Error\Deprecated;
 use PHPUnit\Framework\TestCase;
-use Traversable;
 use TypeError;
 
 use function count;
 use function func_get_args;
 use function func_num_args;
-use function method_exists;
 use function preg_quote;
 use function sprintf;
 
-class AbstractTestCase extends TestCase
+abstract class AbstractTestCase extends TestCase
 {
-    /** @var array */
-    protected $list;
+    protected array $list;
 
-    /** @var Traversable */
-    protected $listIterator;
+    protected ArrayIterator $listIterator;
 
-    /** @var array */
-    protected $hash;
+    protected array $hash;
 
-    /** @var Traversable */
-    protected $hashIterator;
+    protected ArrayIterator $hashIterator;
 
     protected function expectArgumentError(string $message): void
     {
@@ -80,27 +74,5 @@ class AbstractTestCase extends TestCase
         }
 
         return $values;
-    }
-
-    public function expectDeprecation(): void
-    {
-        if (method_exists(parent::class, __FUNCTION__)) {
-            parent::expectDeprecation();
-
-            return;
-        }
-
-        $this->expectException(Deprecated::class);
-    }
-
-    public function expectDeprecationMessage(string $message): void
-    {
-        if (method_exists(parent::class, __FUNCTION__)) {
-            parent::expectDeprecationMessage($message);
-
-            return;
-        }
-
-        $this->expectExceptionMessage($message);
     }
 }

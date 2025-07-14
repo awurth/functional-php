@@ -11,23 +11,18 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Traversable;
 
 use function Functional\difference;
 
-class DifferenceTest extends AbstractTestCase
+final class DifferenceTest extends AbstractTestCase
 {
-    /** @var int[] */
-    private $intArray;
+    private array $intArray;
 
-    /** @var Traversable|int[] */
-    private $intIterator;
+    private ArrayIterator $intIterator;
 
-    /** @var float[] */
-    private $floatArray;
+    private array $floatArray;
 
-    /** @var Traversable|float[] */
-    private $floatIterator;
+    private ArrayIterator $floatIterator;
 
     protected function setUp(): void
     {
@@ -50,7 +45,7 @@ class DifferenceTest extends AbstractTestCase
         self::assertEqualsWithDelta(-10, difference($this->floatIterator, -3.4), 0.01, '');
     }
 
-    /** @dataProvider Functional\Tests\MathDataProvider::injectErrorCollection */
+    /** @dataProvider \Functional\Tests\MathDataProvider::injectErrorCollection */
     public function testElementsOfWrongTypeAreIgnored(iterable $collection): void
     {
         self::assertEqualsWithDelta(-3.5, difference($collection), 0.1, '');

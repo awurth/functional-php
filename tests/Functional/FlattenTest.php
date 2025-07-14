@@ -12,21 +12,17 @@ namespace Functional\Tests;
 
 use ArrayIterator;
 use stdClass;
-use Traversable;
 
 use function Functional\flatten;
 use function range;
 
-class FlattenTest extends AbstractTestCase
+final class FlattenTest extends AbstractTestCase
 {
-    /** @var array */
-    private $goodArray;
+    private array $goodArray;
 
-    /** @var array */
-    private $goodArray2;
+    private array $goodArray2;
 
-    /** @var Traversable */
-    private $goodIterator;
+    private ArrayIterator $goodIterator;
 
     protected function setUp(): void
     {

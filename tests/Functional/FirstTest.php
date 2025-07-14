@@ -12,15 +12,12 @@ namespace Functional\Tests;
 
 use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
-class FirstTest extends AbstractTestCase
+final class FirstTest extends AbstractTestCase
 {
-    /** @var string[] */
-    private $badArray;
+    private array $badArray;
 
-    /** @var Traversable */
-    private $badIterator;
+    private ArrayIterator $badIterator;
 
     public function getAliases(): array
     {
@@ -47,7 +44,7 @@ class FirstTest extends AbstractTestCase
         $callback = static function ($v, $k, $collection) {
             InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
 
-            return 'second' == $v && 1 == $k;
+            return 'second' === $v && 1 == $k;
         };
 
         self::assertSame('second', $functionName($this->list, $callback));

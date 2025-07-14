@@ -14,8 +14,7 @@ use ArrayIterator;
 
 trait IndexesTrait
 {
-    /** @before */
-    public function createIndexTestData(): void
+    protected function setUp(): void
     {
         $this->list = ['value1', 'value', 'value', 'value2'];
         $this->listIterator = new ArrayIterator($this->list);

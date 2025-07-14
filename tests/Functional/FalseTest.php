@@ -12,37 +12,29 @@ namespace Functional\Tests;
 
 use ArrayIterator;
 use Functional as F;
-use Traversable;
 
-class FalseTest extends AbstractTestCase
+final class FalseTest extends AbstractTestCase
 {
-    /** @var false[] */
-    private $trueArray;
+    private array $trueArray;
 
-    /** @var Traversable */
-    private $trueIterator;
+    private ArrayIterator $trueIterator;
 
-    /** @var false[] */
-    private $trueHash;
+    private array $trueHash;
 
-    /** @var Traversable */
-    private $trueHashIterator;
+    private ArrayIterator $trueHashIterator;
 
-    /** @var array */
-    private $falseArray;
+    private array $falseArray;
 
-    /** @var Traversable */
-    private $falseIterator;
+    private ArrayIterator $falseIterator;
 
-    /** @var array */
-    private $falseHash;
+    private array $falseHash;
 
-    /** @var Traversable */
-    private $falseHashIterator;
+    private ArrayIterator $falseHashIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->trueArray = [false, false, false, false];
         $this->trueIterator = new ArrayIterator($this->trueArray);
         $this->trueHash = ['k1' => false, 'k2' => false, 'k3' => false];

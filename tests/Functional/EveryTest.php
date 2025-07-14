@@ -12,28 +12,24 @@ namespace Functional\Tests;
 
 use ArrayIterator;
 use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 use function Functional\every;
 use function is_numeric;
 
-class EveryTest extends AbstractTestCase
+final class EveryTest extends AbstractTestCase
 {
-    /** @var string[] */
-    private $goodArray;
+    private array $goodArray;
 
-    /** @var Traversable|string[] */
-    private $goodIterator;
+    private ArrayIterator $goodIterator;
 
-    /** @var string[] */
-    private $badArray;
+    private array $badArray;
 
-    /** @var Traversable|string[] */
-    private $badIterator;
+    private ArrayIterator $badIterator;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->goodArray = ['value', 'value', 'value'];
         $this->goodIterator = new ArrayIterator($this->goodArray);
         $this->badArray = ['value', 'nope', 'value'];

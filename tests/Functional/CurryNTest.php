@@ -17,6 +17,7 @@ use function array_shift;
 use function call_user_func_array;
 use function count;
 use function Functional\curry_n;
+use function Functional\id;
 use function Functional\invoker;
 
 function add($a, $b, $c, $d)
@@ -55,7 +56,7 @@ class CurryNTest extends AbstractPartialTestCase
     public function testCallbackTypes($callback, $params, $expected, $required, $transformer = null): void
     {
         if (null === $transformer) {
-            $transformer = 'Functional\id';
+            $transformer = id(...);
         }
 
         $curryied = $this->getCurryiedCallable($callback, $params, $required);

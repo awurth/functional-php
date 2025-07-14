@@ -14,10 +14,9 @@ use ArrayIterator;
 
 use function Functional\contains;
 
-class ContainsTest extends AbstractTestCase
+final class ContainsTest extends AbstractTestCase
 {
-    /** @before */
-    public function createTestData(): void
+    protected function setUp(): void
     {
         $this->list = ['value0', 'value1', 'value2', 2];
         $this->listIterator = new ArrayIterator($this->list);

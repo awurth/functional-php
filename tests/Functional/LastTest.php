@@ -11,18 +11,14 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
-use Traversable;
 
 use function Functional\last;
 
-class LastTest extends AbstractTestCase
+final class LastTest extends AbstractTestCase
 {
-    /** @var string[] */
-    private $badArray;
+    private array $badArray;
 
-    /** @var Traversable|string[] */
-    private $badIterator;
+    private ArrayIterator $badIterator;
 
     protected function setUp(): void
     {
@@ -35,10 +31,8 @@ class LastTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
-            return ('first' == $v && 0 == $k) || ('third' == $v && 2 == $k);
+        $fn = static function (mixed $v, mixed $k, iterable $collection) {
+            return ('first' === $v && 0 == $k) || ('third' === $v && 2 == $k);
         };
 
         self::assertSame('third', last($this->list, $fn));

@@ -11,28 +11,24 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Traversable;
 
 use function func_get_args;
 use function Functional\invoke_first;
 
-class InvokeFirstTest extends AbstractTestCase
+final class InvokeFirstTest extends AbstractTestCase
 {
-    /** @var object[] */
-    private $keyArray;
+    private array $keyArray;
 
-    /** @var Traversable */
-    private $keyIterator;
+    private ArrayIterator $keyIterator;
 
-    /** @var array */
-    private $arrayVeryFirstNotCallable;
+    private array $arrayVeryFirstNotCallable;
 
-    /** @var Traversable */
-    private $iteratorVeryFirstNotCallable;
+    private ArrayIterator $iteratorVeryFirstNotCallable;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->list = [$this, null, null];
         $this->listIterator = new ArrayIterator($this->list);
         $this->keyArray = ['k1' => $this, 'k2' => null];

@@ -15,19 +15,20 @@ use ArrayIterator;
 use function func_get_args;
 use function Functional\invoke_last;
 
-class InvokeLastTest extends AbstractTestCase
+final class InvokeLastTest extends AbstractTestCase
 {
-    private $iteratorVeryLastNotCallable;
+    private ArrayIterator $iteratorVeryLastNotCallable;
 
-    private $arrayVeryLastNotCallable;
+    private array $arrayVeryLastNotCallable;
 
-    private $keyIterator;
+    private ArrayIterator $keyIterator;
 
-    private $keyArray;
+    private array $keyArray;
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->list = [null, null, $this];
         $this->listIterator = new ArrayIterator($this->list);
         $this->keyArray = ['k1' => null, 'k2' => $this];

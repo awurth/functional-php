@@ -13,22 +13,23 @@ namespace Functional\Tests;
 use ArrayIterator;
 use PHPUnit\Framework\MockObject\MockObject;
 
+use function count;
 use function Functional\each;
 
-class EachTest extends AbstractTestCase
+interface Cb
 {
-    /**
-     * @var MockObject
-     */
-    private $cb;
+    public function call(mixed $value, mixed $key, iterable $collection): void;
+}
+
+final class EachTest extends AbstractTestCase
+{
+    private MockObject&Cb $cb;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->cb = $this->getMockBuilder('cb')
-            ->setMethods(['call'])
-            ->getMock()
-        ;
+
+        $this->cb = $this->createMock(Cb::class);
 
         $this->list = ['value0', 'value1', 'value2', 'value3'];
         $this->listIterator = new ArrayIterator($this->list);
@@ -39,31 +40,36 @@ class EachTest extends AbstractTestCase
     public function testArray(): void
     {
         $this->prepareCallback($this->list);
-        self::assertNull(each($this->list, [$this->cb, 'call']));
+
+        each($this->list, [$this->cb, 'call']);
     }
 
     public function testIterator(): void
     {
         $this->prepareCallback($this->listIterator);
-        self::assertNull(each($this->listIterator, [$this->cb, 'call']));
+
+        each($this->listIterator, [$this->cb, 'call']);
     }
 
     public function testHash(): void
     {
         $this->prepareCallback($this->hash);
-        self::assertNull(each($this->hash, [$this->cb, 'call']));
+
+        each($this->hash, [$this->cb, 'call']);
     }
 
     public function testHashIterator(): void
     {
         $this->prepareCallback($this->hashIterator);
-        self::assertNull(each($this->hashIterator, [$this->cb, 'call']));
+
+        each($this->hashIterator, [$this->cb, 'call']);
     }
 
     public function testExceptionIsThrownInArray(): void
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
+
         each($this->list, $this->exception(...));
     }
 
@@ -71,25 +77,30 @@ class EachTest extends AbstractTestCase
     {
         $this->expectException('DomainException');
         $this->expectExceptionMessage('Callback exception');
+
         each($this->listIterator, $this->exception(...));
-    }
-
-    private function prepareCallback($collection): void
-    {
-        $args = [];
-
-        foreach ($collection as $key => $value) {
-            $args[] = [$value, $key, $collection];
-        }
-
-        $this->cb->method('call')
-            ->withConsecutive(...$args)
-        ;
     }
 
     public function testPassNonCallable(): void
     {
         $this->expectCallableArgumentError('Functional\each', 2);
+
         each($this->list, 'undefinedFunction');
+    }
+
+    private function prepareCallback($collection): void
+    {
+        $args = [];
+        foreach ($collection as $key => $value) {
+            $args[] = [$value, $key, $collection];
+        }
+
+        $invokedCount = self::exactly(count($args));
+        $this->cb->expects($invokedCount)
+            ->method('call')
+            ->willReturnCallback(static function ($value, $key, $collection) use ($args, $invokedCount): void {
+                self::assertSame($args[$invokedCount->getInvocationCount() - 1], [$value, $key, $collection]);
+            })
+        ;
     }
 }
