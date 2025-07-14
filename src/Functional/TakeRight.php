@@ -37,7 +37,7 @@ function take_right(iterable $collection, int $count, bool $preserveKeys = false
 
     return array_slice(
         is_array($collection) ? $collection : iterator_to_array($collection),
-        0 - $count,
+        -$count,
         $count,
         $preserveKeys,
     );
