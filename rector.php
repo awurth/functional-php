@@ -23,7 +23,7 @@ return RectorConfig::configure()
         strictBooleans: true,
         // rectorPreset: true,
     )
-    // ->withComposerBased(phpunit: true)
+    ->withComposerBased(phpunit: true)
     // ->withPhpSets()
     ->withSets([
         PHPUnitSetList::PHPUNIT_100,
