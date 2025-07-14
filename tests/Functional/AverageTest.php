@@ -34,8 +34,7 @@ final class AverageTest extends AbstractTestCase
 
     private ArrayIterator $hashIterator3;
 
-    /** @before */
-    public function createTestData(): void
+    protected function setUp(): void
     {
         $this->hash = ['f0' => 12, 'f1' => 2, 'f3' => true, 'f4' => false, 'f5' => 'str', 'f6' => [], 'f7' => new stdClass(), 'f8' => 1];
         $this->hashIterator = new ArrayIterator($this->hash);

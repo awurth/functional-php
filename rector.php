@@ -25,7 +25,7 @@ return RectorConfig::configure()
     )
     // ->withComposerBased(phpunit: true)
     // ->withPhpSets()
-    // ->withSets([
-    //     PHPUnitSetList::PHPUNIT_110,
-    // ])
+    ->withSets([
+        PHPUnitSetList::PHPUNIT_100,
+    ])
 ;
