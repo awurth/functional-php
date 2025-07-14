@@ -38,9 +38,7 @@ final class SelectTest extends AbstractTestCase
     #[DataProvider('getAliases')]
     public function test($functionName): void
     {
-        $callback = static function ($v, $k, iterable $collection) {
-            return 'value' === $v && '' !== $k;
-        };
+        $callback = (static fn ($v, $k, iterable $collection) => 'value' === $v && '' !== $k);
         self::assertSame(['value', 2 => 'value'], $functionName($this->list, $callback));
         self::assertSame(['value', 2 => 'value'], $functionName($this->listIterator, $callback));
         self::assertSame(['k1' => 'value', 'k3' => 'value'], $functionName($this->hash, $callback));

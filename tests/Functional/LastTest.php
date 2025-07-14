@@ -31,9 +31,7 @@ final class LastTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function (mixed $v, mixed $k, iterable $collection) {
-            return ('first' === $v && 0 == $k) || ('third' === $v && 2 == $k);
-        };
+        $fn = (static fn (mixed $v, mixed $k, iterable $collection) => ('first' === $v && 0 == $k) || ('third' === $v && 2 == $k));
 
         self::assertSame('third', last($this->list, $fn));
         self::assertSame('third', last($this->listIterator, $fn));

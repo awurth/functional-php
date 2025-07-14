@@ -32,9 +32,7 @@ final class TailTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, iterable $collection) {
-            return $v > 2;
-        };
+        $fn = (static fn ($v, $k, iterable $collection) => $v > 2);
 
         self::assertSame([2 => 3, 3 => 4], tail($this->list, $fn));
         self::assertSame([2 => 3, 3 => 4], tail($this->listIterator, $fn));

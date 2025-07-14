@@ -39,9 +39,7 @@ final class FirstTest extends AbstractTestCase
     #[DataProvider('getAliases')]
     public function test(string $functionName): void
     {
-        $callback = static function ($v, $k, iterable $collection) {
-            return 'second' === $v && 1 == $k;
-        };
+        $callback = (static fn ($v, $k, iterable $collection) => 'second' === $v && 1 == $k);
 
         self::assertSame('second', $functionName($this->list, $callback));
         self::assertSame('second', $functionName($this->listIterator, $callback));

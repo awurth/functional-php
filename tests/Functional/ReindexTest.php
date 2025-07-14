@@ -27,9 +27,7 @@ class ReindexTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, iterable $collection) {
-            return $k.$v;
-        };
+        $fn = (static fn ($v, $k, iterable $collection) => $k.$v);
         self::assertSame(['0value' => 'value', '1value' => 'value'], reindex($this->list, $fn));
         self::assertSame(['0value' => 'value', '1value' => 'value'], reindex($this->listIterator, $fn));
         self::assertSame(['k1val1' => 'val1', 'k2val2' => 'val2'], reindex($this->hash, $fn));
@@ -38,9 +36,7 @@ class ReindexTest extends AbstractTestCase
 
     public function testDuplicateKeys(): void
     {
-        $fn = static function ($v, $k, iterable $collection) {
-            return $k[0];
-        };
+        $fn = (static fn ($v, $k, iterable $collection) => $k[0]);
         self::assertSame(['k' => 'val2'], reindex($this->hash, $fn));
     }
 

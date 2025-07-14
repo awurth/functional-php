@@ -27,9 +27,7 @@ class MapTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, iterable $collection) {
-            return $k.$v;
-        };
+        $fn = (static fn ($v, $k, iterable $collection) => $k.$v);
         self::assertSame(['0value', '1value'], map($this->list, $fn));
         self::assertSame(['0value', '1value'], map($this->listIterator, $fn));
         self::assertSame(['k1' => 'k1val1', 'k2' => 'k2val2'], map($this->hash, $fn));

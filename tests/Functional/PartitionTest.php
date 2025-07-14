@@ -28,9 +28,7 @@ final class PartitionTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, iterable $collection) {
-            return is_int($k) ? ($k % 2 == 0) : ($v[3] % 2 == 0);
-        };
+        $fn = (static fn ($v, $k, iterable $collection) => is_int($k) ? ($k % 2 == 0) : ($v[3] % 2 == 0));
         self::assertSame([[0 => 'value1', 2 => 'value3'], [1 => 'value2']], partition($this->list, $fn));
         self::assertSame([[0 => 'value1', 2 => 'value3'], [1 => 'value2']], partition($this->listIterator, $fn));
         self::assertSame([['k2' => 'val2'], ['k1' => 'val1', 'k3' => 'val3']], partition($this->hash, $fn));
@@ -39,13 +37,9 @@ final class PartitionTest extends AbstractTestCase
 
     public function testMultiFn(): void
     {
-        $fn1 = static function ($v, $k, iterable $collection) {
-            return is_int($k) ? (1 === $k) : ('2' === $v[3]);
-        };
+        $fn1 = (static fn ($v, $k, iterable $collection) => is_int($k) ? (1 === $k) : ('2' === $v[3]));
 
-        $fn2 = static function ($v, $k, iterable $collection) {
-            return is_int($k) ? (2 === $k) : ('3' === $v[3]);
-        };
+        $fn2 = (static fn ($v, $k, iterable $collection) => is_int($k) ? (2 === $k) : ('3' === $v[3]));
 
         self::assertSame([[1 => 'value2'], [2 => 'value3'], [0 => 'value1']], partition($this->list, $fn1, $fn2));
         self::assertSame([[1 => 'value2'], [2 => 'value3'], [0 => 'value1']], partition($this->listIterator, $fn1, $fn2));

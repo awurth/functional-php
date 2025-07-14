@@ -86,7 +86,7 @@ class CurryNTest extends AbstractPartialTestCase
 
         return [
             ['Functional\Tests\add', [2, 4, 6, 8], 20, true],
-            [[Adder::class, 'staticAdd'], [2, 4, 6, 8], 20, true],
+            [Adder::staticAdd(...), [2, 4, 6, 8], 20, true],
             ['Functional\Tests\Adder::staticAdd', [2, 4, 6, 8], 20, true],
             [new Adder(), [2, 4, 6, 8], 20, true],
             [[new Adder(), 'add'], [2, 4, 6, 8], 20, true],

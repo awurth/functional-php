@@ -27,9 +27,7 @@ class RejectTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, iterable $collection) {
-            return 'wrong' === $v && '' !== $k;
-        };
+        $fn = (static fn ($v, $k, iterable $collection) => 'wrong' === $v && '' !== $k);
         self::assertSame([0 => 'value', 2 => 'value'], reject($this->list, $fn));
         self::assertSame([0 => 'value', 2 => 'value'], reject($this->listIterator, $fn));
         self::assertSame(['k1' => 'value', 'k3' => 'value'], reject($this->hash, $fn));

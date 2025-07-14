@@ -29,9 +29,7 @@ class FlatMapTest extends AbstractTestCase
     {
         $flat = flat_map(
             ['a', ['b'], ['C' => 'c'], [['d']], null],
-            static function ($v, $k, iterable $collection) {
-                return $v;
-            },
+            static fn ($v, $k, iterable $collection) => $v,
         );
 
         self::assertSame(['a', 'b', 'c', ['d']], $flat);
@@ -41,9 +39,7 @@ class FlatMapTest extends AbstractTestCase
     {
         $flat = flat_map(
             new ArrayIterator(['a', ['b'], ['C' => 'c'], [['d']], null]),
-            static function ($v, $k, iterable $collection) {
-                return $v;
-            },
+            static fn ($v, $k, iterable $collection) => $v,
         );
 
         self::assertSame(['a', 'b', 'c', ['d']], $flat);
@@ -53,9 +49,7 @@ class FlatMapTest extends AbstractTestCase
     {
         $flat = flat_map(
             ['ka' => 'a', 'kb' => ['b'], 'kc' => ['C' => 'c'], 'kd' => [['d']], 'ke' => null, null],
-            static function ($v, $k, iterable $collection) {
-                return $v;
-            },
+            static fn ($v, $k, iterable $collection) => $v,
         );
 
         self::assertSame(['a', 'b', 'c', ['d']], $flat);
@@ -65,9 +59,7 @@ class FlatMapTest extends AbstractTestCase
     {
         $flat = flat_map(
             new ArrayIterator(['ka' => 'a', 'kb' => ['b'], 'kc' => ['C' => 'c'], 'kd' => [['d']], 'ke' => null, null]),
-            static function ($v, $k, iterable $collection) {
-                return $v;
-            },
+            static fn ($v, $k, iterable $collection) => $v,
         );
 
         self::assertSame(['a', 'b', 'c', ['d']], $flat);

@@ -30,9 +30,7 @@ class DropTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, iterable $collection) {
-            return is_int($k) ? (2 != $k) : (3 != $v[3]);
-        };
+        $fn = (static fn ($v, $k, iterable $collection) => is_int($k) ? (2 != $k) : (3 != $v[3]));
         self::assertSame([0 => 'value1', 1 => 'value2'], drop_last($this->list, $fn));
         self::assertSame([2 => 'value3', 3 => 'value4'], drop_first($this->list, $fn));
         self::assertSame([2 => 'value3', 3 => 'value4'], drop_first($this->listIterator, $fn));
