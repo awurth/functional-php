@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "php": "^8.2"
+        "php": "^8.4"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1.17",
@@ -135,7 +135,9 @@
         }
     },
     "scripts": {
-        "tests": "vendor/bin/phpunit",
-        "coding-style": "vendor/bin/phpcs && vendor/bin/php-cs-fixer fix --dry-run --diff --config=.php_cs.dist"
+        "cs": "vendor/bin/php-cs-fixer fix",
+        "phpstan": "vendor/bin/phpstan",
+        "rector": "vendor/bin/rector",
+        "test": "vendor/bin/phpunit"
     }
 }
