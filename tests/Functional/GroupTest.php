@@ -12,7 +12,6 @@ namespace Functional\Tests;
 
 use ArrayIterator;
 use Exception;
-use Functional\Exceptions\InvalidArgumentException;
 use stdClass;
 
 use function Functional\group;
@@ -33,9 +32,7 @@ class GroupTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $fn = static function ($v, $k, iterable $collection) {
             return (is_int($k) ? ($k % 2 == 0) : ($v[3] % 2 == 0)) ? 'foo' : '';
         };
         self::assertSame(['foo' => [0 => 'value1', 2 => 'value3'], '' => [1 => 'value2', 3 => 'value4']], group($this->list, $fn));

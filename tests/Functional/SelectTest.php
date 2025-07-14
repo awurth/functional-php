@@ -11,13 +11,12 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\select;
 
-class SelectTest extends AbstractTestCase
+final class SelectTest extends AbstractTestCase
 {
-    public function getAliases(): array
+    public static function getAliases(): array
     {
         return [
             ['Functional\select'],
@@ -28,6 +27,7 @@ class SelectTest extends AbstractTestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->list = ['value', 'wrong', 'value'];
         $this->listIterator = new ArrayIterator($this->list);
         $this->hash = ['k1' => 'value', 'k2' => 'wrong', 'k3' => 'value'];
@@ -39,9 +39,7 @@ class SelectTest extends AbstractTestCase
      */
     public function test($functionName): void
     {
-        $callback = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $callback = static function ($v, $k, iterable $collection) {
             return 'value' === $v && '' !== $k;
         };
         self::assertSame(['value', 2 => 'value'], $functionName($this->list, $callback));

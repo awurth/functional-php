@@ -78,7 +78,7 @@ class CurryNTest extends AbstractPartialTestCase
         }
     }
 
-    public function callbacks(): array
+    public static function callbacks(): array
     {
         $dt = new DateTime();
         $dt2 = clone $dt;

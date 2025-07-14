@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\flat_map;
 
@@ -30,9 +29,7 @@ class FlatMapTest extends AbstractTestCase
     {
         $flat = flat_map(
             ['a', ['b'], ['C' => 'c'], [['d']], null],
-            static function ($v, $k, $collection) {
-                InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+            static function ($v, $k, iterable $collection) {
                 return $v;
             },
         );
@@ -44,9 +41,7 @@ class FlatMapTest extends AbstractTestCase
     {
         $flat = flat_map(
             new ArrayIterator(['a', ['b'], ['C' => 'c'], [['d']], null]),
-            static function ($v, $k, $collection) {
-                InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+            static function ($v, $k, iterable $collection) {
                 return $v;
             },
         );
@@ -58,9 +53,7 @@ class FlatMapTest extends AbstractTestCase
     {
         $flat = flat_map(
             ['ka' => 'a', 'kb' => ['b'], 'kc' => ['C' => 'c'], 'kd' => [['d']], 'ke' => null, null],
-            static function ($v, $k, $collection) {
-                InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+            static function ($v, $k, iterable $collection) {
                 return $v;
             },
         );
@@ -72,9 +65,7 @@ class FlatMapTest extends AbstractTestCase
     {
         $flat = flat_map(
             new ArrayIterator(['ka' => 'a', 'kb' => ['b'], 'kc' => ['C' => 'c'], 'kd' => [['d']], 'ke' => null, null]),
-            static function ($v, $k, $collection) {
-                InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+            static function ($v, $k, iterable $collection) {
                 return $v;
             },
         );

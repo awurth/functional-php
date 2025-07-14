@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\drop_first;
 use function Functional\drop_last;
@@ -30,9 +29,7 @@ class DropTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $fn = static function ($v, $k, iterable $collection) {
             return is_int($k) ? (2 != $k) : (3 != $v[3]);
         };
         self::assertSame([0 => 'value1', 1 => 'value2'], drop_last($this->list, $fn));

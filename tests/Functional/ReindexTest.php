@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\reindex;
 
@@ -28,9 +27,7 @@ class ReindexTest extends AbstractTestCase
 
     public function test(): void
     {
-        $fn = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $fn = static function ($v, $k, iterable $collection) {
             return $k.$v;
         };
         self::assertSame(['0value' => 'value', '1value' => 'value'], reindex($this->list, $fn));
@@ -41,9 +38,7 @@ class ReindexTest extends AbstractTestCase
 
     public function testDuplicateKeys(): void
     {
-        $fn = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
+        $fn = static function ($v, $k, iterable $collection) {
             return $k[0];
         };
         self::assertSame(['k' => 'val2'], reindex($this->hash, $fn));

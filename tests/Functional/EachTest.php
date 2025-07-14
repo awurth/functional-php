@@ -99,7 +99,7 @@ final class EachTest extends AbstractTestCase
         $this->cb->expects($invokedCount)
             ->method('call')
             ->willReturnCallback(static function ($value, $key, $collection) use ($args, $invokedCount): void {
-                self::assertSame($args[$invokedCount->getInvocationCount() - 1], [$value, $key, $collection]);
+                self::assertSame($args[$invokedCount->numberOfInvocations() - 1], [$value, $key, $collection]);
             })
         ;
     }

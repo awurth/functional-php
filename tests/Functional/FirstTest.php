@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 
 final class FirstTest extends AbstractTestCase
 {
@@ -19,7 +18,7 @@ final class FirstTest extends AbstractTestCase
 
     private ArrayIterator $badIterator;
 
-    public function getAliases(): array
+    public static function getAliases(): array
     {
         return [
             ['Functional\first'],
@@ -41,9 +40,7 @@ final class FirstTest extends AbstractTestCase
      */
     public function test(string $functionName): void
     {
-        $callback = static function ($v, $k, $collection) {
-            InvalidArgumentException::assertCollection($collection, __FUNCTION__, 1);
-
+        $callback = static function ($v, $k, iterable $collection) {
             return 'second' === $v && 1 == $k;
         };
 

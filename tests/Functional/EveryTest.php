@@ -11,7 +11,6 @@
 namespace Functional\Tests;
 
 use ArrayIterator;
-use Functional\Exceptions\InvalidArgumentException;
 
 use function Functional\every;
 use function is_numeric;
@@ -72,10 +71,8 @@ final class EveryTest extends AbstractTestCase
         every($this->goodIterator, $this->exception(...));
     }
 
-    public function functionalCallback($value, $key, $collection): bool
+    public function functionalCallback($value, $key, iterable $collection): bool
     {
-        InvalidArgumentException::assertCollection($collection, __FUNCTION__, 3);
-
         return 'value' === $value && is_numeric($key);
     }
 }

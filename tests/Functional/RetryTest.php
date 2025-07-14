@@ -51,7 +51,7 @@ final class RetryTest extends AbstractTestCase
             ->expects($invokedCount)
             ->method('retry')
             ->willReturnCallback(static function (int $retry, int $delay) use ($invokedCount): string {
-                if ($invokedCount->getInvocationCount() === 1) {
+                if ($invokedCount->numberOfInvocations() === 1) {
                     throw new Exception('first');
                 }
 
@@ -69,7 +69,7 @@ final class RetryTest extends AbstractTestCase
             ->expects($invokedCount)
             ->method('retry')
             ->willReturnCallback(static function (int $retry, int $delay) use ($invokedCount): string {
-                if ($invokedCount->getInvocationCount() === 1) {
+                if ($invokedCount->numberOfInvocations() === 1) {
                     throw new Exception('first');
                 }
 
@@ -90,7 +90,7 @@ final class RetryTest extends AbstractTestCase
             ->expects($invokedCount)
             ->method('retry')
             ->willReturnCallback(static function (int $retry, int $delay) use ($invokedCount): string {
-                if ($invokedCount->getInvocationCount() === 1) {
+                if ($invokedCount->numberOfInvocations() === 1) {
                     throw new Exception('first');
                 }
 
