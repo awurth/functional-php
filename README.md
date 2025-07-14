@@ -1,6 +1,6 @@
 # Functional PHP: Functional primitives for PHP
 
-[![Test](https://github.com/lstrojny/functional-php/actions/workflows/test.yaml/badge.svg)](https://github.com/lstrojny/functional-php/actions/workflows/test.yaml)
+[![Test](https://github.com/awurth/functional-php/actions/workflows/ci.yaml/badge.svg)](https://github.com/awurth/functional-php/actions/workflows/ci.yaml)
 
 *NOTE:* functional-php used to come with a C extension that implemented most of the functions natively. As the
 performance differences weren’t that huge compared to the maintenance cost it has been removed.
